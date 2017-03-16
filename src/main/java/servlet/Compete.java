@@ -96,7 +96,7 @@ public class Compete extends HttpServlet
 
                 +	"	   <h1>Here is your challenge question ...</h1> "
             	+	"	   <hr>" 
-            	+	"	   <h1>" + theQuestion + "</h1>" 
+            	+	"	   <h1>HERE IS WHERE THE QUESTION WILL BE</h1>" 
             	+	"	   <hr>" 
             	+	"    <form action='CheckAnswer' method='POST'>" 
             	+	"    	<table>" 
