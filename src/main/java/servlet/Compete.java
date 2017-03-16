@@ -117,7 +117,7 @@ public class Compete extends HttpServlet
             	+	"    			<input type='submit' value='Click This Button to Check Your Answer'>" 
             	+	"    			</td>" 
             	+	"    		</tr>" 
-            	+	"    	</table>" 
+            	+	"    	</table>" );
         }
       else
         {
