@@ -93,6 +93,31 @@ public class Compete extends HttpServlet
      /*            +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ; */
+
+                +	"	   <h1>Here is your challenge question ...</h1> ") ;
+            	+	"	   <hr>" ) ;
+            	+	"	   <h1>" + theQuestion + "</h1>" ) ;
+            	+	"	   <hr>" ) ;
+            	+	"    <form action='CheckAnswer' method='POST'>" ) ;
+            	+	"    	<table>" ) ;
+            	+	"       <tr>" ) ;
+            	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE""THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" ) ;
+            	+	"       </tr>" ) ;
+            	+	"       <tr>" ) ;
+            	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" ) ;
+            	+	"       </tr>" ) ;
+            	+	"       <tr>" ) ;
+            	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" ) ;
+            	+	"       </tr>" ) ;
+            	+	"       <tr>" ) ;
+            	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" ) ;
+            	+	"       </tr>" ) ;
+            	+	"    		<tr>" ) ;
+            	+	"    			<td colspan='2'>" ) ;
+            	+	"    			<input type='submit' value='Click This Button to Check Your Answer'>" ) ;
+            	+	"    			</td>" ) ;
+            	+	"    		</tr>" ) ;
+            	+	"    	</table>" ) ;
         }
       else
         {
