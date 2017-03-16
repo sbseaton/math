@@ -79,9 +79,7 @@ public class Compete extends HttpServlet
 + "</script>\n"
              +    "  </head>\n"
              +    "  <body>\n"
-             +    "    <hr>\n"
-             +    "    <form method='POST'>\n"
-             +    "      <table>\n"  ) ;
+             +    "    <hr>\n"  ) ;
 
 
     if ( session.isNew() )
