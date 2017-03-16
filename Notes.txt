@@ -1,0 +1,14 @@
+C:\Workspace\Solheim\2017\Spring\CSCI_468\math00>heroku apps:info
+=== cs468-s17-solheim-math00
+Addons:        heroku-postgresql:hobby-dev
+Dynos:         web: 1
+Git URL:       https://git.heroku.com/cs468-s17-solheim-math00.git
+Owner:         f_16_jeff@mail.com
+Region:        us
+Repo Size:     0 B
+Slug Size:     54 MB
+Stack:         cedar-14
+Web URL:       https://cs468-s17-solheim-math00.herokuapp.com/
+
+PATH=%PATH%;C:\Progra~1\PostgreSQL\9.5\bin
+

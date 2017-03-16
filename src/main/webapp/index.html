@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!--  ********************************************************************
+      index.html        by JA Solheim        14 OCT 2016
+      This is the welcome file for the Time web app.
+      ********************************************************************  -->
+
+<html>
+  <head> 
+    <meta charset = 'utf-8'>
+    <title>Time</title>
+    <style>
+		table, th, td { border:1px solid black; margin:10px; padding:10px; }
+		.inline_wide { display: inline-block; width:100%; }
+		body { text-align: center; }
+		body > * { text-align: left; }
+		form { display: inline-block; }
+    </style>
+  </head>
+  <body>
+    <hr>
+    <form action='Compete' method='POST'>
+      <table>
+        <tr style='font-size:x-large;'>
+          <td>Username</td>
+          <td><input type='text' name='username' required autofocus></td>
+        </tr>
+        <tr style='font-size:x-large;'>
+          <td>Password</td>
+          <td><input type='password' name='password' required></td>
+        </tr>
+        <tr>
+          <td colspan='2'>
+            <input type='submit' class='inline_wide' value='Login' >
+          </td>
+        </tr>
+      </table>
+    </form>
+    <hr>
+  </body>
+</html>

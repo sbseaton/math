@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Compete</title>
+    <style>
+      table, th, td { border:1px solid black;
+                      margin:10px;
+                      padding:10px 30px 10px 30px; }
+      .inline_wide { display: inline-block; width:100%; }
+      body { text-align: center; }
+      body > * { text-align: left; }
+      form { display: inline-block; }
+    </style>
+	<script type='text/javascript' async
+			src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>
+	</script>
+  </head>
+  <body>
+    <hr>
+    <form method='POST'>
+      <table>
+        <tr style='font-size:x-large;'><td>Hello, Asdf.</td></tr>
+        <tr style='font-size:x-large;'><td>The time is Thu Mar 09 19:04:37 UTC 2017.</td></tr>
+        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>
+        <tr style='font-size:x-large;'><td>The session ID is BF4AA584E25C03549A6CC9DAD57F56AE.</td></tr>
+        <tr><td><button type='submit' class='inline_wide' formaction='Compete'>Update Time</button></td></tr>
+        <tr><td><button type='submit' class='inline_wide' formaction='LogOut' name='username' value='Asdf'>Log Out</button></td></tr>
+      </table>
+    </form>
+    <hr>
+	<table style='margin-left:auto;margin-right:auto;font-size:small;'>
+		<caption>QUESTION</caption>
+		<tr>
+			<th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>
+			<th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>
+			<th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>
+			<th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>
+			<th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>
+			<th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>
+		</tr>
+		<tr>
+			<td>301</td>
+			<td>\( \dfrac {2} {3}+\dfrac {3} {4} \)</td>
+			<td>201</td>
+			<td>202</td>
+			<td>203</td>
+			<td>204</td>
+		</tr>
+		<tr>
+			<td>302</td>
+			<td>\( \sin \left( \dfrac {\pi } {6}\right) -\cos \left( \dfrac {\pi } {4}\right) \)</td>
+			<td>205</td>
+			<td>206</td>
+			<td>207</td>
+			<td>null</td>
+		</tr>
+		<tr>
+			<td>303</td>
+			<td>\( \dfrac {3} {4}\in \left\{ x|12x^{2}+17x=-6\right\} \)</td>
+			<td>208</td>
+			<td>209</td>
+			<td>null</td>
+			<td>null</td>
+		</tr>
+	</table>
+<hr>
+  </body>
+</html>
+
