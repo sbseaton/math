@@ -101,7 +101,7 @@ public class Compete extends HttpServlet
             	+	"    <form action='CheckAnswer' method='POST'>" 
             	+	"    	<table>" 
             	+	"       <tr>" 
-            	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE""THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" 
+            	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" 
             	+	"       </tr>" 
             	+	"       <tr>" 
             	+	"         <td><input type='radio' name='choice'  ></td><td>\\( " + "THIS IS WHERE THE CHOICE WILL BE" + " \\)</td>" 
