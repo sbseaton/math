@@ -89,7 +89,10 @@ public class Compete extends HttpServlet
       if ( userExists && passwordsMatch )
         {
         session.setAttribute ( userIdAttribute, username ) ;
-        out.print  (  "        <tr style='font-size:x-large;'><td>Hello, " + username + ".</td></tr>\n" ) ; 
+        out.print  (  "        <tr style='font-size:x-large;'><td>Hello, " + username + ".</td></tr>\n" );
+     /*            +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
+                 +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
+                 +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ; */
         }
       else
         {
