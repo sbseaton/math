@@ -66,8 +66,7 @@ public class Compete extends HttpServlet
              +    "    <meta charset='UTF-8'>\n"
              +    "    <title>Compete</title>\n"
              +    "    <style>\n"
-             +    "      table, th, td { border:1px solid black;\n"
-             +    "                      margin:10px;\n"
+             +    "      table, th, td { margin:10px;\n"
              +    "                      padding:10px 30px 10px 30px; }\n"
              +    "      .inline_wide { display: inline-block; width:100%; }\n"
              +    "      body { text-align: center; }\n"
@@ -94,7 +93,7 @@ public class Compete extends HttpServlet
 
                 +	"	   <h1>Here is your challenge question ...</h1> "
             	+	"	   <hr>" 
-            	+	"	   <h1>HERE IS WHERE THE QUESTION WILL BE</h1>" 
+            	+	"	   <h1>(Insert Question Here)</h1>" 
             	+	"	   <hr>" 
             	+	"    <form action='CheckAnswer' method='POST'>" 
             	+	"    	<table>" 
