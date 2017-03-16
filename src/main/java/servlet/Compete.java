@@ -95,9 +95,9 @@ public class Compete extends HttpServlet
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ; */
 
                 +	"	   <h1>Here is your challenge question ...</h1> "
-            	+	"	   <hr>" ) ;
+            	+	"	   <hr>" 
             	+	"	   <h1>" + theQuestion + "</h1>" 
-            	+	"	   <hr>" ) ;
+            	+	"	   <hr>" 
             	+	"    <form action='CheckAnswer' method='POST'>" 
             	+	"    	<table>" 
             	+	"       <tr>" 
