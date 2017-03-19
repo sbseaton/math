@@ -6,7 +6,7 @@
 /* 
 here is how you display the answer text : 
 
-	select choicetext
+	select *
 	from math.choice
 	inner join math.question 
 	on (choice.id = question.foil1_choice_id) 
@@ -155,22 +155,6 @@ public class Compete extends HttpServlet
 						out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
 						
 					}
-/*
-				+		"	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("foil1_choice_id") + "<br> \n "
-				+    	"	<input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br> \n     "
-				+     	"	<input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br> \n     "
-				
-				+     	"	<input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("CorrectAnswer_Choice_ID") + "<br>  \n    "
-				+     	"  <br>   \n  "
-				+		" \n"
-				*/
-				
-		
-				
-				
-				
-				
-
 
 		// finds the database information ----------------------------------------------------------------------------------------------------------------
 
