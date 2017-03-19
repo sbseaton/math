@@ -1,6 +1,20 @@
 // ------------------------------------------------------------------------------------ //
 // Compete.java    by JA Solheim    14 OCT 2016
+
 // This is the Compete servlet ...
+
+/* 
+here is how you display the answer text : 
+
+	select * 
+	from math.choice
+	inner join math.question 
+	on (choice.id = question.foil1_choice_id) 
+	or (choice.id = question.foil2_choice_id) 
+	or (choice.id = question.foil3_choice_id) 
+	or (choice.id = question.correctanswer_choice_id)   
+	where question.id = 301 ; */
+
 // ------------------------------------------------------------------------------------ //
 
 import  java.io.* ;
@@ -109,6 +123,8 @@ public class Compete extends HttpServlet
 								+ "WHERE 	ID = 301 ";
 				
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
+				
+				questionAnswers = "SELECT "
 				while (questionOneRS.next() )
 				{
 					 out.print  ( "" 
