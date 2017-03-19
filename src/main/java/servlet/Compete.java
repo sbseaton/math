@@ -189,21 +189,7 @@ public class Compete extends HttpServlet
 
 
 
-			out.print  (  "<tr>     "
-            +     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
-            +     "    </tr>      "
-            +     "    <tr>     "
-            +     "        <td> &emsp;<u>- 5 </u> </td>     "
-            +     "      </tr>      "
-            +     "  </table>     "
-            +     "  <br>     "
-
-            +     "  <form>     "
-            +     "    <input type=\"radio\" name=\"number\" value=\"150\"> 10<br>      "
-            +     "    <input type=\"radio\" name=\"number\" value=\"155\"> 11<br>      "
-            +     "    <input type=\"radio\" name=\"number\" value=\"160\"> 12<br>      "
-            +     "      <input type=\"radio\" name=\"number\" value=\"165\"> 13<br>      "
-            +     "  <br>     "
+			out.print  (  "" 
             +     "  <table style=\"float:right\">      "
             +     "  <tr>     "
             +     "    <td><input type='submit' value='<<'></td>      "
