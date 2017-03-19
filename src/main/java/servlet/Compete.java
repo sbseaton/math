@@ -84,7 +84,7 @@ public class Compete extends HttpServlet
 				+    "   <h3> Username: "+ username +" </h3>  \n "
 				+    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p> \n"
 				+    "    <br>" 
-				+    "    <hr style=\"border: 2px solid #FFD700\"> \n  "
+				+    "    <hr style='border: 2px solid #FFD700'> \n  "
 				+    "      <h4> Question 1 </h4>   \n "
 				+    "     <hr style='border: 2px solid #FFD700'> \n   "
 				+    "     <label> What is the answer to the following problem? </label> \n  "
