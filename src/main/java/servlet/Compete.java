@@ -86,8 +86,6 @@ public class Compete extends HttpServlet
 				+    "    <br>" 
 				+    "    <hr style='border: 2px solid #FFD700'>   "
 				+    "      <h4> Question 1 </h4>    "
-				+    "      <p> &#40;101 points possible&#41; </p>   "
-				+    "      <p> 0 points total</p>   "
 				+    "     <hr style='border: 2px solid #FFD700'>    "
 				+    "     <label> What is the answer to the following problem? </label>   "
 				+    "      <br><br> "
@@ -129,24 +127,7 @@ public class Compete extends HttpServlet
 				+     	"  <br>     "
 				+		"</form>" );
 				
-				
-			/*
-				+     	"  <form>     "
-				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      " 
-				+     "    <input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br>      "
-				+     "    <input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br>      "
-				+     "      <input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("Foil4_Choice_ID") + "<br>      "
-				+     "  <br>     "
-				+     "  <table style=\"float:right\">      "
-				+     "  <tr>     "
-				+     "    <td><input type='submit' value='<<'></td>      "
-				+     "    <td><input type='submit' value='<'></td>     "
-				+     "  <td><input type='submit' value='Submit'></td>      "
-				+     "  <td><input type='submit' value='>'></td>     "
-				+     "  <td><input type='submit' value='>>'></td>      "
-				+     "  </tr>      "
-				+     "  </table>" );
-					*/
+		
 				}	// end while
 				
 				
@@ -189,7 +170,21 @@ public class Compete extends HttpServlet
 
 
 
-			out.print  (  "" 
+			out.print  (  "<tr>     "
+            +     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
+            +     "    </tr>      "
+            +     "    <tr>     "
+            +     "        <td> &emsp;<u>- 5 </u> </td>     "
+            +     "      </tr>      "
+            +     "  </table>     "
+            +     "  <br>     "
+
+            +     "  <form>     "
+            +     "    <input type=\"radio\" name=\"number\" value=\"150\"> 10<br>      "
+            +     "    <input type=\"radio\" name=\"number\" value=\"155\"> 11<br>      "
+            +     "    <input type=\"radio\" name=\"number\" value=\"160\"> 12<br>      "
+            +     "      <input type=\"radio\" name=\"number\" value=\"165\"> 13<br>      "
+            +     "  <br>     "
             +     "  <table style=\"float:right\">      "
             +     "  <tr>     "
             +     "    <td><input type='submit' value='<<'></td>      "
