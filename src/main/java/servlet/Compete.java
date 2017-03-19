@@ -148,16 +148,18 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.correctanswer_choice_id)  "
 								+ "where question.id = 301 " ;
 				
+				// create a result set for the question answers
 				ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
 					
-					while (questionOneAnswers.next() )
-					{
-						out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
+				// print each answer with a radio button for user selection 
+				while (questionOneAnswers.next() )
+				{
+					out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
 						
-					}
+				}
 
-		// finds the database information ----------------------------------------------------------------------------------------------------------------
-
+		// finds the database information for table on screen ----------------------------------------------------------------------------------------------------------------
+			/*
 				queryString  =     "SELECT   * "
 				+  "FROM   Math.Question " ;
 				ResultSet resultSet = statement.executeQuery ( queryString ) ;
@@ -188,6 +190,7 @@ public class Compete extends HttpServlet
 			+    "</table>\n"
 			+    "<hr>\n"
 			) ;  
+			*/
 
 		// -------------------------------------------------------------------------------------------------------------------------------------------
 
