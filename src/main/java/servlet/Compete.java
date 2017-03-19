@@ -91,46 +91,8 @@ public class Compete extends HttpServlet
 				+    "     <hr style='border: 2px solid #FFD700'>    "
 				+    "     <label> What is the answer to the following problem? </label>   "
 				+    "      <br><br> "
-				+    "      <table>\n" 
-				+	 "		<tr>     "
-				+     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
-				+     "    </tr>      "				);
+				+    "      <table>\n"	);
 				
-				
-		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
-		/*
-				questionString = "SELECT QUESTIONTEXT "
-								+ "FROM 	Math.Question "
-								+ "WHERE 	ID = 301 ";
-				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
-				while (questionOneRS.next() )
-				{
-					 out.print  ( "" 
-				+		"	<tr>     "
-				+     	"   	<td> " + questionOneRS.getObject("QuestionText") + "</td>      "
-				+     	"  	</tr>      "
-				+     	"</table>     "
-				+     	"<br>     "
-
-				+     	"  <form>     "
-				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      "
-				+     "    <input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br>      "
-				+     "    <input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br>      "
-				+     "      <input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("Foil4_Choice_ID") + "<br>      "
-				+     "  <br>     "
-				+     "  <table style=\"float:right\">      "
-				+     "  <tr>     "
-				+     "    <td><input type='submit' value='<<'></td>      "
-				+     "    <td><input type='submit' value='<'></td>     "
-				+     "  <td><input type='submit' value='Submit'></td>      "
-				+     "  <td><input type='submit' value='>'></td>     "
-				+     "  <td><input type='submit' value='>>'></td>      "
-				+     "  </tr>      "
-				+     "  </table>" );
-					
-				}	// end while
-				
-				*/
 				
 				
 
