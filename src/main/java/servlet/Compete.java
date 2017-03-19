@@ -54,7 +54,7 @@ public class Compete extends HttpServlet
     statement = connection.createStatement() ;
     String queryString  =  null ;
 	String questionString = null;
-	String questionAnswers = null ; 
+	String questionOneAnswers = null ; 
   
     if ( username != null )
     {
