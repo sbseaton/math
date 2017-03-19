@@ -145,7 +145,7 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.correctanswer_choice_id)  "
 								+ "where question.id = 301 " ;
 				
-					ResultSet questionOneRS = statement.executeQuery ( questionOneAnswersString ) ;
+					ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
 					
 					while (questionOneAnswers.next() )
 					{
