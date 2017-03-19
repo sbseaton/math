@@ -118,10 +118,10 @@ public class Compete extends HttpServlet
 				+     	"   	<td> " + questionOneRS.getObject("QuestionText") + "</td>      "
 				+     	"  	</tr>      "
 				+     	"</table>     "
-				+     	"<br>     " ); 
-			/*
+				+     	"<br>     " 
+			
 				+     	"  <form>     "
-				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      "
+				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      " ) ; /*
 				+     "    <input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br>      "
 				+     "    <input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br>      "
 				+     "      <input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("Foil4_Choice_ID") + "<br>      "
@@ -142,7 +142,7 @@ public class Compete extends HttpServlet
 				
 
 
-    // finds the database information ----------------------------------------------------------------------------------------------------------------
+		// finds the database information ----------------------------------------------------------------------------------------------------------------
 
 				queryString  =     "SELECT   * "
 				+  "FROM   Math.Question " ;
@@ -169,16 +169,16 @@ public class Compete extends HttpServlet
 				+    "    </tr>\n"
 				) ;
 			} // end while
-	out.print( ""
+			out.print( ""
 			+    "</table>\n"
 			+    "<hr>\n"
 			) ;  
 
-// -------------------------------------------------------------------------------------------------------------------------------------------
+		// -------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-        out.print  (  "<tr>     "
+			out.print  (  "<tr>     "
             +     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
             +     "    </tr>      "
             +     "    <tr>     "
@@ -210,7 +210,7 @@ public class Compete extends HttpServlet
                  */
         }
 
-      //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
+		//  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
 		else    
 		{	session.invalidate(); 
 				out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
