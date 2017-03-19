@@ -219,8 +219,11 @@ public class Compete extends HttpServlet
 		//  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
 		else    
 		{	session.invalidate(); 
-				out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
-                 +    "        <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
+				out.print  (  ""
+				 +	  "		<tr style='font-size:x-large;'> "
+				 +    " 		<td>No user is currently logged in. </td> ""
+				 +	  "		</tr>\n"
+                 +    "     <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
                  +    "      </table>\n"
                  +    "    </form>\n"
                  +    "    <hr>\n"
