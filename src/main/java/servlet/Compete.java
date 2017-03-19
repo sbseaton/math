@@ -122,7 +122,7 @@ public class Compete extends HttpServlet
 				+ 		"<p> " + questionOneRS.getObject("Foil1_Choice_ID") + "</p> " 
 				
 				+		"<form>"
-						"<p>hello</p>"
+				+		"<p>hello</p>"
 				+		"</form>" );
 				
 				
