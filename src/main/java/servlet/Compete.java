@@ -41,20 +41,20 @@ public class Compete extends HttpServlet
     String queryString  =  null ;
   
     if ( username != null )
-      {
-      username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
-      queryString  = "select Password from Math.Competitor "
+    {
+		username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
+		queryString  = "select Password from Math.Competitor "
             +  "WHERE lower(Username) = lower('" + username + "') " ;
-  System.out.println ( "-------------------------------------" ) ;
-  System.out.println (queryString) ;
-  System.out.println ( "-------------------------------------" ) ;
-    ResultSet resultSet = statement.executeQuery ( queryString ) ;
-    // two possibilities:
-    // 1. resultSet is empty (username entered by user was not found in database)
-    // 2. resultSet is non-empty (username was found in database)
-    if ( resultSet.next() )
-    storedPassword  =  (String) resultSet.getObject("Password") ;     
-      }
+		System.out.println ( "-------------------------------------" ) ;
+		System.out.println (queryString) ;
+		System.out.println ( "-------------------------------------" ) ;
+		ResultSet resultSet = statement.executeQuery ( queryString ) ;
+		// two possibilities:
+		// 1. resultSet is empty (username entered by user was not found in database)
+		// 2. resultSet is non-empty (username was found in database)
+		if ( resultSet.next() )
+			storedPassword  =  (String) resultSet.getObject("Password") ;     
+	}
 
     boolean  userExists      =   (storedPassword != null) ;
     boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null)
@@ -64,43 +64,41 @@ public class Compete extends HttpServlet
     // if the username and password match start html display ---------------------------------------------------------------
 
     out.print  (  "<!DOCTYPE html>\n"
-             +    "<html>\n"
-             +    "  <head>\n"
-             +    "    <meta charset='UTF-8'>\n"
-             +    "    <title>Compete</title>\n"
-             +    "    <style> "
-             +    "    </style>\n"
-+ "<script type='text/javascript' async\n"
-+ " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
-+ "</script>\n"
-             +    "  </head>\n"
-             +    "  <body>\n"
-             +    "    <hr>\n"
-             +    "    <form method='POST'>\n"
+				+    "<html>\n"
+				+    "  <head>\n"
+				+    "    <meta charset='UTF-8'>\n"
+				+    "    <title>Compete</title>\n"
+				+    "    <style> "
+				+    "    </style>\n"
+				+ "<script type='text/javascript' async\n"
+				+ " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
+				+ "</script>\n"
+				+    "  </head>\n"
+				+    "  <body>\n"
+				+    "    <hr>\n"
+				+    "    <form method='POST'>\n"
 
-             +    "     <h2 style='text-align:center'> Mental Math Game </h2> "
+				+    "     <h2 style='text-align:center'> Mental Math Game </h2> "
     
-             +    "   <h3> Username: "+ username +" </h3>   "
-             +    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p>"
-             +    "    <br>" 
-             +    "    <hr style='border: 2px solid #FFD700'>   "
-             +    "      <h4> Question 1 </h4>    "
-             +    "      <p> &#40;101 points possible&#41; </p>   "
-             +    "      <p> 0 points total</p>   "
-             +    "     <hr style='border: 2px solid #FFD700'>    "
-             +    "     <label> What is the answer to the following problem? </label>   "
-             +    "      <br><br> "
-             +    "      <table>\n"  );
+				+    "   <h3> Username: "+ username +" </h3>   "
+				+    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p>"
+				+    "    <br>" 
+				+    "    <hr style='border: 2px solid #FFD700'>   "
+				+    "      <h4> Question 1 </h4>    "
+				+    "      <p> &#40;101 points possible&#41; </p>   "
+				+    "      <p> 0 points total</p>   "
+				+    "     <hr style='border: 2px solid #FFD700'>    "
+				+    "     <label> What is the answer to the following problem? </label>   "
+				+    "      <br><br> "
+				+    "      <table>\n"  );
 
 
-    /* // if the session is new display the first page -------------------------------------------------------------------------------------------------
-    if ( session.isNew() )
-      {
-      if ( userExists && passwordsMatch )
-        {
-        session.setAttribute ( userIdAttribute, username ) ;
+		// if the user exists and the password matches, display the first webpage
+    if ( userExists && passwordsMatch )
+    {
+		session.setAttribute ( userIdAttribute, username ) ;
 
-*/
+
 
     // finds the database information ----------------------------------------------------------------------------------------------------------------
 
@@ -108,33 +106,31 @@ public class Compete extends HttpServlet
             +  "FROM   Math.Question " ;
     ResultSet resultSet = statement.executeQuery ( queryString ) ;
     out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
-+    "    <caption>QUESTION</caption>\n"
-+    "    <tr>\n"
-+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
-+    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
-+    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "    </tr>\n"
-) ;
+			+    "    <caption>QUESTION</caption>\n"
+			+    "    <tr>\n"
+			+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
+			+    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
+			+    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+			+    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+			+    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+			+    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+			+    "    </tr>\n"
+			) ;
     while ( resultSet.next() ) 
-      {
-out.print( ""
-+    "    <tr>\n"
-+    "        <td>" + resultSet.getObject("ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
-+    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
-+    "    </tr>\n"
-) ;
-      } // end while
-out.print( ""
-+    "</table>\n"
-+    "<hr>\n"
-) ;  
+    {	out.print("    <tr>\n"
+			+    "        <td>" + resultSet.getObject("ID") + "</td>\n"
+			+    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
+			+    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
+			+    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
+			+    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
+			+    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
+			+    "    </tr>\n"
+		) ;
+    } // end while
+	out.print( ""
+			+    "</table>\n"
+			+    "<hr>\n"
+			) ;  
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -173,10 +169,8 @@ out.print( ""
         }
 
       //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
-      else    
-        {
-        session.invalidate() ;
-        out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
+		else    
+		{	out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
                  +    "        <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
                  +    "      </table>\n"
                  +    "    </form>\n"
@@ -186,17 +180,7 @@ out.print( ""
         out.close() ;
         return ;
         }
-      }
 
-     // if the session is not new, display the WELCOME BACK page ---------------------------------------------------------------------------------- 
-    /* else 
-      {
-      username  =  (String) session.getAttribute ( userIdAttribute ) ;
-      out.print  (  "        <tr style='font-size:x-large;'><td>Welcome back, " + username + ".</td></tr>\n"
-               +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
-               +    "        <tr style='font-size:x-large;'><td>This is a continuation of a previously established session.</td></tr>\n"
-               +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
-      } // end else */
       //-------------------------------------------------------------------------------------------------------------------------------------------
       
 
