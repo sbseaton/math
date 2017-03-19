@@ -6,7 +6,7 @@
 /* 
 here is how you display the answer text : 
 
-	select * 
+	select choicetext
 	from math.choice
 	inner join math.question 
 	on (choice.id = question.foil1_choice_id) 
@@ -125,7 +125,7 @@ public class Compete extends HttpServlet
 				
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				
-				questionAnswers = "select * "
+				questionOneAnswers = "select choicetext "
 								+ "from math.choice "
 								+ "inner join math.question "
 								+ "on (choice.id = question.foil1_choice_id) "
@@ -142,8 +142,13 @@ public class Compete extends HttpServlet
 				+     	"  	</tr>      "
 				+     	"</table>     "
 				+     	"<br>     " 
-		
-
+				
+					while (questionOneAnswers.next() )
+					{
+						out.print ( "	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneAnswers.getObject("choicetext") + "<br> \n " );
+						
+					}
+/*
 				+		"	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("foil1_choice_id") + "<br> \n "
 				+    	"	<input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br> \n     "
 				+     	"	<input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br> \n     "
@@ -151,7 +156,8 @@ public class Compete extends HttpServlet
 				+     	"	<input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("CorrectAnswer_Choice_ID") + "<br>  \n    "
 				+     	"  <br>   \n  "
 				+		" \n"
-				);
+				*/
+				+	" ");
 				
 		
 				}	// end while
