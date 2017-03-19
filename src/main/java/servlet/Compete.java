@@ -126,15 +126,7 @@ public class Compete extends HttpServlet
 				+     	"	<input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("CorrectAnswer_Choice_ID") + "<br>  \n    "
 				+     	"  <br>   \n  "
 				+		" \n"
-				+     "  <table style=\"float:right\">      "
-				+     "  <tr>     "
-				+     "    <td><input type='submit' value='<<'></td>      "
-				+     "    <td><input type='submit' value='<'></td>     "
-				+     "  <td><input type='submit' value='Submit'></td>      "
-				+     "  <td><input type='submit' value='>'></td>     "
-				+     "  <td><input type='submit' value='>>'></td>      "
-				+     "  </tr>      "
-				+     "  </table>" );
+				);
 				
 		
 				}	// end while
