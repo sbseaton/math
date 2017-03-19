@@ -81,7 +81,21 @@ public class Compete extends HttpServlet
              +    "  <body>\n"
              +    "    <hr>\n"
              +    "    <form method='POST'>\n"
-             +    "      <table>\n"  ) ;
+             +    "      <table>\n" 
+             +    "     <h2 style="text-align:center"> Mental Math Game </h2> "
+    
+             +    "   <h3> Username: Bob Saget </h3>   "
+             +    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p>"
+             +    "    <br>" 
+             +    "    <hr style='border: 2px solid #FFD700'>   "
+             +    "      <h4> Question 1 </h4>    "
+             +    "      <p> &#40;101 points possible&#41; </p>   "
+             +    "      <p> 0 points total</p>   "
+             +    "     <hr style='border: 2px solid #FFD700'>    "
+             +    "     <label> What is the answer to the following problem? </label>   "
+             +    "      <br><br> " );
+
+  ")  ;
 
 
     if ( session.isNew() )
