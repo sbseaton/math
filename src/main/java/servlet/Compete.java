@@ -54,7 +54,7 @@ public class Compete extends HttpServlet
     statement = connection.createStatement() ;
     String queryString  =  null ;
 	String questionString = null;
-	String questionOneAnswers = null ; 	// question one answer string
+	String questionOneAnswersString = null ; 	// question one answer string
   
     if ( username != null )
     {
@@ -125,9 +125,7 @@ public class Compete extends HttpServlet
 				
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				
-				
-
-								
+				// display the question text 
 				while (questionOneRS.next() )
 				{
 					 out.print  ( "" 
