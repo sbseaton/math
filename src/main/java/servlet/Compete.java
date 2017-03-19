@@ -139,7 +139,7 @@ public class Compete extends HttpServlet
 				
 				}	// end while
 				// display the answer text 
-				questionOneAnswersString = "select choicetext "	
+				questionOneAnswersString = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
 								+ "on (choice.id = question.foil1_choice_id) "
@@ -152,7 +152,7 @@ public class Compete extends HttpServlet
 					
 					while (questionOneAnswers.next() )
 					{
-						out.println ( "	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
+						out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
 						
 					}
 /*
