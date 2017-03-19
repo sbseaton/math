@@ -47,6 +47,7 @@ public class Compete extends HttpServlet
     String             username         =  request.getParameter("username") ;
     String             password         =  request.getParameter("password") ;
     String             storedPassword   =  null ;
+	String 			userChoice = null;
 
   try
     {
@@ -155,9 +156,20 @@ public class Compete extends HttpServlet
 				while (questionOneAnswers.next() )
 				{
 					out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
-						
+				
 				}
-
+				
+			out.println(""	
+			+	"	<table style="float:right"> "
+			+	"	<tr>	"
+			+	"		<td><input type='submit' value='<<'></td> "
+			+	"		<td><input type='submit' value='<'></td> "
+			+	"		<td><input type='submit' value='Submit'></td>"
+			+	"		<td><input type='submit' value='>'></td>"
+			+	"		<td><input type='submit' value='>>'></td>"
+			+	"	 </tr>"
+			+	"	</table>"
+			+  	"   <br> " );
 		// finds the database information for table on screen ----------------------------------------------------------------------------------------------------------------
 			/*
 				queryString  =     "SELECT   * "
