@@ -80,10 +80,10 @@ public class Compete extends HttpServlet
                                 && (password. equals (storedPassword)) ) ;
 
 	
-	questionNumberString = "SELECT * FROM math.question " ;
-	ResultSet questionNumber = statement.executeQuery( questionNumberString );
+	questionNumberString = "SELECT * FROM math.question WHERE id = 301 " ;
+	ResultSet questionID = statement.executeQuery( questionNumberString );
 	
-	while ( questionNumber.next() ) 
+	while ( questionID.next() ) 
 	{
 	
 	
@@ -110,7 +110,7 @@ public class Compete extends HttpServlet
 				+    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
 				+    "    <br>" 
 				+    "    <hr style='border: 2px solid #FFD700'> \n  "
-				+    "      <h4> Question "+ questionNumber.getObject("id") + " </h4>   \n "
+				+    "      <h4> Question "+ questionID.getObject("id") + " </h4>   \n "
 				+    "      <p> &#40;101 points possible&#41; </p> "
 				
 				// add the current score keeping right here --------------------------------------------------------
