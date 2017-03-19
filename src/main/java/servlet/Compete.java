@@ -125,7 +125,7 @@ public class Compete extends HttpServlet
 				
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				
-				questionOneAnswers = "select choicetext "
+				questionOneAnswersString = "select choicetext "
 								+ "from math.choice "
 								+ "inner join math.question "
 								+ "on (choice.id = question.foil1_choice_id) "
@@ -133,6 +133,9 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.foil3_choice_id) "
 								+ "or (choice.id = question.correctanswer_choice_id)  "
 								+ "where question.id = 301 " ;
+				
+				ResultSet questionOneRS = statement.executeQuery ( questionOneAnswersString ) ;
+
 								
 				while (questionOneRS.next() )
 				{
