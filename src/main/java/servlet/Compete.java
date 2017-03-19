@@ -96,10 +96,41 @@ public class Compete extends HttpServlet
 				+     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
 				+     "    </tr>      "				);
 				
+				
+		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
+		
 				questionString = "SELECT QUESTIONTEXT "
 								+ "FROM 	Math.Question "
 								+ "WHERE 	ID = 301 ";
-				ResultSet theQuestion = statement.executeQuery ( questionString ) ;
+				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
+				while (questionOneRS.next() )
+				{
+					 out.print  ( "" 
+				+		"	<tr>     "
+				+     	"   	<td> " + resultSet.getObject("QuestionText") + "</td>      "
+				+     	"  	</tr>      "
+				+     	"</table>     "
+				+     	"<br>     "
+
+				+     	"  <form>     "
+				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + resultSet.getObject("Foil1_Choice_ID") + "<br>      "
+				+     "    <input type=\"radio\" name=\"number\" value=\"155\">" + resultSet.getObject("Foil2_Choice_ID") + "<br>      "
+				+     "    <input type=\"radio\" name=\"number\" value=\"160\">" + resultSet.getObject("Foil3_Choice_ID") + "<br>      "
+				+     "      <input type=\"radio\" name=\"number\" value=\"165\">" + resultSet.getObject("Foil4_Choice_ID") + "<br>      "
+				+     "  <br>     "
+				+     "  <table style=\"float:right\">      "
+				+     "  <tr>     "
+				+     "    <td><input type='submit' value='<<'></td>      "
+				+     "    <td><input type='submit' value='<'></td>     "
+				+     "  <td><input type='submit' value='Submit'></td>      "
+				+     "  <td><input type='submit' value='>'></td>     "
+				+     "  <td><input type='submit' value='>>'></td>      "
+				+     "  </tr>      "
+				+     "  </table>" );
+					
+				}	// end while
+				
+				
 				
 				
 
