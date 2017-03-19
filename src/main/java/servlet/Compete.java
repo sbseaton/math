@@ -82,7 +82,7 @@ public class Compete extends HttpServlet
 				+    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
     
 				+    "   <h3> Username: "+ username +" </h3>  \n "
-				+    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p> \n"
+				+    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
 				+    "    <br>" 
 				+    "    <hr style='border: 2px solid #FFD700'> \n  "
 				+    "      <h4> Question 1 </h4>   \n "
