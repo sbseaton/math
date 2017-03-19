@@ -21,9 +21,9 @@ public class Compete extends HttpServlet
   public void doPost ( HttpServletRequest request, HttpServletResponse response )
     throws ServletException, IOException
     {
-	Connection connection     =  null ;
-	Statement  statement      =  null ;
-	final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
+  Connection connection     =  null ;
+  Statement  statement      =  null ;
+  final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
     response.setContentType ( "text/html" ) ;
     final PrintWriter  out              =  response.getWriter() ;
     HttpSession        session          =  request.getSession() ;
@@ -34,26 +34,26 @@ public class Compete extends HttpServlet
     String             password         =  request.getParameter("password") ;
     String             storedPassword   =  null ;
 
-	try
-		{
-		connection = DriverManager.getConnection ( DB_URL ) ;
-		statement = connection.createStatement() ;
-		String queryString  =  null ;
-	
+  try
+    {
+    connection = DriverManager.getConnection ( DB_URL ) ;
+    statement = connection.createStatement() ;
+    String queryString  =  null ;
+  
     if ( username != null )
       {
       username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
       queryString  = "select Password from Math.Competitor "
-						+  "WHERE lower(Username) = lower('" + username + "') " ;
-	System.out.println ( "-------------------------------------" ) ;
-	System.out.println (queryString) ;
-	System.out.println ( "-------------------------------------" ) ;
-	  ResultSet resultSet = statement.executeQuery ( queryString ) ;
-	  // two possibilities:
-	  // 1. resultSet is empty (username entered by user was not found in database)
-	  // 2. resultSet is non-empty (username was found in database)
-	  if ( resultSet.next() )
-		storedPassword  =  (String) resultSet.getObject("Password") ;		  
+            +  "WHERE lower(Username) = lower('" + username + "') " ;
+  System.out.println ( "-------------------------------------" ) ;
+  System.out.println (queryString) ;
+  System.out.println ( "-------------------------------------" ) ;
+    ResultSet resultSet = statement.executeQuery ( queryString ) ;
+    // two possibilities:
+    // 1. resultSet is empty (username entered by user was not found in database)
+    // 2. resultSet is non-empty (username was found in database)
+    if ( resultSet.next() )
+    storedPassword  =  (String) resultSet.getObject("Password") ;     
       }
 
     boolean  userExists      =   (storedPassword != null) ;
@@ -81,7 +81,7 @@ public class Compete extends HttpServlet
              +    "  <body>\n"
              +    "    <hr>\n"
              +    "    <form method='POST'>\n"
-             +    "      <table>\n" 
+
              +    "     <h2 style='text-align:center'> Mental Math Game </h2> "
     
              +    "   <h3> Username: Bob Saget </h3>   "
@@ -93,7 +93,8 @@ public class Compete extends HttpServlet
              +    "      <p> 0 points total</p>   "
              +    "     <hr style='border: 2px solid #FFD700'>    "
              +    "     <label> What is the answer to the following problem? </label>   "
-             +    "      <br><br> " );
+             +    "      <br><br> "
+             +    "      <table>\n"  );
 
 
 
@@ -102,10 +103,36 @@ public class Compete extends HttpServlet
       if ( userExists && passwordsMatch )
         {
         session.setAttribute ( userIdAttribute, username ) ;
-        out.print  (  "        <tr style='font-size:x-large;'><td>Hello, " + username + ".</td></tr>\n"
+        out.print  (  "<tr>     "
+            +     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
+            +     "    </tr>      "
+            +     "    <tr>     "
+            +     "        <td> &emsp;<u>- 5 </u> </td>     "
+            +     "      </tr>      "
+            +     "  </table>     "
+            +     "  <br>     "
+
+            +     "  <form>     "
+            +     "    <input type="radio" name="number" value="150"> 10<br>      "
+            +     "    <input type="radio" name="number" value="155"> 11<br>      "
+            +     "    <input type="radio" name="number" value="160"> 12<br>      "
+            +     "      <input type="radio" name="number" value="165"> 13<br>      "
+            +     "  <br>     "
+            +     "  <table style="float:right">      "
+            +     "  <tr>     "
+            +     "    <td><input type='submit' value='<<'></td>      "
+            +     "    <td><input type='submit' value='<'></td>     "
+            +     "  <td><input type='submit' value='Submit'></td>      "
+            +     "  <td><input type='submit' value='>'></td>     "
+            +     "  <td><input type='submit' value='>>'></td>      "
+            +     "  </tr>      "
+            +     "  </table>" );
+
+                /*      "        <tr style='font-size:x-large;'><td>Hello, " + username + ".</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
+                 */
         }
       else
         {
@@ -138,9 +165,9 @@ public class Compete extends HttpServlet
              +    "    </form>\n"
              +    "    <hr>\n" ) ;
 
-		queryString  =	   "SELECT	 * "
-						+  "FROM	 Math.Question " ;
-		ResultSet resultSet = statement.executeQuery ( queryString ) ;
+    queryString  =     "SELECT   * "
+            +  "FROM   Math.Question " ;
+    ResultSet resultSet = statement.executeQuery ( queryString ) ;
 out.print( ""
 +    "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
 +    "    <caption>QUESTION</caption>\n"
@@ -153,8 +180,8 @@ out.print( ""
 +    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
 +    "    </tr>\n"
 ) ;
-		while ( resultSet.next() ) 
-			{
+    while ( resultSet.next() ) 
+      {
 out.print( ""
 +    "    <tr>\n"
 +    "        <td>" + resultSet.getObject("ID") + "</td>\n"
@@ -165,32 +192,32 @@ out.print( ""
 +    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
 +    "    </tr>\n"
 ) ;
-			} // end while
+      } // end while
 out.print( ""
 +    "</table>\n"
 +    "<hr>\n"
 ) ;
-		} // end try block
-	catch ( SQLException sqlException ) 
-		{
-		System.out.println ( "Caught SQLException ..." ) ;
-		sqlException.printStackTrace() ;
-		System.exit ( 1 ) ;
-		} // end catch
-	finally
-		{
-		try
-			{
-			if ( statement  != null ) statement.close() ;
-			if ( connection != null ) connection.close() ;
-			} // end try
-		catch ( Exception exception )
-			{
-			System.out.println ( "Caught Exception ..." ) ;
-			exception.printStackTrace() ;
-			System.exit( 1 ) ;
-			} // end catch
-		} // end finally
+    } // end try block
+  catch ( SQLException sqlException ) 
+    {
+    System.out.println ( "Caught SQLException ..." ) ;
+    sqlException.printStackTrace() ;
+    System.exit ( 1 ) ;
+    } // end catch
+  finally
+    {
+    try
+      {
+      if ( statement  != null ) statement.close() ;
+      if ( connection != null ) connection.close() ;
+      } // end try
+    catch ( Exception exception )
+      {
+      System.out.println ( "Caught Exception ..." ) ;
+      exception.printStackTrace() ;
+      System.exit( 1 ) ;
+      } // end catch
+    } // end finally
 
     out.print  (  "  </body>\n"
              +    "</html>\n"  ) ;
