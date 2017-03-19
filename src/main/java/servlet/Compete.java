@@ -66,7 +66,7 @@ public class Compete extends HttpServlet
              +    "    <meta charset='UTF-8'>\n"
              +    "    <title>Compete</title>\n"
              +    "    <style>\n "
-
+             
              +    "    </style>\n"
 + "<script type='text/javascript' async\n"
 + " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
@@ -151,6 +151,9 @@ public class Compete extends HttpServlet
                +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
       } // end else
 
+    out.print ( "        <tr><td><button type='submit' class='inline_wide' formaction='Compete'>Update Time</button></td></tr>\n"
+             +  "        <tr><td><button type='submit' class='inline_wide' formaction='LogOut' name='username' value='"
+             + username + "'>Log Out</button></td></tr>\n" ) ;
 
     out.print  (  "      </table>\n"
              +    "    </form>\n"
