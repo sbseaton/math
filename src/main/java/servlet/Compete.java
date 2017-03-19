@@ -120,7 +120,7 @@ public class Compete extends HttpServlet
 				+    "      <br><br> \n " ); 
 				// +    "      <table>\n"	);
 				
-		
+		} // end while		
 				
 
 	
@@ -249,8 +249,6 @@ public class Compete extends HttpServlet
         out.close() ;
         return ;
         }
-		
-		} // end while			
 	
       //-------------------------------------------------------------------------------------------------------------------------------------------
 	
