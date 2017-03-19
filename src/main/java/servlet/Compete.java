@@ -118,14 +118,14 @@ public class Compete extends HttpServlet
 				+     	"</table>     "
 				+     	"<br>     " 
 		
-				+		"<form>"
+
 				+		"	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br> \n "
 				+    	"	<input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br> \n     "
 				+     	"	<input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br> \n     "
 				
 				+     	"	<input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("CorrectAnswer_Choice_ID") + "<br>  \n    "
 				+     	"  <br>   \n  "
-				+		"</form> \n" );
+				+		" \n" );
 				
 		
 				}	// end while
