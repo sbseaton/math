@@ -151,10 +151,10 @@ public class Compete extends HttpServlet
 				// create a result set for the question answers
 				ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
 					
-				// print each answer with a radio button for user selection 
+				// print each answer with a radio button for user selection, assign the value to the id of the answer
 				while (questionOneAnswers.next() )
 				{
-					out.println ( "	<input type=\"radio\" name=\"number\" value=&nbsp;&ensp;&ensp;"+ questionOneAnswers.getObject("id") + " >" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
+					out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
 						
 				}
 
