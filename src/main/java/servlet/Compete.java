@@ -65,15 +65,23 @@ public class Compete extends HttpServlet
              +    "  <head>\n"
              +    "    <meta charset='UTF-8'>\n"
              +    "    <title>Compete</title>\n"
-             +    "    <style>\n "
-
+             +    "    <style>\n"
+             +    "      table, th, td { border:1px solid black;\n"
+             +    "                      margin:10px;\n"
+             +    "                      padding:10px 30px 10px 30px; }\n"
+             +    "      .inline_wide { display: inline-block; width:100%; }\n"
+             +    "      body { text-align: center; }\n"
+             +    "      body > * { text-align: left; }\n"
+             +    "      form { display: inline-block; }\n"
              +    "    </style>\n"
 + "<script type='text/javascript' async\n"
 + " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
 + "</script>\n"
              +    "  </head>\n"
              +    "  <body>\n"
-             +    "    <hr>\n"  ) ;
+             +    "    <hr>\n"
+             +    "    <form method='POST'>\n"
+             +    "      <table>\n"  ) ;
 
 
     if ( session.isNew() )
@@ -81,57 +89,15 @@ public class Compete extends HttpServlet
       if ( userExists && passwordsMatch )
         {
         session.setAttribute ( userIdAttribute, username ) ;
-        out.print  (  "        <h1 style='font-size:x-large;'>Hello, " + username + ".</h1>\n" 
-     /*            +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
+        out.print  (  "        <tr style='font-size:x-large;'><td>Hello, " + username + ".</td></tr>\n"
+                 +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
-                 +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ; */
-
-                +	"	   	<h2 style='text-align:center'> Mental Math Game </h2>	"
-  	
-				+	"	<h3> Username: Bob Saget </h3> "
-				+	"	<p style='text-align:center'>Time Remaining 00&#58;50&#58;00 </p> "
-				+	"	<br>	"
-				+	"	<hr style='border: 2px solid #FFD700'>	"
-				+	"	<h4> Question 1 </h4>	"
-				+	"	<p> &#40;101 points possible&#41; </p>		"
-				+	"	<p> 0 points total</p>	"
-				+	"	<hr style='border: 2px solid #FFD700'>	"
- 
-				+	"	<label> What is the answer to the following problem? </label>	"
-				+	"	<br><br>"
-	
-	
-				+	"	<table>	"
-				+	"		<tr>"
-				+	"			<td> &nbsp;&ensp;&ensp;17 </td>	"
-				+	"		</tr>"
-				+	"	<tr>	"
-				+	"	<td> &emsp;<u>- 5 </u> </td>"
-				+	"	</tr>	"
-				+	"	</table>"
-				+	"	<br>	"
-				
-				+	"	<form>	"
-				+	"		<input type='radio' name='number' value='150'> 10<br>"
-				+	"		<input type='radio' name='number' value='155'> 11<br>	"
-				+	"		<input type='radio' name='number' value='160'> 12<br>"
-				+	"		<input type='radio' name='number' value='165'> 13<br>	"
-				+	"	</form>"
-				
-				+	"	<table style='float:right'>"
-				+	"		<tr>	"
-				+	"			<td><input type='submit' value='<<'></td>"
-				+	"			<td><input type='submit' value='<'></td>	"
-				+	"			<td><input type='submit' value='Submit'></td>"
-				+	"			<td><input type='submit' value='>'></td>	"
-				+	"			<td><input type='submit' value='>>'></td>"
-				+	"		</tr>	"
-				+	"	</table> " );
-        }	
+                 +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
+        }
       else
         {
         session.invalidate() ;
-        out.print  (  "			<tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
+        out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
                  +    "        <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
                  +    "      </table>\n"
                  +    "    </form>\n"
