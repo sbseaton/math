@@ -229,6 +229,8 @@ public class Compete extends HttpServlet
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
                  */
         }
+		
+		} // end while
 
 		//  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
 		else    
@@ -251,7 +253,7 @@ public class Compete extends HttpServlet
       //-------------------------------------------------------------------------------------------------------------------------------------------
 	
 	
-	} // end while
+	
 	
 
       
