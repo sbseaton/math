@@ -104,8 +104,8 @@ public class Compete extends HttpServlet
 				+    "      <h4> Question 1 </h4>   \n "
 				+    "     <hr style='border: 2px solid #FFD700'> \n   "
 				+    "     <label> What is the answer to the following problem? </label> \n  "
-				+    "      <br><br> \n "
-				+    "      <table>\n"	);
+				+    "      <br><br> \n " ); 
+				// +    "      <table>\n"	);
 				
 				
 				
@@ -130,6 +130,7 @@ public class Compete extends HttpServlet
 				while (questionOneRS.next() )
 				{
 					 out.print  ( "" 
+				+   "      <table>\n"
 				+		"	<tr>     "
 				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + "</td>      "
 				+     	"  	</tr>      "
@@ -220,15 +221,16 @@ public class Compete extends HttpServlet
 		else    
 		{	session.invalidate(); 
 				out.print  (  ""
-				 +	  "		<tr style='font-size:x-large;'> "
-				 +    " 		<td>No user is currently logged in. </td> "
-				 +	  "		</tr>\n"
-                 +    "     <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
-                 +    "      </table>\n"
-                 +    "    </form>\n"
-                 +    "    <hr>\n"
-                 +    "  </body>\n"
-                 +    "</html>\n"  ) ;
+				+    "      <table>\n"
+				+	  "		<tr style='font-size:x-large;'> "
+				+    " 		<td>No user is currently logged in. </td> "
+				+	  "		</tr>\n"
+                +    "     <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
+                +    "      </table>\n"
+                +    "    </form>\n"
+                +    "    <hr>\n"
+                +    "  </body>\n"
+                +    "</html>\n"  ) ;
         out.close() ;
         return ;
         }
