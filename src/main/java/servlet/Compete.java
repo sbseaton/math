@@ -54,7 +54,7 @@ public class Compete extends HttpServlet
     statement = connection.createStatement() ;
     String queryString  =  null ;
 	String questionString = null;
-	String questionOneAnswers = null ; 
+	String questionOneAnswers = null ; 	// question one answer string
   
     if ( username != null )
     {
@@ -125,16 +125,7 @@ public class Compete extends HttpServlet
 				
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				
-				questionOneAnswersString = "select choicetext "
-								+ "from math.choice "
-								+ "inner join math.question "
-								+ "on (choice.id = question.foil1_choice_id) "
-								+ "or (choice.id = question.foil2_choice_id) "
-								+ "or (choice.id = question.foil3_choice_id) "
-								+ "or (choice.id = question.correctanswer_choice_id)  "
-								+ "where question.id = 301 " ;
 				
-				ResultSet questionOneRS = statement.executeQuery ( questionOneAnswersString ) ;
 
 								
 				while (questionOneRS.next() )
@@ -146,6 +137,18 @@ public class Compete extends HttpServlet
 				+     	"</table>     "
 				+     	"<br>     " ); 
 				
+				// display the answer text 
+					questionOneAnswersString = "select choicetext "	
+								+ "from math.choice "
+								+ "inner join math.question "
+								+ "on (choice.id = question.foil1_choice_id) "
+								+ "or (choice.id = question.foil2_choice_id) "
+								+ "or (choice.id = question.foil3_choice_id) "
+								+ "or (choice.id = question.correctanswer_choice_id)  "
+								+ "where question.id = 301 " ;
+				
+					ResultSet questionOneRS = statement.executeQuery ( questionOneAnswersString ) ;
+					
 					while (questionOneAnswers.next() )
 					{
 						out.println ( "	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneAnswers.getObject("choicetext") + "<br> \n " );
