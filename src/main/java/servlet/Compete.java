@@ -185,7 +185,7 @@ public class Compete extends HttpServlet
       
 
       
-    out.print ( +  "        <tr><td><button type='submit' class='inline_wide' formaction='LogOut' name='username' value='"
+    out.print ( "        <tr><td><button type='submit' class='inline_wide' formaction='LogOut' name='username' value='"
              + username + "'>Log Out</button></td></tr>\n" ) ;
 
     out.print  (  "      </table>\n"
