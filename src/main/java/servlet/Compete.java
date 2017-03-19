@@ -148,6 +148,7 @@ public class Compete extends HttpServlet
 				questionString = "SELECT QUESTIONTEXT "
 								+ "FROM 	Math.Question "
 								+ "WHERE 	ID = 301 ";
+				
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				while (questionOneRS.next() )
 				{
@@ -157,7 +158,7 @@ public class Compete extends HttpServlet
 				+     	"  	</tr>      "
 				+     	"</table>     "
 				+     	"<br>     "
-
+			/*
 				+     	"  <form>     "
 				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      "
 				+     "    <input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br>      "
@@ -173,7 +174,7 @@ public class Compete extends HttpServlet
 				+     "  <td><input type='submit' value='>>'></td>      "
 				+     "  </tr>      "
 				+     "  </table>" );
-					
+					*/
 				}	// end while
 				
 				
@@ -182,31 +183,31 @@ public class Compete extends HttpServlet
 
     // finds the database information ----------------------------------------------------------------------------------------------------------------
 
-    queryString  =     "SELECT   * "
-            +  "FROM   Math.Question " ;
-    ResultSet resultSet = statement.executeQuery ( queryString ) ;
-    out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
-			+    "    <caption>QUESTION</caption>\n"
-			+    "    <tr>\n"
-			+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
-			+    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
-			+    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-			+    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-			+    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-			+    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-			+    "    </tr>\n"
-			) ;
-    while ( resultSet.next() ) 
-    {	out.print("    <tr>\n"
-			+    "        <td>" + resultSet.getObject("ID") + "</td>\n"
-			+    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
-			+    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
-			+    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
-			+    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
-			+    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
-			+    "    </tr>\n"
-		) ;
-    } // end while
+				queryString  =     "SELECT   * "
+				+  "FROM   Math.Question " ;
+				ResultSet resultSet = statement.executeQuery ( queryString ) ;
+				out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
+				+    "    <caption>QUESTION</caption>\n"
+				+    "    <tr>\n"
+				+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
+				+    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
+				+    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+				+    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+				+    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+				+    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
+				+    "    </tr>\n"
+				) ;
+			while ( resultSet.next() ) 
+			{	out.print("    <tr>\n"
+				+    "        <td>" + resultSet.getObject("ID") + "</td>\n"
+				+    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
+				+    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
+				+    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
+				+    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
+				+    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
+				+    "    </tr>\n"
+				) ;
+			} // end while
 	out.print( ""
 			+    "</table>\n"
 			+    "<hr>\n"
