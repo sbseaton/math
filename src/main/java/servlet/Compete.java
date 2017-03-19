@@ -54,6 +54,7 @@ public class Compete extends HttpServlet
     statement = connection.createStatement() ;
     String queryString  =  null ;
 	String questionString = null;
+	String questionAnswers = null ; 
   
     if ( username != null )
     {
@@ -132,6 +133,7 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.foil3_choice_id) "
 								+ "or (choice.id = question.correctanswer_choice_id)  "
 								+ "where question.id = 301 " ;
+								
 				while (questionOneRS.next() )
 				{
 					 out.print  ( "" 
