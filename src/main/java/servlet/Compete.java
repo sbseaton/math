@@ -81,9 +81,9 @@ public class Compete extends HttpServlet
 
 	
 	questionNumberString = "SELECT * FROM math.question " ;
-	ResultSet questionNumberString = statement.executeQuery( questionNumberString );
+	ResultSet questionNumber = statement.executeQuery( questionNumberString );
 	
-	while ( questionNumberString.next() ) 
+	while ( questionNumber.next() ) 
 	{
 	
 	
