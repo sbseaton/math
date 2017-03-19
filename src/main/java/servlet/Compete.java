@@ -60,6 +60,9 @@ public class Compete extends HttpServlet
     boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null)
                                 && (password. equals (storedPassword)) ) ;
 
+
+    // if the username and password match start html display ---------------------------------------------------------------
+
     out.print  (  "<!DOCTYPE html>\n"
              +    "<html>\n"
              +    "  <head>\n"
@@ -90,12 +93,53 @@ public class Compete extends HttpServlet
              +    "      <table>\n"  );
 
 
-
+    // if the session is new display the first page -------------------------------------------------------------------------------------------------
     if ( session.isNew() )
       {
       if ( userExists && passwordsMatch )
         {
         session.setAttribute ( userIdAttribute, username ) ;
+
+
+
+        // finds the database information ----------------------------------------------------------------------------------------------------------------
+
+    queryString  =     "SELECT   * "
+            +  "FROM   Math.Question " ;
+    ResultSet resultSet = statement.executeQuery ( queryString ) ;
+    out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
++    "    <caption>QUESTION</caption>\n"
++    "    <tr>\n"
++    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
++    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
++    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
++    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
++    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
++    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
++    "    </tr>\n"
+) ;
+    while ( resultSet.next() ) 
+      {
+out.print( ""
++    "    <tr>\n"
++    "        <td>" + resultSet.getObject("ID") + "</td>\n"
++    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
++    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
++    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
++    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
++    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
++    "    </tr>\n"
+) ;
+      } // end while
+out.print( ""
++    "</table>\n"
++    "<hr>\n"
+) ;  
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
         out.print  (  "<tr>     "
             +     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
             +     "    </tr>      "
@@ -127,7 +171,9 @@ public class Compete extends HttpServlet
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
                  */
         }
-      else
+
+      //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
+      else    
         {
         session.invalidate() ;
         out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
@@ -141,15 +187,20 @@ public class Compete extends HttpServlet
         return ;
         }
       }
-    else // session is *not* new
+
+     // if the session is not new, display the WELCOME BACK page ---------------------------------------------------------------------------------- 
+    else 
       {
       username  =  (String) session.getAttribute ( userIdAttribute ) ;
       out.print  (  "        <tr style='font-size:x-large;'><td>Welcome back, " + username + ".</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>This is a continuation of a previously established session.</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
-      } // end else
+      } // end else 
+      //-------------------------------------------------------------------------------------------------------------------------------------------
 
+
+      
     out.print ( "        <tr><td><button type='submit' class='inline_wide' formaction='Compete'>Update Time</button></td></tr>\n"
              +  "        <tr><td><button type='submit' class='inline_wide' formaction='LogOut' name='username' value='"
              + username + "'>Log Out</button></td></tr>\n" ) ;
@@ -158,38 +209,7 @@ public class Compete extends HttpServlet
              +    "    </form>\n"
              +    "    <hr>\n" ) ;
 
-    queryString  =     "SELECT   * "
-            +  "FROM   Math.Question " ;
-    ResultSet resultSet = statement.executeQuery ( queryString ) ;
-out.print( ""
-+    "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
-+    "    <caption>QUESTION</caption>\n"
-+    "    <tr>\n"
-+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
-+    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
-+    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-+    "    </tr>\n"
-) ;
-    while ( resultSet.next() ) 
-      {
-out.print( ""
-+    "    <tr>\n"
-+    "        <td>" + resultSet.getObject("ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
-+    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
-+    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
-+    "    </tr>\n"
-) ;
-      } // end while
-out.print( ""
-+    "</table>\n"
-+    "<hr>\n"
-) ;
+
     } // end try block
   catch ( SQLException sqlException ) 
     {
