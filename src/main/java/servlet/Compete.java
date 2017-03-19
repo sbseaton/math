@@ -56,6 +56,8 @@ public class Compete extends HttpServlet
     String queryString  =  null ;
 	String questionString = null;
 	String questionOneAnswersString = null ; 	// question one answer string
+	
+	int questionNumber = 0; 
   
     if ( username != null )
     {
@@ -77,7 +79,14 @@ public class Compete extends HttpServlet
     boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null)
                                 && (password. equals (storedPassword)) ) ;
 
-
+	
+	questionNumberString = "SELECT * FROM math.question "
+	ResultSet questionNumberString = statement.executeQuery( questionNumberString );
+	
+	while ( questionNumberString.next() ) 
+	{
+	
+	
     // html display ---------------------------------------------------------------
 
     out.print  (  "<!DOCTYPE html>\n"
@@ -101,8 +110,10 @@ public class Compete extends HttpServlet
 				+    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
 				+    "    <br>" 
 				+    "    <hr style='border: 2px solid #FFD700'> \n  "
-				+    "      <h4> Question 1 </h4>   \n "
+				+    "      <h4> Question "+ questionOneAnswers.getObject("id") + " </h4>   \n "
 				+    "      <p> &#40;101 points possible&#41; </p> "
+				
+				// add the current score keeping right here --------------------------------------------------------
 				+    "      <p> 0 points total</p> "
 				+    "     <hr style='border: 2px solid #FFD700'> \n   "
 				+    "     <label> What is the answer to the following problem? </label> \n  "
@@ -122,11 +133,11 @@ public class Compete extends HttpServlet
 		
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
 		
-				questionString = "SELECT * "
-								+ "FROM 	Math.Question "
-								+ "WHERE 	ID = 301 ";
+			questionString = "SELECT * "
+						+ "FROM 	Math.Question "
+						+ "WHERE 	ID = 301 ";
 				
-				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
+			ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				
 				// display the question text 
 				while (questionOneRS.next() )
@@ -138,10 +149,9 @@ public class Compete extends HttpServlet
 				+     	"  	</tr>      "
 				+     	"</table>     "
 				+     	"<br>     " ); 
-				
-				
-				
+
 				}	// end while
+				
 				// display the answer text 
 				questionOneAnswersString = "select * "	
 								+ "from math.choice "
@@ -152,9 +162,10 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.correctanswer_choice_id)  "
 								+ "where question.id = 301 " ;
 				
+				
 				// create a result set for the question answers
 				ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
-					
+				
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
 				while (questionOneAnswers.next() )
 				{
@@ -238,7 +249,10 @@ public class Compete extends HttpServlet
         }
 	
       //-------------------------------------------------------------------------------------------------------------------------------------------
-      
+	
+	
+	} // end while
+	
 
       
     out.print ( ""      	
