@@ -91,7 +91,8 @@ public class Compete extends HttpServlet
 
 
 
-    
+    if ( session.isNew() )
+      {
       if ( userExists && passwordsMatch )
         {
         session.setAttribute ( userIdAttribute, username ) ;
@@ -139,15 +140,15 @@ public class Compete extends HttpServlet
         out.close() ;
         return ;
         }
-      
+      }
     else // session is *not* new
-      
+      {
       username  =  (String) session.getAttribute ( userIdAttribute ) ;
       out.print  (  "        <tr style='font-size:x-large;'><td>Welcome back, " + username + ".</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>This is a continuation of a previously established session.</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
-     
+      } // end else
 
     out.print ( "        <tr><td><button type='submit' class='inline_wide' formaction='Compete'>Update Time</button></td></tr>\n"
              +  "        <tr><td><button type='submit' class='inline_wide' formaction='LogOut' name='username' value='"
