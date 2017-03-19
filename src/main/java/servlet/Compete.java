@@ -62,7 +62,7 @@ public class Compete extends HttpServlet
                                 && (password. equals (storedPassword)) ) ;
 
 
-    // if the username and password match start html display ---------------------------------------------------------------
+    // html display ---------------------------------------------------------------
 
     out.print  (  "<!DOCTYPE html>\n"
 				+    "<html>\n"
@@ -134,11 +134,12 @@ public class Compete extends HttpServlet
 				
 				
 
-
+	if (session.isNew() ) 
+	{
 		// if the user exists and the password matches, display the first webpage
-    if ( userExists && passwordsMatch )
-    {
-		session.setAttribute ( userIdAttribute, username ) ;
+		if ( userExists && passwordsMatch )
+		{
+			session.setAttribute ( userIdAttribute, username ) ;
 
 
 
@@ -212,7 +213,8 @@ public class Compete extends HttpServlet
 
       //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
 		else    
-		{	out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
+		{	session.invalidate(); 
+				out.print  (  "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
                  +    "        <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
                  +    "      </table>\n"
                  +    "    </form>\n"
@@ -222,7 +224,7 @@ public class Compete extends HttpServlet
         out.close() ;
         return ;
         }
-
+	}
       //-------------------------------------------------------------------------------------------------------------------------------------------
       
 
