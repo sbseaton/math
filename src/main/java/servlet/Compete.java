@@ -119,7 +119,13 @@ public class Compete extends HttpServlet
 				+     	"  	</tr>      "
 				+     	"</table>     "
 				+     	"<br>     " 
-				+ 		"<p> " + questionOneRS.getObject("Foil1_Choice_ID") + "</p> " );
+				+ 		"<p> " + questionOneRS.getObject("Foil1_Choice_ID") + "</p> " 
+				
+				+		"<form>"
+						"<p>hello</p>"
+				+		"</form>" );
+				
+				
 			/*
 				+     	"  <form>     "
 				+     	"    <input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      " 
