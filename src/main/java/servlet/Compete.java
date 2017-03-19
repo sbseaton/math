@@ -106,7 +106,7 @@ public class Compete extends HttpServlet
 		
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
 		
-				questionString = "SELECT QUESTIONTEXT "
+				questionString = "SELECT * "
 								+ "FROM 	Math.Question "
 								+ "WHERE 	ID = 301 ";
 				
