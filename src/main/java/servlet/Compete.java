@@ -39,6 +39,7 @@ public class Compete extends HttpServlet
     connection = DriverManager.getConnection ( DB_URL ) ;
     statement = connection.createStatement() ;
     String queryString  =  null ;
+	String questionString = null;
   
     if ( username != null )
     {
@@ -90,7 +91,17 @@ public class Compete extends HttpServlet
 				+    "     <hr style='border: 2px solid #FFD700'>    "
 				+    "     <label> What is the answer to the following problem? </label>   "
 				+    "      <br><br> "
-				+    "      <table>\n"  );
+				+    "      <table>\n" 
+				+	 "		<tr>     "
+				+     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
+				+     "    </tr>      "				);
+				
+				questionString = "SELECT QUESTIONTEXT "
+								+ "FROM 	Math.Question "
+								+ "WHERE 	ID = 301 ";
+				ResultSet theQuestion = statement.executeQuery ( questionString ) ;
+				
+				
 
 
 		// if the user exists and the password matches, display the first webpage
