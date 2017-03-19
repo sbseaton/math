@@ -160,7 +160,7 @@ public class Compete extends HttpServlet
 				}
 				
 			out.println(""	
-			+	"	<table style="float:right"> "
+			+	"	<table style='float:right'> "
 			+	"	<tr>	"
 			+	"		<td><input type='submit' value='<<'></td> "
 			+	"		<td><input type='submit' value='<'></td> "
