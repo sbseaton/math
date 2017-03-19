@@ -200,7 +200,7 @@ public class Compete extends HttpServlet
     out.print ( "      	<table> "
 			+	"		<tr> "
 			+	"			<td> "
-			+	"			<button type='submit' class='inline_wide' formaction='LogOut' name='username' value='"username + "'>Log Out</button> "
+			+	"			<button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
 			+	"			</td>"
 			+	"		</tr>\n" ) ;
 
