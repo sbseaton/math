@@ -145,7 +145,7 @@ public class Compete extends HttpServlet
 				
 					while (questionOneAnswers.next() )
 					{
-						out.print ( "	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneAnswers.getObject("choicetext") + "<br> \n " );
+						out.println ( "	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneAnswers.getObject("choicetext") + "<br> \n " );
 						
 					}
 /*
@@ -157,7 +157,6 @@ public class Compete extends HttpServlet
 				+     	"  <br>   \n  "
 				+		" \n"
 				*/
-				+	" ");
 				
 		
 				}	// end while
