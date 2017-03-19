@@ -96,8 +96,7 @@ public class Compete extends HttpServlet
 				
 				
 
-	if (session.isNew() ) 
-	{
+	
 		// if the user exists and the password matches, display the first webpage
 		if ( userExists && passwordsMatch )
 		{
@@ -224,7 +223,7 @@ public class Compete extends HttpServlet
         out.close() ;
         return ;
         }
-	}
+	
       //-------------------------------------------------------------------------------------------------------------------------------------------
       
 
