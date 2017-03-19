@@ -57,7 +57,7 @@ public class Compete extends HttpServlet
 	String questionString = null;
 	String questionOneAnswersString = null ; 	// question one answer string
 	
-	int questionNumber = 0; 
+	String questionNumberString = null ; 
   
     if ( username != null )
     {
