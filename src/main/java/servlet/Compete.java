@@ -102,6 +102,8 @@ public class Compete extends HttpServlet
 				+    "    <br>" 
 				+    "    <hr style='border: 2px solid #FFD700'> \n  "
 				+    "      <h4> Question 1 </h4>   \n "
+				+    "      <p> &#40;101 points possible&#41; </p> "
+				+    "      <p> 0 points total</p> "
 				+    "     <hr style='border: 2px solid #FFD700'> \n   "
 				+    "     <label> What is the answer to the following problem? </label> \n  "
 				+    "      <br><br> \n " ); 
