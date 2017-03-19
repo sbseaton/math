@@ -64,7 +64,7 @@ public class Compete extends HttpServlet
 
     // html display ---------------------------------------------------------------
 
-    out.print  (  "<!DOCTYPE html>\n"
+    out.println  (  "<!DOCTYPE html>\n"
 				+    "<html>\n"
 				+    "  <head>\n"
 				+    "    <meta charset='UTF-8'>\n"
@@ -84,7 +84,7 @@ public class Compete extends HttpServlet
 				+    "   <h3> Username: "+ username +" </h3>   "
 				+    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p>"
 				+    "    <br>" 
-				+    "    <hr style='border: 2px solid #FFD700'>   "
+				+    "    <hr style=\"border: 2px solid #FFD700\">   "
 				+    "      <h4> Question 1 </h4>    "
 				+    "     <hr style='border: 2px solid #FFD700'>    "
 				+    "     <label> What is the answer to the following problem? </label>   "
@@ -111,7 +111,7 @@ public class Compete extends HttpServlet
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				while (questionOneRS.next() )
 				{
-					 out.print  ( "" 
+					 out.println  ( "" 
 				+		"	<tr>     "
 				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + "</td>      "
 				+     	"  	</tr>      "
@@ -139,7 +139,7 @@ public class Compete extends HttpServlet
 				queryString  =     "SELECT   * "
 				+  "FROM   Math.Question " ;
 				ResultSet resultSet = statement.executeQuery ( queryString ) ;
-				out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
+				out.println(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
 				+    "    <caption>QUESTION</caption>\n"
 				+    "    <tr>\n"
 				+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
@@ -161,6 +161,7 @@ public class Compete extends HttpServlet
 				+    "    </tr>\n"
 				) ;
 			} // end while
+			
 			out.print( ""
 			+    "</table>\n"
 			+    "<hr>\n"
