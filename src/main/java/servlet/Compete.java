@@ -145,7 +145,7 @@ public class Compete extends HttpServlet
 					 out.print  ( "" 
 				+   "      <table>\n"
 				+		"	<tr>     "
-				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + "</td>      "
+				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + " = </td>      "
 				+     	"  	</tr>      "
 				+     	"</table>     "
 				+     	"<br>     " ); 
