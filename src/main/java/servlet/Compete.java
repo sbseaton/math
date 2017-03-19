@@ -97,8 +97,11 @@ public class Compete extends HttpServlet
         {
         session.setAttribute ( userIdAttribute, username ) ;
         out.print  (  "<tr>     "
-            +     "    <td> " + resultSet.getObject("QuestionText") + " </td>      "
-    
+            +     "    <td> &nbsp;&ensp;&ensp;17 </td>      "
+            +     "    </tr>      "
+            +     "    <tr>     "
+            +     "        <td> &emsp;<u>- 5 </u> </td>     "
+            +     "      </tr>      "
             +     "  </table>     "
             +     "  <br>     "
 
