@@ -118,11 +118,8 @@ public class Compete extends HttpServlet
 				+     	"   	<td> " + questionOneRS.getObject("QuestionText") + "</td>      "
 				+     	"  	</tr>      "
 				+     	"</table>     "
-				+     	"<br>  "
-				+		" <p> " + questionOneRS.getObject("Foil1_Choice_ID") + "<p>   " );
-				
+				+     	"<br>     " 
 			
-			/*
 				+     	"  <form>     "
 				+     	"  		<input type=\"radio\" name=\"number\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>      " 
 				+     "    		<input type=\"radio\" name=\"number\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br>      "
@@ -138,7 +135,7 @@ public class Compete extends HttpServlet
 				+     "  <td><input type='submit' value='>>'></td>      "
 				+     "  </tr>      "
 				+     "  </table>" );
-					*/
+					
 				}	// end while
 				
 				
