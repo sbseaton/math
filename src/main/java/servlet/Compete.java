@@ -64,7 +64,7 @@ public class Compete extends HttpServlet
 
     // html display ---------------------------------------------------------------
 
-    out.println  (  "<!DOCTYPE html>\n"
+    out.print  (  "<!DOCTYPE html>\n"
 				+    "<html>\n"
 				+    "  <head>\n"
 				+    "    <meta charset='UTF-8'>\n"
@@ -79,16 +79,16 @@ public class Compete extends HttpServlet
 				+    "    <hr>\n"
 				+    "    <form method='POST'>\n"
 
-				+    "     <h2 style='text-align:center'> Mental Math Game </h2> "
+				+    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
     
-				+    "   <h3> Username: "+ username +" </h3>   "
-				+    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p>"
+				+    "   <h3> Username: "+ username +" </h3>  \n "
+				+    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p> \n"
 				+    "    <br>" 
-				+    "    <hr style=\"border: 2px solid #FFD700\">   "
-				+    "      <h4> Question 1 </h4>    "
-				+    "     <hr style='border: 2px solid #FFD700'>    "
-				+    "     <label> What is the answer to the following problem? </label>   "
-				+    "      <br><br> "
+				+    "    <hr style=\"border: 2px solid #FFD700\"> \n  "
+				+    "      <h4> Question 1 </h4>   \n "
+				+    "     <hr style='border: 2px solid #FFD700'> \n   "
+				+    "     <label> What is the answer to the following problem? </label> \n  "
+				+    "      <br><br> \n "
 				+    "      <table>\n"	);
 				
 				
@@ -111,7 +111,7 @@ public class Compete extends HttpServlet
 				ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
 				while (questionOneRS.next() )
 				{
-					 out.println  ( "" 
+					 out.print  ( "" 
 				+		"	<tr>     "
 				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + "</td>      "
 				+     	"  	</tr>      "
@@ -119,13 +119,13 @@ public class Compete extends HttpServlet
 				+     	"<br>     " 
 		
 				+		"<form>"
-				+		"	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br>  "
-				+    	"	<input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br>      "
-				+     	"	<input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br>      "
+				+		"	<input type=\"radio\" name=\"number\" value=\"150\">" + questionOneRS.getObject("Foil1_Choice_ID") + "<br> \n "
+				+    	"	<input type=\"radio\" name=\"number\" value=\"155\">" + questionOneRS.getObject("Foil2_Choice_ID") + "<br> \n     "
+				+     	"	<input type=\"radio\" name=\"number\" value=\"160\">" + questionOneRS.getObject("Foil3_Choice_ID") + "<br> \n     "
 				
-				+     	"	<input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("CorrectAnswer_Choice_ID") + "<br>      "
-				+     	"  <br>     "
-				+		"</form>" );
+				+     	"	<input type=\"radio\" name=\"number\" value=\"165\">" + questionOneRS.getObject("CorrectAnswer_Choice_ID") + "<br>  \n    "
+				+     	"  <br>   \n  "
+				+		"</form> \n" );
 				
 		
 				}	// end while
@@ -139,7 +139,7 @@ public class Compete extends HttpServlet
 				queryString  =     "SELECT   * "
 				+  "FROM   Math.Question " ;
 				ResultSet resultSet = statement.executeQuery ( queryString ) ;
-				out.println(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
+				out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
 				+    "    <caption>QUESTION</caption>\n"
 				+    "    <tr>\n"
 				+    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
