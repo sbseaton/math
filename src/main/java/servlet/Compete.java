@@ -82,7 +82,7 @@ public class Compete extends HttpServlet
              +    "    <hr>\n"
              +    "    <form method='POST'>\n"
              +    "      <table>\n" 
-             +    "     <h2 style="text-align:center"> Mental Math Game </h2> "
+             +    "     <h2 style='text-align:center'> Mental Math Game </h2> "
     
              +    "   <h3> Username: Bob Saget </h3>   "
              +    "   <p style='text-align:center>Time Remaining 00&#58;50&#58;00 </p>"
@@ -95,7 +95,6 @@ public class Compete extends HttpServlet
              +    "     <label> What is the answer to the following problem? </label>   "
              +    "      <br><br> " );
 
-  ")  ;
 
 
     if ( session.isNew() )
