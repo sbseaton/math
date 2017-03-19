@@ -98,7 +98,7 @@ public class Compete extends HttpServlet
 				
 				
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
-		
+		/*
 				questionString = "SELECT QUESTIONTEXT "
 								+ "FROM 	Math.Question "
 								+ "WHERE 	ID = 301 ";
@@ -130,7 +130,7 @@ public class Compete extends HttpServlet
 					
 				}	// end while
 				
-				
+				*/
 				
 				
 
