@@ -221,7 +221,6 @@ public class Compete extends HttpServlet
 		else    
 		{	session.invalidate(); 
 				out.print  (  ""
-				+	"		
 				+    "      <table>\n"
 				+	  "		<tr style='font-size:x-large;'> "
 				+    " 		<td>No user is currently logged in. </td> "
