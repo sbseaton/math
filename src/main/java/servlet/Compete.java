@@ -135,8 +135,11 @@ public class Compete extends HttpServlet
 				+     	"</table>     "
 				+     	"<br>     " ); 
 				
+				
+				
+				}	// end while
 				// display the answer text 
-					questionOneAnswersString = "select choicetext "	
+				questionOneAnswersString = "select choicetext "	
 								+ "from math.choice "
 								+ "inner join math.question "
 								+ "on (choice.id = question.foil1_choice_id) "
@@ -145,7 +148,7 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.correctanswer_choice_id)  "
 								+ "where question.id = 301 " ;
 				
-					ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
+				ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
 					
 					while (questionOneAnswers.next() )
 					{
@@ -163,7 +166,7 @@ public class Compete extends HttpServlet
 				*/
 				
 		
-				}	// end while
+				
 				
 				
 				
