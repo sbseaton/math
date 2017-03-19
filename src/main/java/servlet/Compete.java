@@ -141,7 +141,7 @@ public class Compete extends HttpServlet
 				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + "</td>      "
 				+     	"  	</tr>      "
 				+     	"</table>     "
-				+     	"<br>     " 
+				+     	"<br>     " ); 
 				
 					while (questionOneAnswers.next() )
 					{
