@@ -93,7 +93,7 @@ public class Compete extends HttpServlet
 				+    "  </head>\n"
 				+    "  <body>\n"
 				+    "    <hr>\n"
-				+    "    <form method='POST'>\n"
+				// +    "    <form method='POST'>\n"
 
 				+    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
     
@@ -239,14 +239,16 @@ public class Compete extends HttpServlet
       
 
       
-    out.print ( "      	<table> "
-			+	"		<tr> "
+    out.print ( ""      	
+			+   "    <form method='POST'>\n"
+			+ 	"		<table> "
+			+	"			<tr> "
 			+	"			<td> "
 			+	"			<button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
 			+	"			</td>"
-			+	"		</tr>\n" ) ;
+			+	"			</tr>\n" ) ;
 
-    out.print  (  "      </table>\n"
+    out.print  (  "     </table>\n"
              +    "    </form>\n"
              +    "    <hr>\n" ) ;
 
