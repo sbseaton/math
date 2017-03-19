@@ -93,16 +93,16 @@ public class Compete extends HttpServlet
              +    "      <table>\n"  );
 
 
-    // if the session is new display the first page -------------------------------------------------------------------------------------------------
+    /* // if the session is new display the first page -------------------------------------------------------------------------------------------------
     if ( session.isNew() )
       {
       if ( userExists && passwordsMatch )
         {
         session.setAttribute ( userIdAttribute, username ) ;
 
+*/
 
-
-        // finds the database information ----------------------------------------------------------------------------------------------------------------
+    // finds the database information ----------------------------------------------------------------------------------------------------------------
 
     queryString  =     "SELECT   * "
             +  "FROM   Math.Question " ;
@@ -189,16 +189,16 @@ out.print( ""
       }
 
      // if the session is not new, display the WELCOME BACK page ---------------------------------------------------------------------------------- 
-    else 
+    /* else 
       {
       username  =  (String) session.getAttribute ( userIdAttribute ) ;
       out.print  (  "        <tr style='font-size:x-large;'><td>Welcome back, " + username + ".</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>This is a continuation of a previously established session.</td></tr>\n"
                +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
-      } // end else 
+      } // end else */
       //-------------------------------------------------------------------------------------------------------------------------------------------
-
+      
 
       
     out.print ( "        <tr><td><button type='submit' class='inline_wide' formaction='Compete'>Update Time</button></td></tr>\n"
