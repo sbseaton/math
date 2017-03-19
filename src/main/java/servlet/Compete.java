@@ -66,7 +66,7 @@ public class Compete extends HttpServlet
              +    "    <meta charset='UTF-8'>\n"
              +    "    <title>Compete</title>\n"
              +    "    <style>\n "
-             
+
              +    "    </style>\n"
 + "<script type='text/javascript' async\n"
 + " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
@@ -117,7 +117,7 @@ public class Compete extends HttpServlet
 				+	"		<input type='radio' name='number' value='160'> 12<br>"
 				+	"		<input type='radio' name='number' value='165'> 13<br>	"
 				+	"	</form>"
-				+	"	<br>	"
+				
 				+	"	<table style='float:right'>"
 				+	"		<tr>	"
 				+	"			<td><input type='submit' value='<<'></td>"
