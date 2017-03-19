@@ -80,7 +80,7 @@ public class Compete extends HttpServlet
                                 && (password. equals (storedPassword)) ) ;
 
 	
-	questionNumberString = "SELECT * FROM math.question "
+	questionNumberString = "SELECT * FROM math.question " ;
 	ResultSet questionNumberString = statement.executeQuery( questionNumberString );
 	
 	while ( questionNumberString.next() ) 
