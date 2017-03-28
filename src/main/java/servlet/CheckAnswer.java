@@ -61,6 +61,13 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  </body>" ) ;
             out.println ( "</html>" ) ;
 			} // end try block
+
+		catch ( SQLException sqlException ) 
+    	{
+    		System.out.println ( "Caught SQLException ..." ) ;
+    		sqlException.printStackTrace() ;
+    		System.exit ( 1 ) ;
+    	} // end catch
 		finally	{ out.close() ; }
 		} // end doPost method
 
