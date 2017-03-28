@@ -139,11 +139,12 @@ public class Compete extends HttpServlet
 						+ "WHERE 	ID =" + questionNumber + " ";
 				
 			ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
-			String questionText = questionOneRS.getObject("QuestionText") ;
 
-				// display the question text 
-				if (questionOneRS.next() )
-				{
+      // display the question text 
+			if (questionOneRS.next() )
+      { 
+         String questionText = (String) questionOneRS.getObject("QuestionText") ;
+
 					 out.print  ( "" 
 				+   "      <table>\n"
 				+		"	<tr>     "
