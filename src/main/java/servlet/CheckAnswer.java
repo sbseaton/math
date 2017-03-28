@@ -17,7 +17,13 @@ public class CheckAnswer extends HttpServlet
 		throws ServletException, IOException
 		{
 		String usersChoice   = request.getParameter ( "choice" ) ;
-		String correctChoice = this.getServletContext().getInitParameter("Choice_1") ;
+		String correctChoiceQuery = "select * "	
+								+ "from math.choice "
+								+ "inner join math.question "
+								+ "on (choice.id = question.correctanswer_choice_id)  "
+								+ "where question.id =" + questionNumber + " " ;
+
+		ResultSet correctChoice = statement.executeQuery ( correctChoiceQuery ) ;
 		
 		response.setContentType ( "text/html" ) ;
 		PrintWriter out = response.getWriter() ;

@@ -155,7 +155,7 @@ public class Compete extends HttpServlet
 
 				}	// end while
 				
-				// display the answer text 
+				// display the answer text -------------------------------------------------------
 				questionOneAnswersString = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
@@ -172,27 +172,27 @@ public class Compete extends HttpServlet
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
 
         System.out.println( ""
-          +   "<form action = 'CheckAnswer' >" );
+          +   "<form action = 'CheckAnswer' method = 'POST' >" );
 
 				while (questionOneAnswers.next() )
 				{
-					out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
+					out.println ( "	<input type=\"radio\" name=\"choice\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
 				
 				}
 
-        System.out.println ( " </form> ");
 				
 			out.println(""	
 			+	"	<table style='float:right'> "
 			+	"	<tr>	"
-			+	"		<td><input type='submit' value='<<'></td> "
 			+	"		<td><input type='submit' value='<'></td> "
+      + "   <td><input type='hidden' name= 'questionNumber' value=" + questionNumber + "> "
 			+	"		<td><input type='submit' value='Submit'></td>"
 			+	"		<td><input type='submit' value='>'></td>"
-			+	"		<td><input type='submit' value='>>'></td>"
 			+	"	 </tr>"
 			+	"	</table>"
 			+  	"   <br> " );
+
+       System.out.println ( " </form> ");
 		// finds the database information for table on screen ----------------------------------------------------------------------------------------------------------------
 			/*
 				queryString  =     "SELECT   * "
