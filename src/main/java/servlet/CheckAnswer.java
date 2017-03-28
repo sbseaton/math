@@ -24,24 +24,30 @@ public class CheckAnswer extends HttpServlet
 							HttpServletResponse response )
 		throws ServletException, IOException
 		{
-		 Connection connection     =  null ;
- 		 Statement  statement      =  null ;
-		int questionNumber = Integer.parseInt(request.getParameter( "questionNumber" ));
-		String usersChoice   = request.getParameter ( "choice" ) ;
-
-		String correctChoiceQuery = "select * "	
-								+ "from math.choice "
-								+ "inner join math.question "
-								+ "on (choice.id = question.correctanswer_choice_id)  "
-								+ "where question.id =" + questionNumber + " " ;
-
-		ResultSet correctChoice = statement.executeQuery ( correctChoiceQuery ) ;
+		 Connection connection     =  null ;	// added
+ 		 Statement  statement      =  null ;	// added
+		
 		
 		response.setContentType ( "text/html" ) ;
 		PrintWriter out = response.getWriter() ;
 
         try
             {
+            int questionNumber = Integer.parseInt(request.getParameter( "questionNumber" ));
+			String usersChoice   = request.getParameter ( "choice" ) ;
+
+			String correctChoiceQuery = "select * "	
+								+ "from math.choice "
+								+ "inner join math.question "
+								+ "on (choice.id = question.correctanswer_choice_id)  "
+								+ "where question.id =" + questionNumber + " " ;
+
+			ResultSet correctChoice = statement.executeQuery ( correctChoiceQuery ) ;
+
+
+            connection = DriverManager.getConnection ( DB_URL ) ;	// added
+    		statement = connection.createStatement() ;				// added
+
             out.println ( "<!DOCTYPE html>" ) ;
             out.println ( "<html>" ) ;
             out.println ( "  <head> " ) ;
