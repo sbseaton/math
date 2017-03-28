@@ -16,7 +16,7 @@ public class CheckAnswer extends HttpServlet
 							HttpServletResponse response )
 		throws ServletException, IOException
 		{
-		int questionNumber = request.getParameter( "questionNumber" );
+		int questionNumber = (Integer)request.getParameter( "questionNumber" );
 		String usersChoice   = request.getParameter ( "choice" ) ;
 
 		String correctChoiceQuery = "select * "	
