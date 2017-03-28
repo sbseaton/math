@@ -24,6 +24,8 @@ public class CheckAnswer extends HttpServlet
 							HttpServletResponse response )
 		throws ServletException, IOException
 		{
+		 Connection connection     =  null ;
+ 		 Statement  statement      =  null ;
 		int questionNumber = Integer.parseInt(request.getParameter( "questionNumber" ));
 		String usersChoice   = request.getParameter ( "choice" ) ;
 
