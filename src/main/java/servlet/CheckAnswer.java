@@ -8,6 +8,13 @@ import javax.servlet.http.HttpServletResponse ;
 import javax.servlet.http.HttpSession ;
 import java.util.Random ;
 
+import  java.io.* ;
+import  javax.servlet.* ;
+import  javax.servlet.http.* ;
+import  java.util.* ;
+import  java.sql.* ;
+import  javax.servlet.annotation.WebServlet ;
+
 public class CheckAnswer extends HttpServlet
 	{
 
