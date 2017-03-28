@@ -180,7 +180,7 @@ public class Compete extends HttpServlet
 				
 				}
 
-        Sytem.out.println ( " </form> ");
+        System.out.println ( " </form> ");
 				
 			out.println(""	
 			+	"	<table style='float:right'> "
