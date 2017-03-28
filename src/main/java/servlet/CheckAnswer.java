@@ -26,7 +26,7 @@ public class CheckAnswer extends HttpServlet
 		{
 		 Connection connection     =  null ;	// added
  		 Statement  statement      =  null ;	// added
-		
+		final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
 		
 		response.setContentType ( "text/html" ) ;
 		PrintWriter out = response.getWriter() ;
