@@ -16,7 +16,9 @@ public class CheckAnswer extends HttpServlet
 							HttpServletResponse response )
 		throws ServletException, IOException
 		{
+		int questionNumber = request.getParameter( "questionNumber" );
 		String usersChoice   = request.getParameter ( "choice" ) ;
+
 		String correctChoiceQuery = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
