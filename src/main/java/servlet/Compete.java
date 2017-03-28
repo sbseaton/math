@@ -47,17 +47,18 @@ public class Compete extends HttpServlet
     String             username         =  request.getParameter("username") ;
     String             password         =  request.getParameter("password") ;
     String             storedPassword   =  null ;
-	String 			userChoice = null;
+	  String 			userChoice = null;
+
 
   try
     {
     connection = DriverManager.getConnection ( DB_URL ) ;
     statement = connection.createStatement() ;
     String queryString  =  null ;
-	String questionString = null;
-	String questionOneAnswersString = null ; 	// question one answer string
-	
-	String questionNumberString = null ; 
+	  String questionString = null;
+	  String questionOneAnswersString = null ; 	// question one answer string
+    int questionNumber = 301;
+	  String questionNumberString = null ; 
   
     if ( username != null )
     {
@@ -132,20 +133,21 @@ public class Compete extends HttpServlet
 		
 		
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
-		
+
 			questionString = "SELECT * "
 						+ "FROM 	Math.Question "
-						+ "WHERE 	ID = 301 ";
+						+ "WHERE 	ID =" + questionNumber + " ";
 				
 			ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
-				
+			String questionText = questionOneRS.getObject("QuestionText") ;
+
 				// display the question text 
-				while (questionOneRS.next() )
+				if (questionOneRS.next() )
 				{
 					 out.print  ( "" 
 				+   "      <table>\n"
 				+		"	<tr>     "
-				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionOneRS.getObject("QuestionText") + " = </td>      "
+				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionText + " = </td>      "
 				+     	"  	</tr>      "
 				+     	"</table>     "
 				+     	"<br>     " ); 
@@ -160,13 +162,17 @@ public class Compete extends HttpServlet
 								+ "or (choice.id = question.foil2_choice_id) "
 								+ "or (choice.id = question.foil3_choice_id) "
 								+ "or (choice.id = question.correctanswer_choice_id)  "
-								+ "where question.id = 301 " ;
+								+ "where question.id =" + questionNumber + " " ;
 				
 				
 				// create a result set for the question answers
 				ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
 				
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
+
+        System.out.pritnln( ""
+          +   "<form action = 'CheckAnswer' >" );
+
 				while (questionOneAnswers.next() )
 				{
 					out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
