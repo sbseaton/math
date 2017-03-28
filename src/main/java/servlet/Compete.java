@@ -172,7 +172,7 @@ public class Compete extends HttpServlet
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
 
         System.out.println( ""
-          +   "<formaction = 'CheckAnswer' method = 'POST' >" );
+                +   "    <form method='POST'>\n"
 
 				while (questionOneAnswers.next() )
 				{
@@ -186,7 +186,9 @@ public class Compete extends HttpServlet
 			+	"	<tr>	"
 			+	"		<td><input type='submit' value='<'></td> "
       + "   <td><input type='hidden' name= 'questionNumber' value='" + questionNumber + "'> "
-			+	"		<td><input type='submit' value='Submit'></td>"
+      + "   <td><input type='submit' formaction='CheckAnswer' value='Submit' > </td> "
+    //   <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> 
+		//	+	"		<td><input type='submit' value='Submit'></td>"
 			+	"		<td><input type='submit' value='>'></td>"
 			+	"	 </tr>"
 			+	"	</table>"
