@@ -171,7 +171,7 @@ public class Compete extends HttpServlet
 				
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
 
-        System.out.pritnln( ""
+        System.out.println( ""
           +   "<form action = 'CheckAnswer' >" );
 
 				while (questionOneAnswers.next() )
@@ -179,6 +179,8 @@ public class Compete extends HttpServlet
 					out.println ( "	<input type=\"radio\" name=\"number\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
 				
 				}
+
+        Sytem.out.println ( " </form> ");
 				
 			out.println(""	
 			+	"	<table style='float:right'> "
