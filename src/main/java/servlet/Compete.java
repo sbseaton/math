@@ -185,7 +185,7 @@ public class Compete extends HttpServlet
 			+	"	<table style='float:right'> "
 			+	"	<tr>	"
 			+	"		<td><input type='submit' value='<'></td> "
-      + "   <td><input type='hidden' name= 'questionNumber' value=" + questionNumber + "> "
+      + "   <td><input type='hidden' name= 'questionNumber' value='" + questionNumber + "'> "
 			+	"		<td><input type='submit' value='Submit'></td>"
 			+	"		<td><input type='submit' value='>'></td>"
 			+	"	 </tr>"
