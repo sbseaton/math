@@ -41,18 +41,18 @@ public class CheckAnswer extends HttpServlet
 			String correctChoiceID = "" ; 
 			String correctChoiceText = "";
 			//--------------------------------------------------------------------------------
-			String userChoiceQuery = "select * "	
+			String usersChoiceQuery = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
 								+ "on (choice.id = " + usersChoiceID +" "
 								+ "where question.id =" + questionNumber + " " ;
 
-			ResultSet userChoice = statement.executeQuery ( userChoiceQuery ) ;
+			ResultSet usersChoice = statement.executeQuery ( usersChoiceQuery ) ;
 
-			if (userChoice.next() )
+			if (usersChoice.next() )
 			{
-				usersChoiceID = "" + correctChoice.getObject("ID");
-				usersChoiceText = "" + correctChoice.getObject("ChoiceText"); 
+				usersChoiceID = "" + usersChoice.getObject("ID");
+				usersChoiceText = "" + usersChoice.getObject("ChoiceText"); 
 			}
 			//------------------------------------------------------------------------------
 
