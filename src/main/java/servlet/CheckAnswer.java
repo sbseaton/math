@@ -36,7 +36,7 @@ public class CheckAnswer extends HttpServlet
             connection = DriverManager.getConnection ( DB_URL ) ;
     		statement = connection.createStatement() ;
             int questionNumber = Integer.parseInt(request.getParameter( "questionNumber" ));
-			String usersChoice   = request.getParameter ( "choice" ) ;
+			String userChoice   = request.getParameter ( "choice" ) ;
 
 			String correctChoiceQuery = "select * "	
 								+ "from math.choice "
