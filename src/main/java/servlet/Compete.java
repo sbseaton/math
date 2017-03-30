@@ -188,6 +188,22 @@ public class Compete extends HttpServlet
 			if (questionRS.next() )
         questionText = (String) questionRS.getObject("QuestionText") ;
 
+
+        // gets the answer text from database-------------------------------------------------------
+        questionAnswersString = "select * " 
+                + "from math.choice "
+                + "inner join math.question "
+                + "on (choice.id = question.foil1_choice_id) "
+                + "or (choice.id = question.foil2_choice_id) "
+                + "or (choice.id = question.foil3_choice_id) "
+                + "or (choice.id = question.correctanswer_choice_id)  "
+                + "where question.id =" + questionNumber + " " ;
+        
+        
+        // create a result set for the question answers
+        ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
+        
+
 			out.println  ( "" 
         +    "    <hr>\n"
         +    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
@@ -210,20 +226,6 @@ public class Compete extends HttpServlet
 				+     	"<br>     " ); 
 
 			
-				
-				// display the answer text -------------------------------------------------------
-				questionAnswersString = "select * "	
-								+ "from math.choice "
-								+ "inner join math.question "
-								+ "on (choice.id = question.foil1_choice_id) "
-								+ "or (choice.id = question.foil2_choice_id) "
-								+ "or (choice.id = question.foil3_choice_id) "
-								+ "or (choice.id = question.correctanswer_choice_id)  "
-								+ "where question.id =" + questionNumber + " " ;
-				
-				
-				// create a result set for the question answers
-				ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 				
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
 
