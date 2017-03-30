@@ -92,7 +92,7 @@ public class Compete extends HttpServlet
 
             boolean  userExists      =   (storedPassword != null) ;
             boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
-            boolean isUserLoggedIn = false;
+            boolean userLoggedIn = false;
 
             // html display ---------------------------------------------------------------
             out.print  (  "<!DOCTYPE html>\n"
