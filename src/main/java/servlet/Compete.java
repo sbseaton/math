@@ -184,7 +184,7 @@ public class Compete extends HttpServlet
 			out.println(""	
 			+	"	<table style='float:right'> "
 			+	"	<tr>	"
-   //   + "   <td><input type='hidden' name= 'questionNumber' value='" + questionNumber + "'> "
+      + "   <td><input type='hidden' name= 'questionNumber' value='" + questionNumber + "'> "
       + "   <td><input type='submit' value='Click This Button to Check Your Answer'>"
 		//	+	"		<td><input type='submit' value='Submit'></td>"
 			+	"	 </tr>"
