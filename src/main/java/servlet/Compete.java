@@ -124,15 +124,15 @@ public class Compete extends HttpServlet
                     session.invalidate(); 
                     out.print  (  ""
                         +    "      <table>\n"
-                        +   "   <tr style='font-size:x-large;'> "
-                        +    "    <td>No user is currently logged in. </td> "
-                        +   "   </tr>\n"
-                        +    "     <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
+                        +    "   <tr style='font-size:x-large;'> "
+                        +    "        <tr style='font-size:x-large;'><td>No user is currently logged in.</td></tr>\n"
+                        +    "        <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
                         +    "      </table>\n"
                         +    "    </form>\n"
                         +    "    <hr>\n"
                         +    "  </body>\n"
                         +    "</html>\n"  ) ;
+                    out.close() ;
                     out.close() ;
                     return ;
                 }
