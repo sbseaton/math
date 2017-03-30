@@ -90,6 +90,19 @@ public class CheckAnswer extends HttpServlet
 				out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
 			else
 				out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
+
+			out.println( "<form action = 'Compete' method='POST'> " 
+					+ 	 "<table>"
+					+	 "<tr>	"
+					+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
+     				+ 		"<td><input type='submit' value='View the Next Question'>"
+     				+	 "</tr>"
+     				+	 "</table>" 
+     				+	 "</form>" );
+
+
+
+
             out.println ( "	   <hr>" ) ;
             out.println ( "  </body>" ) ;
             out.println ( "</html>" ) ;
