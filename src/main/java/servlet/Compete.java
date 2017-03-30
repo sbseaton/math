@@ -189,7 +189,7 @@ public class Compete extends HttpServlet
         questionText = (String) questionRS.getObject("QuestionText") ;
 
 
-        // gets the answer text from database-------------------------------------------------------
+        // gets the answer text from data-------------------------------------------------------
         questionAnswersString = "select * " 
                 + "from math.choice "
                 + "inner join math.question "
@@ -217,7 +217,7 @@ public class Compete extends HttpServlet
         +    "      <p> 0 points total</p> "
         +    "     <hr style='border: 2px solid #FFD700'> \n   "
         +    "     <label> What is the answer to the following problem? </label> \n  "
-        +    "      <br><br> \n " ); 
+        +    "      <br><br> \n " 
 				+   "      <table>\n"
 				+		"	<tr>     "
 				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionText + " = </td>      "
