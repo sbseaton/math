@@ -51,8 +51,8 @@ public class CheckAnswer extends HttpServlet
 
 			if (userChoice.next() )
 			{
-				correctChoiceID = "" + correctChoice.getObject("ID");
-				correctChoiceText = "" + correctChoice.getObject("ChoiceText"); 
+				usersChoiceID = "" + correctChoice.getObject("ID");
+				usersChoiceText = "" + correctChoice.getObject("ChoiceText"); 
 			}
 			//------------------------------------------------------------------------------
 
