@@ -188,10 +188,10 @@ public class Compete extends HttpServlet
 						+ "WHERE 	ID =" + questionNumber + " ";
 				
 			ResultSet questionRS = statement.executeQuery ( questionString ) ;
-
+      String questionText = "";
       // display the question text 
 			if (questionRS.next() )
-         String questionText = (String) questionRS.getObject("QuestionText") ;
+        questionText = (String) questionRS.getObject("QuestionText") ;
 
 					 out.println  ( "" 
         +    "    <hr>\n"
