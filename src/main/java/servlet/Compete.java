@@ -98,11 +98,6 @@ public class Compete extends HttpServlet
     boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null)
                                 && (password. equals (storedPassword)) ) ;
 
-
-	
-	questionNumberString = "SELECT * FROM math.question WHERE id = 301 " ;
-	ResultSet questionID = statement.executeQuery( questionNumberString );
-	
     // html display ---------------------------------------------------------------
 
     out.print  (  "<!DOCTYPE html>\n"
@@ -193,7 +188,7 @@ public class Compete extends HttpServlet
 			if (questionRS.next() )
         questionText = (String) questionRS.getObject("QuestionText") ;
 
-					 out.println  ( "" 
+			out.println  ( "" 
         +    "    <hr>\n"
         +    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
         +    "   <h3> Username: "+ username +" </h3>  \n "
