@@ -63,7 +63,7 @@ public class Compete extends HttpServlet
 
     // find if this is the first question or not ---------------------------------------
     if ( currentQuestionNumberString != null )
-        questionNumber = Integer.parseInt(currentQuestionNumber);
+        questionNumber = Integer.parseInt(currentQuestionNumberString);
     else
         questionNumber = 301;
     // ----------------------------------------------------------------------------------
