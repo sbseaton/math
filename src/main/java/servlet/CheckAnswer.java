@@ -39,7 +39,7 @@ public class CheckAnswer extends HttpServlet
 			String usersChoiceID   = request.getParameter ( "choice" ) ;
 			String usersChoiceText = "";
 			String correctChoiceID = "" ; 
-			String correctAnswerText = "";
+			String correctChoiceText = "";
 
 			String correctChoiceQuery = "select * "	
 								+ "from math.choice "
@@ -52,7 +52,7 @@ public class CheckAnswer extends HttpServlet
 			if (correctChoice.next() )
 			{
 				correctChoiceID = "" + correctChoice.getObject("ID");
-				correctChoiceText = "" + correctChoice.getObject("ChoiceText"); 
+				correctAChoiceText = "" + correctChoice.getObject("ChoiceText"); 
 			}
 
             connection = DriverManager.getConnection ( DB_URL ) ;	// added
