@@ -36,7 +36,10 @@ public class CheckAnswer extends HttpServlet
             connection = DriverManager.getConnection ( DB_URL ) ;
     		statement = connection.createStatement() ;
             int questionNumber = Integer.parseInt(request.getParameter( "questionNumber" ));
-			String usersChoice   = request.getParameter ( "choice" ) ;
+			String usersChoiceID   = request.getParameter ( "choice" ) ;
+			String usersChoiceText = "";
+			String correctChoiceID = "" ; 
+			String correctAnswerText = "";
 
 			String correctChoiceQuery = "select * "	
 								+ "from math.choice "
@@ -46,6 +49,11 @@ public class CheckAnswer extends HttpServlet
 
 			ResultSet correctChoice = statement.executeQuery ( correctChoiceQuery ) ;
 
+			if (correctChoice.next() )
+			{
+				correctChoiceID = "" + correctChoice.getObject("ID");
+				correctChoiceText = "" + correctChoice.getObject("ChoiceText"); 
+			}
 
             connection = DriverManager.getConnection ( DB_URL ) ;	// added
     		statement = connection.createStatement() ;				// added
@@ -61,9 +69,9 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  </head>" ) ;
             out.println ( "  <body>" ) ;
             out.println ( "    <hr>" ) ;
-            out.println ( " <p> This is what the user chose:" + usersChoice + " <p> ");
-            out.println ( " <p> This is what is expected: " + correctChoice + " <p> ");
-			if ( usersChoice .equals (correctChoice) )
+            out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
+            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
+			if ( usersChoiceText .equals (correctChoiceText) )
 				out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
 			else
 				out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
