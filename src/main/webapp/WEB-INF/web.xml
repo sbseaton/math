@@ -28,5 +28,15 @@
         <servlet-name>LogOut</servlet-name>
         <url-pattern>/LogOut</url-pattern>
     </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>CheckAnswer</servlet-name>
+        <servlet-class>CheckAnswer</servlet-class>
+    </servlet>
+	
+	<servlet-mapping>
+        <servlet-name>CheckAnswer</servlet-name>
+        <url-pattern>/CheckAnswer</url-pattern>
+    </servlet-mapping>
 
 </web-app>
