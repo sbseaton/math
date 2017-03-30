@@ -56,8 +56,18 @@ public class Compete extends HttpServlet
     statement = connection.createStatement() ;
     String queryString  =  null ;
 	  String questionString = null;
-	  String questionOneAnswersString = null ; 	// question one answer string
-    int questionNumber = 301;
+	  String questionOneAnswersString = null ; 	// question one answer string]
+
+    int questionNumber; 
+    String currentQuestionNumberString = request.getParameter( "questionNumber" );
+
+    // find if this is the first question or not ---------------------------------------
+    if ( currentQuestionNumberString != null )
+        questionNumber = Integer.parseInt(currentQuestionNumber);
+    else
+        questionNumber = 301;
+    // ----------------------------------------------------------------------------------
+
 	  String questionNumberString = null ; 
   
     if ( username != null )
