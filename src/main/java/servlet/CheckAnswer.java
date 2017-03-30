@@ -52,7 +52,7 @@ public class CheckAnswer extends HttpServlet
 			if (correctChoice.next() )
 			{
 				correctChoiceID = "" + correctChoice.getObject("ID");
-				correctAChoiceText = "" + correctChoice.getObject("ChoiceText"); 
+				correctChoiceText = "" + correctChoice.getObject("ChoiceText"); 
 			}
 
             connection = DriverManager.getConnection ( DB_URL ) ;	// added
