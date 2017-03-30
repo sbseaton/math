@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------------------------ //
-// Compete.java    by JA Solheim    14 OCT 2016
+// Compete.java    by Samuel Seaton    14 OCT 2016
 
 // This is the Compete servlet ...
 
@@ -34,29 +34,24 @@ public class Compete extends HttpServlet
   @Override
   public void doPost ( HttpServletRequest request, HttpServletResponse response )
     throws ServletException, IOException
-    {
-  Connection connection     =  null ;
-  Statement  statement      =  null ;
-  final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
+  {
+    Connection connection     =  null ;
+    Statement  statement      =  null ;
+    final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
     response.setContentType ( "text/html" ) ;
     final PrintWriter  out              =  response.getWriter() ;
     HttpSession        session          =  request.getSession() ;
+    // find session ID and user ID
     String             sessionId        =  session.getId() ;
     String             userIdAttribute  =  ( "LOGGED_IN_USER_" + sessionId ) ;
+
     ServletContext     context          =  this.getServletContext() ;
     String             username         =  request.getParameter("username") ;
     String             password         =  request.getParameter("password") ;
     String             storedPassword   =  null ;
 	  String 			userChoice = null;
 
-
-  try
-    {
-    connection = DriverManager.getConnection ( DB_URL ) ;
-    statement = connection.createStatement() ;
-    String queryString  =  null ;
-	  String questionString = null;
-	  String questionOneAnswersString = null ; 	// question one answer string]
+    boolean userLoggedIn ; 
 
     int questionNumber; 
     String currentQuestionNumberString = request.getParameter( "questionNumber" );
@@ -68,35 +63,45 @@ public class Compete extends HttpServlet
         questionNumber = 301;
     // ----------------------------------------------------------------------------------
 
+
+  try
+    {
+    connection = DriverManager.getConnection ( DB_URL ) ;
+    statement = connection.createStatement() ;
+    String queryString  =  null ;
+	  String questionString = null;
+	  String questionAnswersString = null ; 	// question one answer string]
+
+   
 	  String questionNumberString = null ; 
   
     if ( username != null )
     {
-		username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
-		queryString  = "select Password from Math.Competitor "
+		  username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
+
+		  queryString  = "select Password from Math.Competitor "
             +  "WHERE lower(Username) = lower('" + username + "') " ;
-		System.out.println ( "-------------------------------------" ) ;
-		System.out.println (queryString) ;
-		System.out.println ( "-------------------------------------" ) ;
-		ResultSet resultSet = statement.executeQuery ( queryString ) ;
-		// two possibilities:
-		// 1. resultSet is empty (username entered by user was not found in database)
-		// 2. resultSet is non-empty (username was found in database)
-		if ( resultSet.next() )
-			storedPassword  =  (String) resultSet.getObject("Password") ;     
-	}
+		  System.out.println ( "-------------------------------------" ) ;
+		  System.out.println (queryString) ;
+		  System.out.println ( "-------------------------------------" ) ;
+		  ResultSet resultSet = statement.executeQuery ( queryString ) ;
+		  // two possibilities:
+		  // 1. resultSet is empty (username entered by user was not found in database)
+		  // 2. resultSet is non-empty (username was found in database)
+
+		  if ( resultSet.next() )
+		  	storedPassword  =  (String) resultSet.getObject("Password") ;     
+
+	  } // end if
 
     boolean  userExists      =   (storedPassword != null) ;
     boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null)
                                 && (password. equals (storedPassword)) ) ;
 
+
 	
 	questionNumberString = "SELECT * FROM math.question WHERE id = 301 " ;
 	ResultSet questionID = statement.executeQuery( questionNumberString );
-	
-	while ( questionID.next() ) 
-	{
-	
 	
     // html display ---------------------------------------------------------------
 
@@ -111,7 +116,8 @@ public class Compete extends HttpServlet
 				+ " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
 				+ "</script>\n"
 				+    "  </head>\n"
-				+    "  <body>\n"
+				+    "  <body>\n" );
+    /*
 				+    "    <hr>\n"
 				// +    "    <form method='POST'>\n"
 
@@ -121,7 +127,7 @@ public class Compete extends HttpServlet
 				+    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
 				+    "    <br>" 
 				+    "    <hr style='border: 2px solid #FFD700'> \n  "
-				+    "      <h4> Question "+ questionID.getObject("id") + " </h4>   \n "
+				+    "      <h4> Question (put questionNumberHere) </h4>   \n "
 				+    "      <p> &#40;101 points possible&#41; </p> "
 				
 				// add the current score keeping right here --------------------------------------------------------
@@ -130,32 +136,78 @@ public class Compete extends HttpServlet
 				+    "     <label> What is the answer to the following problem? </label> \n  "
 				+    "      <br><br> \n " ); 
 				// +    "      <table>\n"	);
-				
-		} // end while		
-				
+        */
+						
+    if ( session.isNew() )
+    {
 
 	
-		// if the user exists and the password matches, display the first webpage
-		if ( userExists && passwordsMatch )
-		{
-			session.setAttribute ( userIdAttribute, username ) ;
-		
-		
-		
+		  // if the user exists and the password matches, display the first webpage
+		  if ( userExists && passwordsMatch )
+		  {
+			 session.setAttribute ( userIdAttribute, username ) ;
+		   userLoggedIn = true; 
+      }
+      //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
+      else    
+      { 
+        session.invalidate(); 
+        out.print  (  ""
+        +    "      <table>\n"
+        +   "   <tr style='font-size:x-large;'> "
+        +    "    <td>No user is currently logged in. </td> "
+        +   "   </tr>\n"
+                +    "     <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
+                +    "      </table>\n"
+                +    "    </form>\n"
+                +    "    <hr>\n"
+                +    "  </body>\n"
+                +    "</html>\n"  ) ;
+        out.close() ;
+        return ;
+        }
+      //-------------------------------------------------------------------------------------------------------------------------------------------
+		} // end if session.isNew() 
+
+    else 
+    {
+        // the session is not new, but the user is logged in 
+        // and is returning from checkAnswer servlet for a new problem
+        userLoggedIn = true;
+
+        username = (String) session.getAttribute (userIdAttribute) ;
+    }   // end else
+      out.println("hi");// hi
+		//}
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
 
+    if (userLoggedIn == true )
+    {
 			questionString = "SELECT * "
 						+ "FROM 	Math.Question "
 						+ "WHERE 	ID =" + questionNumber + " ";
 				
-			ResultSet questionOneRS = statement.executeQuery ( questionString ) ;
+			ResultSet questionRS = statement.executeQuery ( questionString ) ;
 
       // display the question text 
-			if (questionOneRS.next() )
+			if (questionRS.next() )
       { 
-         String questionText = (String) questionOneRS.getObject("QuestionText") ;
+         String questionText = (String) questionRS.getObject("QuestionText") ;
 
 					 out.print  ( "" 
+        +    "    <hr>\n"
+        +    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
+        +    "   <h3> Username: "+ username +" </h3>  \n "
+        +    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
+        +    "    <br>" 
+        +    "    <hr style='border: 2px solid #FFD700'> \n  "
+        +    "      <h4> Question "+ questionNumber +" </h4>   \n "
+        +    "      <p> &#40;101 points possible&#41; </p> "
+        // add the current score keeping right here --------------------------------------------------------
+        +    "      <p> 0 points total</p> "
+        +    "     <hr style='border: 2px solid #FFD700'> \n   "
+        +    "     <label> What is the answer to the following problem? </label> \n  "
+        +    "      <br><br> \n " ); 
 				+   "      <table>\n"
 				+		"	<tr>     "
 				+     	"   	<td> &nbsp;&ensp;&ensp;" + questionText + " = </td>      "
@@ -163,10 +215,10 @@ public class Compete extends HttpServlet
 				+     	"</table>     "
 				+     	"<br>     " ); 
 
-				}	// end while
+			
 				
 				// display the answer text -------------------------------------------------------
-				questionOneAnswersString = "select * "	
+				questionAnswersString = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
 								+ "on (choice.id = question.foil1_choice_id) "
@@ -177,16 +229,16 @@ public class Compete extends HttpServlet
 				
 				
 				// create a result set for the question answers
-				ResultSet questionOneAnswers = statement.executeQuery ( questionOneAnswersString ) ;
+				ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 				
 				// print each answer with a radio button for user selection, assign the value to the id of the answer
 
       out.println ( "    <form action='CheckAnswer' method='POST'>" ) ;
 
 
-				while (questionOneAnswers.next() )
+				while (questionAnswers.next() )
 				{
-					out.println ( "	<input type=\"radio\" name=\"choice\" value="+ questionOneAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionOneAnswers.getObject("choicetext") + "<br><br> \n " );
+					out.println ( "	<input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
 				
 				}
 
@@ -246,30 +298,9 @@ public class Compete extends HttpServlet
                  +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
                  */
-        }
+        //}--------------------------------------------
 
-		//  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
-		else    
-		{	session.invalidate(); 
-				out.print  (  ""
-				+    "      <table>\n"
-				+	  "		<tr style='font-size:x-large;'> "
-				+    " 		<td>No user is currently logged in. </td> "
-				+	  "		</tr>\n"
-                +    "     <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
-                +    "      </table>\n"
-                +    "    </form>\n"
-                +    "    <hr>\n"
-                +    "  </body>\n"
-                +    "</html>\n"  ) ;
-				
 		
-        out.close() ;
-        return ;
-        }
-	
-      //-------------------------------------------------------------------------------------------------------------------------------------------
-	
 	
 
 	
