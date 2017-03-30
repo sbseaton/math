@@ -122,6 +122,7 @@ public class Compete extends HttpServlet
                 else    
                 { 
                     session.invalidate(); 
+                    out.println ( "    <form action='LogOut' method='POST'>" ) ;
                     out.print  (  ""
                         +    "      <table>\n"
                         +    "   <tr style='font-size:x-large;'> "
