@@ -44,7 +44,7 @@ public class CheckAnswer extends HttpServlet
 			String usersChoiceQuery = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
-								+ "on (choice.id = " + usersChoiceID +" "
+								+ "on (choice.id = " + usersChoiceID +") "
 								+ "where question.id =" + questionNumber + " " ;
 
 			ResultSet usersChoice = statement.executeQuery ( usersChoiceQuery ) ;
