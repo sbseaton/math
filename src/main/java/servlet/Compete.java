@@ -177,8 +177,8 @@ public class Compete extends HttpServlet
 
         username = (String) session.getAttribute (userIdAttribute) ;
     }   // end else
-      out.println("hi");// hi
-		//}
+      
+		}
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
 
     if (userLoggedIn == true )
@@ -194,7 +194,7 @@ public class Compete extends HttpServlet
       { 
          String questionText = (String) questionRS.getObject("QuestionText") ;
 
-					 out.print  ( "" 
+					 out.println  ( "" 
         +    "    <hr>\n"
         +    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
         +    "   <h3> Username: "+ username +" </h3>  \n "
