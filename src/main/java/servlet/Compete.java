@@ -94,10 +94,7 @@ public class Compete extends HttpServlet
 
 	  } // end if
 
-    boolean  userExists      =   (storedPassword != null) ;
-    boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null)
-                                && (password. equals (storedPassword)) ) ;
-
+    
     // html display ---------------------------------------------------------------
 
     out.print  (  "<!DOCTYPE html>\n"
@@ -112,27 +109,12 @@ public class Compete extends HttpServlet
 				+ "</script>\n"
 				+    "  </head>\n"
 				+    "  <body>\n" );
-    /*
-				+    "    <hr>\n"
-				// +    "    <form method='POST'>\n"
+  
 
-				+    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
-    
-				+    "   <h3> Username: "+ username +" </h3>  \n "
-				+    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
-				+    "    <br>" 
-				+    "    <hr style='border: 2px solid #FFD700'> \n  "
-				+    "      <h4> Question (put questionNumberHere) </h4>   \n "
-				+    "      <p> &#40;101 points possible&#41; </p> "
-				
-				// add the current score keeping right here --------------------------------------------------------
-				+    "      <p> 0 points total</p> "
-				+    "     <hr style='border: 2px solid #FFD700'> \n   "
-				+    "     <label> What is the answer to the following problem? </label> \n  "
-				+    "      <br><br> \n " ); 
-				// +    "      <table>\n"	);
-        */
-						
+    boolean  userExists      =   (storedPassword != null) ;
+    boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
+    boolean isUserLoggedIn = false;
+
     if ( session.isNew() )
     {
 
@@ -317,7 +299,6 @@ public class Compete extends HttpServlet
              +    "    <hr>\n" ) ;
 
 
-out.println();
   } // end try block
   catch ( SQLException sqlException ) 
     {
