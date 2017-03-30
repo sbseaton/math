@@ -178,7 +178,7 @@ public class Compete extends HttpServlet
         username = (String) session.getAttribute (userIdAttribute) ;
     }   // end else
       
-		}
+		
 		// query for question 1 ---------------------------------------------------------------------------------------------------------------------
 
     if (userLoggedIn == true )
@@ -191,7 +191,6 @@ public class Compete extends HttpServlet
 
       // display the question text 
 			if (questionRS.next() )
-      { 
          String questionText = (String) questionRS.getObject("QuestionText") ;
 
 					 out.println  ( "" 
@@ -239,7 +238,6 @@ public class Compete extends HttpServlet
 				while (questionAnswers.next() )
 				{
 					out.println ( "	<input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
-				
 				}
 
 				
@@ -254,6 +252,8 @@ public class Compete extends HttpServlet
 			+  	"   <br> " );
 
       out.println ( " </form> ");
+
+    } // end if the userLoggedIn
 		// finds the database information for table on screen ----------------------------------------------------------------------------------------------------------------
 			/*
 				queryString  =     "SELECT   * "
@@ -298,7 +298,7 @@ public class Compete extends HttpServlet
                  +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
                  +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
                  */
-        //}--------------------------------------------
+    // }--------------------------------------------
 
 		
 	
@@ -320,7 +320,8 @@ public class Compete extends HttpServlet
              +    "    <hr>\n" ) ;
 
 
-    } // end try block
+out.println();
+  } // end try block
   catch ( SQLException sqlException ) 
     {
     System.out.println ( "Caught SQLException ..." ) ;
