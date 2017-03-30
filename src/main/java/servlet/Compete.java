@@ -191,7 +191,7 @@ public class Compete extends HttpServlet
 			+	"	</table>"
 			+  	"   <br> " );
 
-       System.out.println ( " </form> ");
+      out.println ( " </form> ");
 		// finds the database information for table on screen ----------------------------------------------------------------------------------------------------------------
 			/*
 				queryString  =     "SELECT   * "
