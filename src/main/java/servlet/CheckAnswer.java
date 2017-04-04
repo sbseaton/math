@@ -112,7 +112,7 @@ public class CheckAnswer extends HttpServlet
                 + "     </tr>\n" ) ;
 
             out.print  (  "     </table>\n"
-                +    "    </form>\n"
+                +    "    </form>\n" );
            }
 
            else
