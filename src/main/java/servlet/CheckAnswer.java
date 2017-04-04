@@ -119,7 +119,7 @@ public class CheckAnswer extends HttpServlet
 						+	 "<tr>	"
 						+ "   <td><input type='hidden' name= 'username' value='" + username + "'> "
 						+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
-	     				+ 		"<td><input type='submit' value='Log Out'>"
+						 + " <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
 	     				+	 "</tr>"
 	     				+	 "</table>" 
 	     				+	 "</form>" );
