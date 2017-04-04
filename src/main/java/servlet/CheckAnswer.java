@@ -87,7 +87,7 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  <body>" ) ;
             out.println ( "    <hr>" ) ;
 
-            String largestQuestionQuery = "select id from math.question ";
+            String largestQuestionQuery = "select * from math.question ";
 			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionQuery);
 			
 			// -------------------------------------------------------------------------------
