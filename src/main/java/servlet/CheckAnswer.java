@@ -86,7 +86,7 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  </head>" ) ;
             out.println ( "  <body>" ) ;
             out.println ( "    <hr>" ) ;
-
+            /*
             String largestQuestionQuery = "select * from math.question ";
 			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionQuery);
 			
@@ -98,6 +98,7 @@ public class CheckAnswer extends HttpServlet
 				if (currentQuestionID > largestQuestionID )
 					largestQuestionID = currentQuestionID ; 
 			}
+			*/
 
 			//--------------------------------------------------------------------------------
             // find if the user is on the last question. if so send them to a logout screen
