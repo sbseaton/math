@@ -135,13 +135,13 @@ public class CheckAnswer extends HttpServlet
 	     				+	 "</table>" 
 	     				+	 "</form>" );
 
-
+			}
 
 
 	            out.println ( "	   <hr>" ) ;
 	            out.println ( "  </body>" ) ;
 	            out.println ( "</html>" ) ;
-        	}
+        	
 			} // end try block
 
 		catch ( SQLException sqlException ) 
