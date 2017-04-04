@@ -104,15 +104,21 @@ public class CheckAnswer extends HttpServlet
             // find if the user is on the last question. if so send them to a logout screen
            if ( questionNumber  >= largestQuestionID )
            {
-           		out.println( " <p> You have finished the quiz! <p> ");
-           		out.print ( ""        
-                +   "    <form method='POST'>\n"
-                +   "   <table> "
-                + "     <tr> "
-                + "     <td> "
-                + "     <button type='submit' class='inline_wide' formaction='LogOut' name='username'>Log Out</button> "
-                + "     </td>"
-                + "     </tr>\n" ) ;
+           		out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
+	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
+				if ( usersChoiceText .equals (correctChoiceText) )
+					out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
+				else
+					out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
+
+				out.println( "<form action = 'LogOut' method='POST'> " 
+						+ 	 "<table>"
+						+	 "<tr>	"
+						+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
+	     				+ 		"<td><input type='submit' value='logOut'>"
+	     				+	 "</tr>"
+	     				+	 "</table>" 
+	     				+	 "</form>" );
 
             out.print  (  "     </table>\n"
                 +    "    </form>\n" );
@@ -136,7 +142,7 @@ public class CheckAnswer extends HttpServlet
 	     				+	 "</table>" 
 	     				+	 "</form>" );
 
-			}
+			 }
 
 
 	            out.println ( "	   <hr>" ) ;
