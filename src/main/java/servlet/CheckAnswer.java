@@ -94,7 +94,7 @@ public class CheckAnswer extends HttpServlet
 			// finds the largest ID 
 			while (largestQuestionIDRS.next() )
 			{
-				int currentQuestionID = Integer.parseInt( usersChoice.getObject("ID") );
+				int currentQuestionID = Integer.parseInt( "" + usersChoice.getObject("ID") );
 				if (currentQuestionID > largestQuestionID )
 					largestQuestionID = currentQuestionID ; 
 			}
@@ -109,7 +109,7 @@ public class CheckAnswer extends HttpServlet
                 +   "   <table> "
                 + "     <tr> "
                 + "     <td> "
-                + "     <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
+                + "     <button type='submit' class='inline_wide' formaction='LogOut' name='username'>Log Out</button> "
                 + "     </td>"
                 + "     </tr>\n" ) ;
 
