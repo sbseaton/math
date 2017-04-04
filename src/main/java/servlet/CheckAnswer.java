@@ -101,7 +101,7 @@ public class CheckAnswer extends HttpServlet
             // find if the user is on the last question. if so send them to a logout screen
            if ( questionNumber  >= largestQuestionID )
            {
-           		out.println( " <p> You have finished the quiz! <p> ")
+           		out.println( " <p> You have finished the quiz! <p> ");
            		out.print ( ""        
                 +   "    <form method='POST'>\n"
                 +   "   <table> "
