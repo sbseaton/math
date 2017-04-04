@@ -86,23 +86,23 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  </head>" ) ;
             out.println ( "  <body>" ) ;
             out.println ( "    <hr>" ) ;
-            /*
+            
             String largestQuestionQuery = "select * from math.question ";
 			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionQuery);
 			
 			// -------------------------------------------------------------------------------
-			// finds the largest ID 
+			// finds the largest question ID 
 			while (largestQuestionIDRS.next() )
 			{
-				int currentQuestionID = Integer.parseInt( "" + usersChoice.getObject("ID") );
+				int currentQuestionID = Integer.parseInt( "" + largestQuestionIDRS.getObject("ID") );
 				if (currentQuestionID > largestQuestionID )
 					largestQuestionID = currentQuestionID ; 
 			}
-			*/
+
 
 			//--------------------------------------------------------------------------------
             // find if the user is on the last question. if so send them to a logout screen
-           /* if ( questionNumber  >= largestQuestionID )
+           if ( questionNumber  >= largestQuestionID )
            {
            		out.println( " <p> You have finished the quiz! <p> ");
            		out.print ( ""        
@@ -119,7 +119,7 @@ public class CheckAnswer extends HttpServlet
            }
 
            else
-           { */
+           { 
 	            out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
 	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
 				if ( usersChoiceText .equals (correctChoiceText) )
@@ -136,7 +136,7 @@ public class CheckAnswer extends HttpServlet
 	     				+	 "</table>" 
 	     				+	 "</form>" );
 
-			// }
+			}
 
 
 	            out.println ( "	   <hr>" ) ;
