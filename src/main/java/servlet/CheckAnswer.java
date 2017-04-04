@@ -32,12 +32,9 @@ public class CheckAnswer extends HttpServlet
 		PrintWriter out = response.getWriter() ;
 		String             username         =  request.getParameter("username") ;
 		// find session ID and user ID
-        String             sessionId        =  session.getId() ;
-        String             userIdAttribute  =  ( "LOGGED_IN_USER_" + sessionId ) ;
         
-        username = (String) session.getAttribute (userIdAttribute) ;
-
-
+        session.setAttribute ("LOGGED_IN_USER", username);
+        String loggedInUser = (String) session.getAttribute("LOGGED_IN_USER");
 
         try
             {
@@ -123,9 +120,9 @@ public class CheckAnswer extends HttpServlet
 				out.println( "<form action = 'LogOut' method='POST'> " 
 						+ 	 "<table>"
 						+	 "<tr>	"
-						+ "   <td><input type='hidden' name= 'username' value='" + username + "'></td> "
+						+ "   <td><input type='hidden' name= 'username' value='" + loggedInUser + "'></td> "
 						+	"<td><input type='hidden'  name= 'questionNumber' value='" + (questionNumber+1) + "'></td> " 
-						 + " <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
+						 + " <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + loggedInUser + "'>Log Out</button> "
 	     				+	 "</tr>"
 	     				+	 "</table>" 
 	     				+	 "</form>" );
