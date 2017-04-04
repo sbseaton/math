@@ -40,6 +40,7 @@ public class CheckAnswer extends HttpServlet
 			String usersChoiceText = "";
 			String correctChoiceID = "" ; 
 			String correctChoiceText = "";
+			int largestQuestionID = 0;
 
 			
 			String usersChoiceQuery = "select * "	
