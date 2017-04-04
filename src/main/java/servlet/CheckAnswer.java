@@ -30,6 +30,9 @@ public class CheckAnswer extends HttpServlet
 		
 		response.setContentType ( "text/html" ) ;
 		PrintWriter out = response.getWriter() ;
+		String             username         =  request.getParameter("username") ;
+
+
 
         try
             {
@@ -114,8 +117,9 @@ public class CheckAnswer extends HttpServlet
 				out.println( "<form action = 'LogOut' method='POST'> " 
 						+ 	 "<table>"
 						+	 "<tr>	"
+						+ "   <td><input type='hidden' name= 'username' value='" + username + "'> "
 						+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
-	     				+ 		"<td><input type='submit' value='logOut'>"
+	     				+ 		"<td><input type='submit' value='Log Out'>"
 	     				+	 "</tr>"
 	     				+	 "</table>" 
 	     				+	 "</form>" );
