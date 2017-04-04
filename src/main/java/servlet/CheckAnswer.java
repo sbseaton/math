@@ -40,6 +40,19 @@ public class CheckAnswer extends HttpServlet
 			String usersChoiceText = "";
 			String correctChoiceID = "" ; 
 			String correctChoiceText = "";
+
+			String largestQuestionQuery = "select id from math.question ";
+			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionIDRS);
+			
+			// -------------------------------------------------------------------------------
+			// finds the largest ID 
+			while (largestQuestionQuery.next() )
+			{
+				int currentQuestionID = Integer.parseInt( usersChoice.getObject("ID") );
+				if (currentQuestionID > largestQuestionID )
+					largestQuestionID = currentQuestionID ; 
+			}
+
 			//--------------------------------------------------------------------------------
 			String usersChoiceQuery = "select * "	
 								+ "from math.choice "
@@ -84,28 +97,49 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  </head>" ) ;
             out.println ( "  <body>" ) ;
             out.println ( "    <hr>" ) ;
-            out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
-            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
-			if ( usersChoiceText .equals (correctChoiceText) )
-				out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
-			else
-				out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
 
-			out.println( "<form action = 'Compete' method='POST'> " 
-					+ 	 "<table>"
-					+	 "<tr>	"
-					+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
-     				+ 		"<td><input type='submit' value='View the Next Question'>"
-     				+	 "</tr>"
-     				+	 "</table>" 
-     				+	 "</form>" );
+            // find if the user is on the last question. if so send them to a logout screen
+           if ( questionNumber  >= largestQuestionID )
+           {
+           		out.println( " <p> You have finished the quiz! <p> ")
+           		out.print ( ""        
+                +   "    <form method='POST'>\n"
+                +   "   <table> "
+                + "     <tr> "
+                + "     <td> "
+                + "     <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
+                + "     </td>"
+                + "     </tr>\n" ) ;
+
+            out.print  (  "     </table>\n"
+                +    "    </form>\n"
+           }
+
+           else
+           {
+	            out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
+	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
+				if ( usersChoiceText .equals (correctChoiceText) )
+					out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
+				else
+					out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
+
+				out.println( "<form action = 'Compete' method='POST'> " 
+						+ 	 "<table>"
+						+	 "<tr>	"
+						+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
+	     				+ 		"<td><input type='submit' value='View the Next Question'>"
+	     				+	 "</tr>"
+	     				+	 "</table>" 
+	     				+	 "</form>" );
 
 
 
 
-            out.println ( "	   <hr>" ) ;
-            out.println ( "  </body>" ) ;
-            out.println ( "</html>" ) ;
+	            out.println ( "	   <hr>" ) ;
+	            out.println ( "  </body>" ) ;
+	            out.println ( "</html>" ) ;
+        	}
 			} // end try block
 
 		catch ( SQLException sqlException ) 
