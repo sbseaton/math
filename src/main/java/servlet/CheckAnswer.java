@@ -42,11 +42,11 @@ public class CheckAnswer extends HttpServlet
 			String correctChoiceText = "";
 
 			String largestQuestionQuery = "select id from math.question ";
-			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionIDRS);
+			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionQuery);
 			
 			// -------------------------------------------------------------------------------
 			// finds the largest ID 
-			while (largestQuestionQuery.next() )
+			while (largestQuestionIDRS.next() )
 			{
 				int currentQuestionID = Integer.parseInt( usersChoice.getObject("ID") );
 				if (currentQuestionID > largestQuestionID )
