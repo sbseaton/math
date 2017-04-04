@@ -126,7 +126,7 @@ public class CheckAnswer extends HttpServlet
 				out.println( "<form action = 'LogOut' method='POST'> " 
 						+ 	 "<table>"
 						+	 "<tr>	"
-						+ "   <td><input ype='hidden' name= 'username' value='" + username + "'></td> "t
+						+ "   <td><input ype='hidden' name= 'username' value='" + username + "'></td> "
 						+	"<td><input type='hidden'  name= 'questionNumber' value='" + (questionNumber+1) + "'></td> " 
 						 + " <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
 	     				+	 "</tr>"
