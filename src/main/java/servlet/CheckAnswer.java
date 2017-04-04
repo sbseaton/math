@@ -31,6 +31,11 @@ public class CheckAnswer extends HttpServlet
 		response.setContentType ( "text/html" ) ;
 		PrintWriter out = response.getWriter() ;
 		String             username         =  request.getParameter("username") ;
+		// find session ID and user ID
+        String             sessionId        =  session.getId() ;
+        String             userIdAttribute  =  ( "LOGGED_IN_USER_" + sessionId ) ;
+        
+        username = (String) session.getAttribute (userIdAttribute) ;
 
 
 
@@ -107,6 +112,7 @@ public class CheckAnswer extends HttpServlet
             // find if the user is on the last question. if so send them to a logout screen
            if ( questionNumber  >= largestQuestionID )
            {
+           		
            		out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
 	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
 				if ( usersChoiceText .equals (correctChoiceText) )
@@ -117,8 +123,8 @@ public class CheckAnswer extends HttpServlet
 				out.println( "<form action = 'LogOut' method='POST'> " 
 						+ 	 "<table>"
 						+	 "<tr>	"
-						+ "   <td><input type='hidden' name= 'username' value='" + username + "'> "
-						+		"<td><input type='hidden' name= 'questionNumber' value='" + (questionNumber+1) + "'> " 
+						+ "   <td><input type='hidden' name= 'username' value='" + username + "'></td> "
+						+	"<td><input type='hidden'  name= 'questionNumber' value='" + (questionNumber+1) + "'></td> " 
 						 + " <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
 	     				+	 "</tr>"
 	     				+	 "</table>" 
