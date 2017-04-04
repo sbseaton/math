@@ -41,19 +41,7 @@ public class CheckAnswer extends HttpServlet
 			String correctChoiceID = "" ; 
 			String correctChoiceText = "";
 
-			String largestQuestionQuery = "select id from math.question ";
-			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionQuery);
 			
-			// -------------------------------------------------------------------------------
-			// finds the largest ID 
-			while (largestQuestionIDRS.next() )
-			{
-				int currentQuestionID = Integer.parseInt( usersChoice.getObject("ID") );
-				if (currentQuestionID > largestQuestionID )
-					largestQuestionID = currentQuestionID ; 
-			}
-
-			//--------------------------------------------------------------------------------
 			String usersChoiceQuery = "select * "	
 								+ "from math.choice "
 								+ "inner join math.question "
@@ -98,6 +86,19 @@ public class CheckAnswer extends HttpServlet
             out.println ( "  <body>" ) ;
             out.println ( "    <hr>" ) ;
 
+            String largestQuestionQuery = "select id from math.question ";
+			ResultSet largestQuestionIDRS = statement.executeQuery (largestQuestionQuery);
+			
+			// -------------------------------------------------------------------------------
+			// finds the largest ID 
+			while (largestQuestionIDRS.next() )
+			{
+				int currentQuestionID = Integer.parseInt( usersChoice.getObject("ID") );
+				if (currentQuestionID > largestQuestionID )
+					largestQuestionID = currentQuestionID ; 
+			}
+
+			//--------------------------------------------------------------------------------
             // find if the user is on the last question. if so send them to a logout screen
            if ( questionNumber  >= largestQuestionID )
            {
