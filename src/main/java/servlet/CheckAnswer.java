@@ -24,14 +24,19 @@ public class CheckAnswer extends HttpServlet
 							HttpServletResponse response )
 		throws ServletException, IOException
 		{
+
 		 Connection connection     =  null ;	// added
  		 Statement  statement      =  null ;	// added
+ 		 HttpSession        session          =  request.getSession() ;
+
 		final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
 		
 		response.setContentType ( "text/html" ) ;
 		PrintWriter out = response.getWriter() ;
 		String             username         =  request.getParameter("username") ;
 		// find session ID and user ID
+
+
         
         session.setAttribute ("LOGGED_IN_USER", username);
         String loggedInUser = (String) session.getAttribute("LOGGED_IN_USER");
