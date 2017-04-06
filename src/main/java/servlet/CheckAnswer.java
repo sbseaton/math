@@ -55,6 +55,9 @@ public class CheckAnswer extends HttpServlet
 			String correctChoiceText = "";
 			int largestQuestionID = 0;
 
+			boolean addToScore = false;
+
+
 			// get the user choice to display ------------------------------------------------------------------------------
 			String usersChoiceQuery = "select * "	
 								+ "from math.choice "
@@ -121,9 +124,15 @@ public class CheckAnswer extends HttpServlet
            		out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
 	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
 				if ( usersChoiceText .equals (correctChoiceText) )
+				{
 					out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
+					addToScore = true;
+				}
 				else
+				{
 					out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
+					addToScore = false; 
+				}
 
 				out.println( "<form action = 'LogOut' method='POST'> " 
 						+ 	 "<table>"
@@ -144,9 +153,15 @@ public class CheckAnswer extends HttpServlet
 	            out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
 	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
 				if ( usersChoiceText .equals (correctChoiceText) )
+				{
 					out.println ( "	   <h1>Your answer was correct.</h1>" ) ;
+					addToScore = true;
+				}
 				else
+				{
 					out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
+					addToScore = false ;
+				}
 
 				out.println( "<form action = 'Compete' method='POST'> " 
 						+ 	 "<table>"
@@ -164,12 +179,13 @@ public class CheckAnswer extends HttpServlet
 			 // UPDATE totals 
 			 //		SET total = total + 1
 			 // WHERE name = 'bill';
-			
-			 String scoreQuery =  "UPDATE Math.competitor "
-			 					+ "SET score = score + 1 "
-			 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
-
-			 int scoreIncrements = statement.executeUpdate (scoreQuery);
+			if (addToScore == true)
+			{	
+				 String scoreQuery =  "UPDATE Math.competitor "
+				 					+ "SET score = score + 1 "
+				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
+				 int scoreIncrements = statement.executeUpdate (scoreQuery);
+			}
 			 
 
 			 	out.println( "<table>"); // open the table

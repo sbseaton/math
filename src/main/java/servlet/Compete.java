@@ -117,6 +117,12 @@ public class Compete extends HttpServlet
                 {
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
+
+                    String setScoreQuery =  "UPDATE Math.competitor "
+				 					+ "SET score = 0 "
+				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
+				 	int scoreZero = statement.executeUpdate (scoreQuery);
+
                 }
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
                 else    
@@ -198,9 +204,9 @@ public class Compete extends HttpServlet
 
         
                 // print each answer with a radio button for user selection, assign the value to the id of the answer
-
+                
                 out.println ( "    <form action='CheckAnswer' method='POST'>" ) ;
-
+                
                 while (questionAnswers.next() )
                 {
                     out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
