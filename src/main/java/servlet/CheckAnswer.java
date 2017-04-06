@@ -169,7 +169,7 @@ public class CheckAnswer extends HttpServlet
 			 					+ "SET score = score + 1 "
 			 					+ "WHERE Username = '" + username + "' " ; 
 
-			 int scoreIncrements = statement.executeUpdate (scoreQuery);
+			//  int scoreIncrements = statement.executeUpdate (scoreQuery);
 			 
 
 			 	out.println( "<table>"); // open the table
