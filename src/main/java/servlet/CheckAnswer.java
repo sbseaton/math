@@ -162,17 +162,17 @@ public class CheckAnswer extends HttpServlet
 			 // ---------------------------------------------------------------------------
 
 			 	out.println( "<table>"); // open the table
-			 	out.println( "<tr>"); 
+			 	
 			String tableQuery = "select * from math.competitor ";
 			ResultSet competitorNames = statement.executeQuery (tableQuery);
 
 			while (competitorNames.next())
 			{
-				out.println("<td>" + competitorNames.getObject("username") + "</td>" ) ;
+				out.println("<tr>" + competitorNames.getObject("username") + "</tr>" ) ;
 
 			}
 				
-			out.println( "<tr>");
+			
 
 				out.println("</table>"); // close the table
 
