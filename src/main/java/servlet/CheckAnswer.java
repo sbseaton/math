@@ -161,6 +161,16 @@ public class CheckAnswer extends HttpServlet
 
 			 // ---------------------------------------------------------------------------
 
+			 // UPDATE totals 
+			 //		SET total = total + 1
+			 // WHERE name = 'bill';
+
+			 String scoreQuery = "UPDATE score "
+			 					 " 	SET score = score + 1 "
+			 					 "WHERE username = '" + username + "' " ; 
+
+			 ResultSet scoreIncrements = statement.executeQuery (scoreQuery);
+
 
 			 	out.println( "<table>"); // open the table
 			 	
@@ -173,9 +183,6 @@ public class CheckAnswer extends HttpServlet
 					+ " 	<td>" + competitorNames.getObject("username") + "</td> "
 					+ "		<td>" + competitorNames.getObject("score") + "</td>" 
 					+ "	 	</tr>" ) ;
-
-
-
 			}
 				
 			
