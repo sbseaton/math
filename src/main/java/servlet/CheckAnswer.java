@@ -167,7 +167,7 @@ public class CheckAnswer extends HttpServlet
 			
 			 String scoreQuery =  "UPDATE score "
 			 					+ "SET score = score + 1 "
-			 					+ "WHERE Username = '" + username + "' " ; 
+			 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
 
 			//  int scoreIncrements = statement.executeUpdate (scoreQuery);
 			 
