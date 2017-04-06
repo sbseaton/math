@@ -166,8 +166,8 @@ public class CheckAnswer extends HttpServlet
 			 // WHERE name = 'bill';
 
 			 String scoreQuery = "UPDATE score "
-			 					 " 	SET score = score + 1 "
-			 					 "WHERE username = '" + username + "' " ; 
+			 					+ " 	SET score = score + 1 "
+			 					+ "WHERE username = '" + username + "' " ; 
 
 			 ResultSet scoreIncrements = statement.executeQuery (scoreQuery);
 
