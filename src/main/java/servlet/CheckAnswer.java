@@ -171,6 +171,8 @@ public class CheckAnswer extends HttpServlet
 				out.println("<td>" + competitorNames.getObject("username") + "</td>" ) ;
 
 			}
+				
+			out.println( "<tr>");
 
 				out.println("</table>"); // close the table
 
