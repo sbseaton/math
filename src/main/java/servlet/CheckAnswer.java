@@ -164,18 +164,18 @@ public class CheckAnswer extends HttpServlet
 			 // UPDATE totals 
 			 //		SET total = total + 1
 			 // WHERE name = 'bill';
-			/*
+			
 			 String scoreQuery =  "UPDATE score "
 			 					+ "SET score = score + 1 "
-			 					+ "WHERE username = '" + username + "' " ; 
+			 					+ "WHERE Username = '" + username + "' " ; 
 
 			 ResultSet scoreIncrements = statement.executeQuery (scoreQuery);
-			 */
+			 
 
 			 	out.println( "<table>"); // open the table
 			 	out.println( "<tr> "
-			 				+ "	<td><strong>USERNAME</strong></td> "
-			 				+ " <td><strong>SCORE</strong> "
+			 				+ "	<td><strong>Username</strong></td> "
+			 				+ " <td><strong>Score</strong> "
 			 				+ " </tr> " ) ;
 			 	
 			String tableQuery = "select * from math.competitor ";
