@@ -168,7 +168,7 @@ public class CheckAnswer extends HttpServlet
 
 			while (competitorNames.next())
 			{
-				out.println("<tr>" + competitorNames.getObject("username") + "</tr>" ) ;
+				out.println("<tr><td>" + competitorNames.getObject("username") + "</td></tr>" ) ;
 
 			}
 				
