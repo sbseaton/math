@@ -161,6 +161,7 @@ public class CheckAnswer extends HttpServlet
 
 			 // ---------------------------------------------------------------------------
 
+
 			 	out.println( "<table>"); // open the table
 			 	
 			String tableQuery = "select * from math.competitor ";
@@ -168,7 +169,12 @@ public class CheckAnswer extends HttpServlet
 
 			while (competitorNames.next())
 			{
-				out.println("<tr><td>" + competitorNames.getObject("username") + "</td></tr>" ) ;
+				out.println("<tr> "
+					+ " 	<td>" + competitorNames.getObject("username") + "</td> "
+					+ "		<td>" + competitorNames.getObject("score") + "</td>" 
+					+ "	 	</tr>" ) ;
+
+
 
 			}
 				
