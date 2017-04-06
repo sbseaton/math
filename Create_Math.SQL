@@ -12,25 +12,25 @@ CREATE TABLE Math.Competitor
     Password    VARCHAR(32)  NOT NULL,
     FirstName   VARCHAR(32)  NOT NULL,
     LastName    VARCHAR(32)  NOT NULL,
-    Score       INTEGER      NULL ) ;
+    Score       INTEGER       ) ;
 --
 ALTER SEQUENCE Math.Competitor_ID_Seq RESTART WITH 101 ;
-INSERT INTO Math.Competitor ( Username, Password, FirstName, LastName )
+INSERT INTO Math.Competitor ( Username, Password, FirstName, LastName, Score )
 VALUES
-( 'Jeff',        'AppLE',   'Jeff',    'Solheim'    ),
-( 'Cooper',      'baNANa',  'Cooper',  'Cummings'   ),
-( 'Zachery',     'grAPE',   'Zachery', 'Glass'      ),
-( 'Taylor',      'LETTuce', 'Taylor',  'Gonzalez'   ),
-( 'William',     'tomaTO',  'William', 'Goodrow'    ),
-( 'Kale',        'PLUm',    'Kale',    'Harrison'   ),
-( 'Kurtis',      'cHERRy',  'Kurtis',  'Hass'       ),
-( 'Zane',        'RADish',  'Zane',    'Heminway'   ),
-( 'Adam',        'tURNip',  'Adam',    'Horn'       ),
-( 'Jordan',      'SQUash',  'Jordan',  'Jara'       ),
-( 'Gregory',     'pEA',     'Gregory', 'Kenyon'     ),
-( 'Philip',      'CARrot',  'Philip',  'McCrickard' ),
-( 'Clinton',     'BeaN',    'Clinton', 'Petrie'     ),
-( 'Samuel',      'manGO',   'Samuel',  'Seaton'     )
+( 'Jeff',        'AppLE',   'Jeff',    'Solheim' , 0   ),
+( 'Cooper',      'baNANa',  'Cooper',  'Cummings', 0   ),
+( 'Zachery',     'grAPE',   'Zachery', 'Glass'   , 0   ),
+( 'Taylor',      'LETTuce', 'Taylor',  'Gonzalez', 0   ),
+( 'William',     'tomaTO',  'William', 'Goodrow' , 0   ),
+( 'Kale',        'PLUm',    'Kale',    'Harrison', 0  ),
+( 'Kurtis',      'cHERRy',  'Kurtis',  'Hass'    , 0   ),
+( 'Zane',        'RADish',  'Zane',    'Heminway', 0   ),
+( 'Adam',        'tURNip',  'Adam',    'Horn'    , 0  ),
+( 'Jordan',      'SQUash',  'Jordan',  'Jara'    , 0   ),
+( 'Gregory',     'pEA',     'Gregory', 'Kenyon'  , 0   ),
+( 'Philip',      'CARrot',  'Philip',  'McCrickard', 0 ),
+( 'Clinton',     'BeaN',    'Clinton', 'Petrie'    , 0 ),
+( 'Samuel',      'manGO',   'Samuel',  'Seaton'  , 0   )
 ;
 
 SELECT * FROM Math.Competitor ;
