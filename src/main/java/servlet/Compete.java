@@ -121,7 +121,7 @@ public class Compete extends HttpServlet
                     String setScoreQuery =  "UPDATE Math.competitor "
 				 					+ "SET score = 0 "
 				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
-				 	int scoreZero = statement.executeUpdate (scoreQuery);
+				 	int scoreZero = statement.executeUpdate (setScoreQuery);
 
                 }
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
