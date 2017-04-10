@@ -150,7 +150,7 @@ public class CheckAnswer extends HttpServlet
 
            else
            { 
-	            out.println ( " <p> This is what the user chose:" + usersChoiceText + " <p> ");
+	            out.println ( " <p> This is what the user chose: " + usersChoiceText + " <p> ");
 	            out.println ( " <p> This is what is expected: " + correctChoiceText + " <p> ");
 				if ( usersChoiceText .equals (correctChoiceText) )
 				{

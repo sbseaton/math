@@ -69,7 +69,12 @@ VALUES ( '\( \dfrac {17} {12} \)' ) , -- 201
 	   ( '\( \dfrac {1} {6} \)' ) , -- 222
 	   ( '\( \dfrac {2} {3} \)' ) , -- 223
 	   ( '\( \dfrac {5} {6} \)' ) , -- 224
-	   ( '\( \dfrac {1} {4} \)' )  -- 225
+	   ( '\( \dfrac {1} {4} \)' ) ,  -- 225
+	   
+	   ( '\( \dfrac {1} {2} \)' ) , -- 225
+	   ( '\( \dfrac {1} {3} \)' )  -- 226
+	   -- 225 
+	   -- 222
 
 ;
 SELECT * FROM Math.Choice ;
@@ -97,14 +102,19 @@ INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_
 VALUES ( '57 + 44', 212 , 210, 211, 213 ) ; -- 304
 --
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '15 * 10', 214, 215, 216, 217) ; -- 304
+VALUES ( '15 * 10', 214, 215, 216, 217) ; -- 305
 --
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '\( 20\div 10 \)', 218, 219, 220, 221) ; -- 307
+VALUES ( '\( 20\div 10 \)', 218, 219, 220, 221) ; -- 306
 --
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '\( \dfrac {1} {3}\times \dfrac {1} {2} \)', 222, 223, 224, 225) ; -- 306
+VALUES ( '\( \dfrac {1} {3}\times \dfrac {1} {2} \)', 222, 223, 224, 225) ; -- 307
 --
+INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
+VALUES ( '\( \dfrac {1} {4} \div \dfrac {1} {2}  \)', 226, 227, 225, 222) ; -- 308
+
+--
+
 SELECT * FROM Math.Question ;
 --
 CREATE TABLE Math.Submission
