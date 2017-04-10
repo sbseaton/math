@@ -144,9 +144,6 @@ public class CheckAnswer extends HttpServlet
 	     				+	 "</tr>"
 	     				+	 "</table>" 
 	     				+	 "</form>" );
-
-            out.print  (  "     </table>\n"
-                +    "    </form>\n" );
            }
 
            else
