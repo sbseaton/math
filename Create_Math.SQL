@@ -63,9 +63,13 @@ VALUES ( '\( \dfrac {17} {12} \)' ) , -- 201
 	   
 	   ( '2'), -- 218
 	   ( '3'), --219
-	   ( '1 \div 2'), --220
-	   ( '4' ) --221
+	   ( '\( \dfrac {1} {2} \)'), --220
+	   ( '4' ), --221
 	   
+	   ( '\( \dfrac {1} {6} \)' ) , -- 222
+	   ( '\( \dfrac {2} {3} \)' ) , -- 223
+	   ( '\( \dfrac {5} {6} \)' ) , -- 224
+	   ( '\( \dfrac {1} {4} \)' )  -- 225
 
 ;
 SELECT * FROM Math.Choice ;
@@ -96,8 +100,11 @@ INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_
 VALUES ( '15 * 10', 214, 215, 216, 217) ; -- 304
 --
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '20 \div 10 ', 218, 219, 220, 221) ; -- 304
-
+VALUES ( '\( 20\div 10 \)', 218, 219, 220, 221) ; -- 307
+--
+INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
+VALUES ( '\( \dfrac {1} {3}\times \dfrac {1} {2} \)', 222, 223, 224, 225) ; -- 306
+--
 SELECT * FROM Math.Question ;
 --
 CREATE TABLE Math.Submission
@@ -115,5 +122,5 @@ VALUES      ( 101, 302, '2017-02-28 14:47:54', 206 ),
             ( 102, 303, '2017-02-28 15:07:59', 208 ) ;
 SELECT * FROM Math.Submission ;
 --
-\q
+--\q
 --
