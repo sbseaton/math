@@ -95,7 +95,7 @@ public class CheckAnswer extends HttpServlet
             out.println ( "<html>" ) ;
             out.println ( "  <head> " ) ;
             out.println ( "    <meta charset = 'utf-8'>" ) ;
-            out.println ( "    <title>TITLE</title>" ) ;
+            out.println ( "    <title>Check Answer</title>" ) ;
             out.println ( "    <script type='text/javascript' async" ) ;
             out.println ( "      src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>" ) ;
             out.println ( "    </script>" ) ;
