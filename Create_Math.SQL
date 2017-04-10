@@ -49,7 +49,24 @@ VALUES ( '\( \dfrac {17} {12} \)' ) , -- 201
        ( '\( \dfrac {2-\sqrt {3}} {2} \)' ) , -- 206
        ( '\( \dfrac {3-\sqrt {2}} {3} \)' ) , -- 207
        ( '\( False \)' ) , -- 208
-       ( '\( True \)' )   -- 209
+       ( '\( True \)' ),   -- 209
+	   
+	   ( '99' ), -- 210
+	   ( '100' ), -- 211
+	   ( '101' ), -- 212
+	   ( '102' ), -- 213
+	   
+	   ( '150' ), -- 214
+	   ( '155' ), -- 215
+	   ( '1500'), -- 216
+	   ( '145' ), -- 217
+	   
+	   ( '2'), -- 218
+	   ( '3'), --219
+	   ( '1 \div 2'), --220
+	   ( '4' ) --221
+	   
+
 ;
 SELECT * FROM Math.Choice ;
 --
@@ -72,6 +89,15 @@ VALUES ( '\( \sin \left( \dfrac {\pi } {6}\right) -\cos \left( \dfrac {\pi } {4}
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID )
 VALUES ( '\( \dfrac {3} {4}\in \left\{ x|12x^{2}+17x=-6\right\} \)', 208, 209 ) ; -- 303
 --
+INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
+VALUES ( '57 + 44', 212 , 210, 211, 213 ) ; -- 304
+--
+INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
+VALUES ( '15 * 10', 214, 215, 216, 217) ; -- 304
+--
+INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
+VALUES ( '20 \div 10 ', 218, 219, 220, 221) ; -- 304
+
 SELECT * FROM Math.Question ;
 --
 CREATE TABLE Math.Submission
