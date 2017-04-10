@@ -71,20 +71,20 @@ VALUES ( '\( \dfrac {17} {12} \)' ) , -- 201
 	   ( '\( \dfrac {5} {6} \)' ) , -- 224
 	   ( '\( \dfrac {1} {4} \)' ) ,  -- 225
 	   
-	   ( '\( \dfrac {1} {2} \)' ) , -- 225
-	   ( '\( \dfrac {1} {3} \)' ) , -- 226
+	   ( '\( \dfrac {1} {2} \)' ) , -- 226
+	   ( '\( \dfrac {1} {3} \)' ) , -- 227
 	   -- 225 
 	   -- 222
 	   
-	   ( '-59' ), -- 227
-	   ( '-57' ), -- 228
-	   ( '-69' ), -- 229
-	   ( '-63' ), -- 230
+	   ( '-59' ), -- 228
+	   ( '-57' ), -- 229
+	   ( '-69' ), -- 230
+	   ( '-63' ), -- 231
 	   
-	   ( '132' ), --231
-	   ( '142' ), --232
-	   ( '144' ), --233
-	   ( '122' ) --234
+	   ( '132' ), --232
+	   ( '142' ), --233
+	   ( '144' ), --234
+	   ( '122' ) --235
 	   
 	   
 ;
@@ -125,10 +125,10 @@ INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_
 VALUES ( '\( \dfrac {1} {4} \div \dfrac {1} {2}  \)', 226, 227, 225, 222) ; -- 308
 --
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '16 - 75 ', 227, 228, 229, 230) ; -- 309
+VALUES ( '16 - 75 ', 228, 229, 230, 231) ; -- 309
 --
 INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '12 x 11 ', 231, 232, 233, 234) ; -- 310
+VALUES ( '12 x 11 ', 232, 233, 234, 235) ; -- 310
 
 
 SELECT * FROM Math.Question ;
