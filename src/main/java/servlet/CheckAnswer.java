@@ -56,7 +56,7 @@ public class CheckAnswer extends HttpServlet
 			boolean addToScore = false;
 
 
-			
+
 			// Get the competitor ID for the insert query for submission
 			String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE Username = '" + username + "' ";
 			ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
@@ -65,9 +65,9 @@ public class CheckAnswer extends HttpServlet
 
 
 
-			String submissionQuery = "Update Math.submission "
+			String submissionQuery = "UPDATE Math.submission "
 									+"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
-									+"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " questionNumber + "; ";
+									+"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
 
 			int insertSubmission = statement.executeUpdate ( submissionQuery );
 
