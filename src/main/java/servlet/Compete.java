@@ -118,6 +118,7 @@ public class Compete extends HttpServlet
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
 
+                    // set score back to zero when there is new session
                     String setScoreQuery =  "UPDATE Math.competitor "
 				 					+ "SET score = 0 "
 				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
@@ -226,53 +227,7 @@ public class Compete extends HttpServlet
                 out.println ( " </form> ");
 
             } // end if the userLoggedIn
-            // finds the database information for table on screen ----------------------------------------------------------------------------------------------------------------
-            /*
-            queryString  =     "SELECT   * "
-            +  "FROM   Math.Question " ;
-            ResultSet resultSet = statement.executeQuery ( queryString ) ;
-            out.print(  "<table style='margin-left:auto;margin-right:auto;font-size:small;'>\n"
-            +    "    <caption>QUESTION</caption>\n"
-            +    "    <tr>\n"
-            +    "        <th>ID<br><span style='font-size:smaller;'>SERIAL</span></th>\n"
-            +    "        <th>QUESTIONTEXT<br><span style='font-size:smaller;'>VARCHAR</span></th>\n"
-            +    "        <th>CORRECTANSWER_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-            +    "        <th>FOIL1_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-            +    "        <th>FOIL2_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-            +    "        <th>FOIL3_CHOICE_ID<br><span style='font-size:smaller;'>INT4</span></th>\n"
-            +    "    </tr>\n"
-            ) ;
-            while ( resultSet.next() ) 
-            { out.print("    <tr>\n"
-            +    "        <td>" + resultSet.getObject("ID") + "</td>\n"
-            +    "        <td>" + resultSet.getObject("QuestionText") + "</td>\n"
-            +    "        <td>" + resultSet.getObject("CorrectAnswer_Choice_ID") + "</td>\n"
-            +    "        <td>" + resultSet.getObject("Foil1_Choice_ID") + "</td>\n"
-            +    "        <td>" + resultSet.getObject("Foil2_Choice_ID") + "</td>\n"
-            +    "        <td>" + resultSet.getObject("Foil3_Choice_ID") + "</td>\n"
-            +    "    </tr>\n"
-            ) ;
-            } // end while
-
-            out.print( ""
-            +    "</table>\n"
-            +    "<hr>\n"
-            ) ;  
-             */
-
-            // -------------------------------------------------------------------------------------------------------------------------------------------
-
-
-            /* out.print  (
-            "        <tr style='font-size:x-large;'><td>Hello, " + username + ".</td></tr>\n"
-            +    "        <tr style='font-size:x-large;'><td>The time is " + (new java.util.Date()) + ".</td></tr>\n"
-            +    "        <tr style='font-size:x-large;'><td>This is a new session.</td></tr>\n"
-            +    "        <tr style='font-size:x-large;'><td>The session ID is " + sessionId + ".</td></tr>\n"  ) ;
-             */
-            // }--------------------------------------------
-
-  
-  
+            
       
             out.print ( ""        
                 +   "    <form method='POST'>\n"

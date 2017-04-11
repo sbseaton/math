@@ -28,6 +28,7 @@ public class CheckAnswer extends HttpServlet
 		 Connection connection     =  null ;	// added
  		 Statement  statement      =  null ;	// added
  		 HttpSession        session          =  request.getSession() ;
+ 		 int competitor_ID = -1; // declare competitor_ID
 
 		final String DB_URL       =  System.getenv ( "JDBC_DATABASE_URL" ) ;
 		
@@ -35,9 +36,6 @@ public class CheckAnswer extends HttpServlet
 		PrintWriter out = response.getWriter() ;
 		String             username         =  request.getParameter("username") ;
 		// find session ID and user ID
-
-
-
 
         /*
         session.setAttribute ("LOGGED_IN_USER", username);
@@ -57,6 +55,21 @@ public class CheckAnswer extends HttpServlet
 
 			boolean addToScore = false;
 
+
+			
+			// Get the competitor ID for the insert query for submission
+			String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE Username = '" + username + "' ";
+			ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
+			if ( competitor_IDRS.next() )
+				competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
+
+
+
+			String submissionQuery = "Update Math.submission "
+									+"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
+									+"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " questionNumber + "; ";
+
+			int insertSubmission = statement.executeUpdate ( submissionQuery );
 
 			// get the user choice to display ------------------------------------------------------------------------------
 			String usersChoiceQuery = "select * "	
