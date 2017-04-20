@@ -143,6 +143,10 @@ public class CheckAnswer extends HttpServlet
 				}
 				else
 				{
+					/*outprintln( " <button type='button' class='close' data-dismiss='alert' aria-label='Close'> "
+  							+	" <span aria-hidden='true'>&times;</span>"
+  							+ 	" </button> " );*/
+
 					out.println ( "	   <h1>Your answer was not correct.</h1>" ) ;
 					addToScore = false; 
 				}

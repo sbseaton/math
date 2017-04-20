@@ -47,9 +47,16 @@ public class Compete extends HttpServlet
 
         ServletContext     context          =  this.getServletContext() ;
         String             username         =  request.getParameter("username") ;
-        String             password         =  request.getParameter("password") ;
-        String             storedPassword   =  null ;
+//      String             storedPassword   =  null ;
         String      userChoice = null;
+
+
+        // -----------------------------------------------------------------------
+        String username = request.getParameter("requestedName");
+
+
+
+        // -----------------------------------------------------------------------
 
       
 
@@ -65,16 +72,33 @@ public class Compete extends HttpServlet
 
         try
         {
+
+
             connection = DriverManager.getConnection ( DB_URL ) ;
             statement = connection.createStatement() ;
             String queryString  =  null ;
             String questionString = null;
             String questionAnswersString = null ;   // question one answer string]
 
-            String questionNumberString = null ; 
-            if ( username != null )
+        	
+
+
+        	System.out.println("<h1>" + requestedName + "</h1>")
+
+
+/*
+        	String submissionQuery = "UPDATE Math.submission "
+									+"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
+									+"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
+*/
+
+        	// ---------------------------------------------------------
+
+
+       //     String questionNumberString = null ; 
+        /*    if ( username != null )
             {
-                username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
+               username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
                 queryString  = "select Password from Math.Competitor "
                 +  "WHERE lower(Username) = lower('" + username + "') " ;
                 System.out.println ( "-------------------------------------" ) ;
@@ -84,14 +108,16 @@ public class Compete extends HttpServlet
                 // two possibilities:
                 // 1. resultSet is empty (username entered by user was not found in database)
                 // 2. resultSet is non-empty (username was found in database)
+                
 
-                if ( resultSet.next() )
-                    storedPassword  =  (String) resultSet.getObject("Password") ;     
+               // if ( resultSet.next() )
+                 //   storedPassword  =  (String) resultSet.getObject("Password") ;     
 
             } // end if
+            */
 
-            boolean  userExists      =   (storedPassword != null) ;
-            boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
+         //   boolean  userExists      =   (storedPassword != null) ;
+         //   boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
             boolean userLoggedIn = false;
 
             // html display ---------------------------------------------------------------
@@ -108,21 +134,47 @@ public class Compete extends HttpServlet
                 +    "  </head>\n"
                 +    "  <body>\n" );
 
+            // ---------------------------------------------------------
+
+        	boolean userIsAvailable = false ;
+
+        	String getUserQuery = "SELECT * FROM MATH.Competitor WHERE username = lower('" + username + "') ";
+        	ResultSet usernameRS = statement.executeQuery ( getUserQuery ) ;
+        	
+        	// find if the username is available
+        	if (usernameRS.next() )
+        	{
+        		if (usernameRS.getObject("username") == null )
+        		{
+        			userIsAvailable = true; 	// set the available to true if the result set can't find the username
+        		}
+        	}
+
             
             if ( session.isNew() )
             {
 
                 // if the user exists and the password matches, display the first webpage
-                if ( userExists && passwordsMatch )
+               if ( userIsAvailable  ) // if the userIs available, update the competitor table 
                 {
+
+                	// insert the new user into the competitor table 
+					String insertUserQuery = 	"INSERT into Math.Competitor (Username, Score ) "
+											+	"VALUES  ( '" + username + "', 0 )" ;
+
+					int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
+
+
+
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
 
-                    // set score back to zero when there is new session
+               /*     // set score back to zero when there is new session
                     String setScoreQuery =  "UPDATE Math.competitor "
 				 					+ "SET score = 0 "
 				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
 				 	int scoreZero = statement.executeUpdate (setScoreQuery);
+				*/
 
                 }
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
