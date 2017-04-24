@@ -363,7 +363,7 @@ public class Compete extends HttpServlet
                 +	"<tr><th class='col-lg-8'>Competitor</th><th class='col-lg-4'>Points</th></tr> "
                 +	"</thead> "
                 +	"<tbody> "
-                +	"<tr><td class='col-lg-8'>abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-+</td></tr>      </tbody> "
+                +	"<tr><td class='col-lg-8'>THIS IS WHERE USERNAME ENTRIES GO</td></tr>      </tbody> "
                 +	"</table> "
                 +	"</div> "
                 +	"</div> "
@@ -375,7 +375,7 @@ public class Compete extends HttpServlet
 
 
 
-
+			}	// end if userloggedin is true
 
 
 
