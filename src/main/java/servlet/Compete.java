@@ -117,7 +117,7 @@ public class Compete extends HttpServlet
 
          //   boolean  userExists      =   (storedPassword != null) ;
          //   boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
-            boolean userLoggedIn = true;
+            boolean userLoggedIn = false;
 
             // html display ---------------------------------------------------------------
             out.print  (  "<!DOCTYPE html>\n"
@@ -135,7 +135,7 @@ public class Compete extends HttpServlet
 
             // ---------------------------------------------------------
 
-        	boolean userIsAvailable = false ;
+        	boolean userIsAvailable = true ;
 
         	String getUserQuery = "SELECT * FROM MATH.Competitor WHERE username = lower('" + username + "') ";
         	ResultSet usernameRS = statement.executeQuery ( getUserQuery ) ;
