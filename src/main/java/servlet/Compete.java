@@ -72,18 +72,32 @@ public class Compete extends HttpServlet
         try
         {
 
-
             connection = DriverManager.getConnection ( DB_URL ) ;
             statement = connection.createStatement() ;
             String queryString  =  null ;
             String questionString = null;
             String questionAnswersString = null ;   // question one answer string]
 
-        	
+        	boolean userLoggedIn = false;
 
+            // html display ---------------------------------------------------------------
+            out.print  (  "<!DOCTYPE html>\n"
+                +    "<html>\n"
+                +    "  <head>\n"
+                +    "    <meta charset='UTF-8'>\n"
+                +    "    <title>Compete</title>\n"
+                +    "    <style> "
+                +    "    </style>\n"
+                + "<script type='text/javascript' async\n"
+                + " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
+                + "</script>\n"
+                +    "  </head>\n"
+                +    "  <body>\n" );
+            System.out.println("<h1>" + username + "</h1>");
 
-        	System.out.println("<h1>" + username + "</h1>");
+            // ---------------------------------------------------------
 
+        	boolean userIsAvailable = true ;				// change this back to false
 
 /*
         	String submissionQuery = "UPDATE Math.submission "
@@ -117,31 +131,14 @@ public class Compete extends HttpServlet
 
          //   boolean  userExists      =   (storedPassword != null) ;
          //   boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
-            boolean userLoggedIn = false;
-
-            // html display ---------------------------------------------------------------
-            out.print  (  "<!DOCTYPE html>\n"
-                +    "<html>\n"
-                +    "  <head>\n"
-                +    "    <meta charset='UTF-8'>\n"
-                +    "    <title>Compete</title>\n"
-                +    "    <style> "
-                +    "    </style>\n"
-                + "<script type='text/javascript' async\n"
-                + " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
-                + "</script>\n"
-                +    "  </head>\n"
-                +    "  <body>\n" );
-
-            // ---------------------------------------------------------
-
-        	boolean userIsAvailable = true ;
+          
 
         	String getUserQuery = "SELECT * FROM MATH.Competitor WHERE username = lower('" + username + "') ";
         	ResultSet usernameRS = statement.executeQuery ( getUserQuery ) ;
         	
         	// find if the username is available
-        	if (usernameRS.next() )
+        	// changed this from if to while
+        	while (usernameRS.next() )
         	{
         		if (usernameRS.getObject("username") == null )
         		{
@@ -158,10 +155,10 @@ public class Compete extends HttpServlet
                 {
 
                 	// insert the new user into the competitor table 
-					String insertUserQuery = 	"INSERT into Math.Competitor (Username, Score ) "
+				//	String insertUserQuery = 	"INSERT into Math.Competitor ( Username, Score ) "
 											+	"VALUES  ( '" + username + "', 0 )" ;
 
-					int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
+				//	int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
 
 
 
