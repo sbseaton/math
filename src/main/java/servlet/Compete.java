@@ -117,7 +117,7 @@ public class Compete extends HttpServlet
 
          //   boolean  userExists      =   (storedPassword != null) ;
          //   boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
-            boolean userLoggedIn = false;
+            boolean userLoggedIn = true;
 
             // html display ---------------------------------------------------------------
             out.print  (  "<!DOCTYPE html>\n"
@@ -154,7 +154,7 @@ public class Compete extends HttpServlet
             {
 
                 // if the user exists and the password matches, display the first webpage
-               if ( userIsAvailable  ) // if the userIs available, update the competitor table 
+               if ( userIsAvailable == true  ) // if the userIs available, update the competitor table 
                 {
 
                 	// insert the new user into the competitor table 
