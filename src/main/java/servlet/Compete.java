@@ -83,7 +83,7 @@ public class Compete extends HttpServlet
         	
 
 
-        	System.out.println("<h1>" + requestedName + "</h1>")
+        	System.out.println("<h1>" + requestedName + "</h1>");
 
 
 /*
