@@ -81,59 +81,18 @@ public class Compete extends HttpServlet
         	boolean userLoggedIn = false;
 
             // html display ---------------------------------------------------------------
-            out.println  ( 	""   
-            			+	"<!DOCTYPE html>"
-						+	"<html lang='en'>"
-  						+	"<head>"
-    					+	"<meta charset='utf-8'>"
-    					+	"<meta http-equiv='X-UA-Compatible' content='IE=edge'>"
-    					+	"<meta name='viewport' content='width=device-width, initial-scale=1'>"
-    					+	"<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->"
-    					+	"<title>FHSU 2017 Mental Math</title>"
-    					+	"<!-- ======================= jQuery (necessary for Bootstrap's JavaScript plugins) ======================= -->"
-    					+	"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>"
-    					+	"<!-- Bootstrap -->"
-    					+	"<!-- Latest compiled and minified CSS -->"
-    					+	"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' "
-    					+	"      integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
-    					+	"<!-- Optional theme --> "
-    					+	"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' "
-    					+	"      integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp' crossorigin='anonymous'> "
-    					+	"<!-- Latest compiled and minified JavaScript --> "
-    					+	"<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' "
-    					+	"        integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script> "
-    					+	"<script type='text/javascript' async "
-    					+	"  src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'> "
-    					+	"</script> "
-    				
-    					+	"<!-- styles below to *FOLLOW* Bootstrap's CSS (which is above) -->"
-					
-    					+	"<style>"
-    					+	"  .dropdown:hover .dropdown-menu { display: block; }"
-    					+	"  .equal { display: flex; display: -webkit-flex; }"
-    					+	"  .tbodyScoreboard { display:block; height:300px; overflow:auto; }"
-    					+	"  .theadScoreboard .tbodyScoreboard .trScoreboard { display:table; width:100%; table-layout:fixed; }"
-    					+	"  .theadScoreboard { width: calc( 100% - 1em ) }"
-    					+	"  .not-active { pointer-events: none; cursor: default; }"
-    					+	"</style>"
-
-    					+	"<script>"
-    					+	"  $(document).on('change','input[type=radio]', function( event )"
-    					+	"    { "
-    					+	"    if ( $(event.target).hasClass('correct') )"
-    					+	"      $('#feedbackHeader').text( 'Correct!' ) ;"
-    					+	"    else if ( $(event.target).hasClass('incorrect') )"
-    					+	"      $('#feedbackHeader').text( 'Sorry, incorrect.' ) ;"
-    					+	"    $('#feedbackModal').modal ( 'show' ) ;"
-    					+	"    setTimeout ( function() { $('#feedbackModal').modal('hide'); }, 2000 ) ;"
-    					+	"    setTimeout ( function() { $(event.target).closest('form').submit() }, 2500 ) ;"
-    					+	"    } ) ;"
-    					+	"  $(document).on('click','#updateScoreboardButton', function( ) {$('#updateScoreboardButton').closest('form').submit();} ) ;"
-    					+	"</script>"
-
-						+	"</head>"
-						+	"<body>" );
-
+             out.print  (  "<!DOCTYPE html>\n"
+                +    "<html>\n"
+                +    "  <head>\n"
+                +    "    <meta charset='UTF-8'>\n"
+                +    "    <title>Compete</title>\n"
+                +    "    <style> "
+                +    "    </style>\n"
+                + "<script type='text/javascript' async\n"
+                + " src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'>\n"
+                + "</script>\n"
+                +    "  </head>\n"
+                +    "  <body>\n" );
             System.out.println("<h1>" + username + "</h1>");
 
             // ---------------------------------------------------------
