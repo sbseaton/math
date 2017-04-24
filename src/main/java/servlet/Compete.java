@@ -311,7 +311,7 @@ public class Compete extends HttpServlet
                 +	"<li class='dropdown'> \n"
                 +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Medium <span class='caret'></span></a> \n"
                 +	" <ul class='dropdown-menu'> \n"
-                +	" <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"\n
+                +	" <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"
 
                 +	"<li role='separator' class='divider'></li> \n"
                 +	"<li class='dropdown-header disabled'>Legend</li> \n"
