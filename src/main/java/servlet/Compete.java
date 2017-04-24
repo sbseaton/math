@@ -51,7 +51,7 @@ public class Compete extends HttpServlet
 
 
         // -----------------------------------------------------------------------
-        String username = request.getParameter("requestedName");
+        String username = request.getParameter("username");
 
 
 
@@ -82,7 +82,7 @@ public class Compete extends HttpServlet
         	
 
 
-        	System.out.println("<h1>" + requestedName + "</h1>");
+        	System.out.println("<h1>" + username + "</h1>");
 
 
 /*
