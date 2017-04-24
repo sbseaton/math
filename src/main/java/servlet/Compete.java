@@ -46,7 +46,6 @@ public class Compete extends HttpServlet
         String             userIdAttribute  =  ( "LOGGED_IN_USER_" + sessionId ) ;
 
         ServletContext     context          =  this.getServletContext() ;
-        String             username         =  request.getParameter("username") ;
 //      String             storedPassword   =  null ;
         String      userChoice = null;
 
