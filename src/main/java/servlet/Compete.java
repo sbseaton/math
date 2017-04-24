@@ -104,8 +104,8 @@ public class Compete extends HttpServlet
     					+	"        integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script> "
     					+	"<script type='text/javascript' async "
     					+	"  src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'> "
-    					+	"</script>
-    					+	"
+    					+	"</script> "
+    				
     					+	"<!-- styles below to *FOLLOW* Bootstrap's CSS (which is above) -->"
 					
     					+	"<style>"
