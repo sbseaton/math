@@ -271,65 +271,115 @@ public class Compete extends HttpServlet
                 // create a result set for the question answers
                 ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 
-                out.println  ( "" 
-                    +    "    <hr>\n"
-                    +    "     <h2 style='text-align:center'> Mental Math Game </h2> \n"
-                    +    "   <h3> Username: "+ username +" </h3>  \n "
-                    +    "   <p style=\"text-align:center\">Time Remaining 00&#58;50&#58;00 </p> \n"
-                    +    "    <br>" 
-                    +    "    <hr style='border: 2px solid #FFD700'> \n  "
-                    +    "      <h4> Question "+ questionNumber +" </h4>   \n "
-                    +    "      <p> &#40;101 points possible&#41; </p> "
-                        // add the current score keeping right here --------------------------------------------------------
-                    +    "      <p> 0 points total</p> "
-                    +    "     <hr style='border: 2px solid #FFD700'> \n   "
-                    +    "     <label> What is the answer to the following problem? </label> \n  "
-                    +    "      <br><br> \n " 
-                    +   "      <table>\n"
-                    +   " <tr>     "
-                    +       "     <td> &nbsp;&ensp;&ensp;" + questionText + " = </td>      "
-                    +       "   </tr>      "
-                    +       "</table>     "
-                    +       "<br>     " ); 
-
-        
-                // print each answer with a radio button for user selection, assign the value to the id of the answer
-                
-                out.println ( "    <form action='CheckAnswer' method='POST'>" ) ;
-                
-                while (questionAnswers.next() )
+           /*      while (questionAnswers.next() )
                 {
                     out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
                 }
 
-                out.println(""  
-                    + " <table style='float:right'> "
-                    + " <tr>  "
-                    + "   <td><input type='hidden' name= 'username' value='" + username + "'> </td>"
-                    + "   <td><input type='hidden' name= 'questionNumber' value='" + questionNumber + "'> </td> "
-                    + "   <td><input type='submit' value='Click This Button to Check Your Answer'></td> "
-                        //  + "   <td><input type='submit' value='Submit'></td>"
-                    + "  </tr>"
-                    + " </table>"
-                    +   "   <br> " );
+                */
 
-                out.println ( " </form> ");
+               out.println  ( "" 
+                +	"<div class='container'>"
+                +	"<div class='modal fade' id='feedbackModal' role='dialog'>"
+                +	"<div class='modal-dialog modal-sm'> "
+                +	"<div class='modal-content'> "
+                +	"<div class='modal-header'> "
+                +	"<button type='button' class='close' data-dismiss='modal'>&times;</button> "
+                +	"<h4 class='modal-title' id='feedbackHeader'>TO BE SET BY SCRIPT</h4> "
+                +	"</div> "
+                +	"</div> "
+                +	" </div> "
+                +	"</div> "
+                +	"</div> "
+                +	"<!-- Begin outermost container --> "
+                +	"<div class='container'> "
+                +	"<nav class='navbar navbar-default'> "
+                +	"<div class='container-fluid'> "
+                +	"<div id='navbar' c "
+                +	" <!-- Begin static navbalass='navbar-collapse collapse'> "
+                +	"<ul class='nav navbar-nav'> "
+                +	"<li class='dropdown'> "
+                +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> "
+                +	"<ul class='dropdown-menu'> "
+                +	"<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'>\( 0.4\times 160 \)</a></li> "
 
-            } // end if the userLoggedIn
+                +	"<li role='separator' class='divider'></li> "
+                +	"<li class='dropdown-header disabled'>Legend</li> "
+                +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> "
+                +	"<li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> "
+                +	"</ul> "
+                +	" </li> "
+                +	"<li class='dropdown'> "
+                +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Medium <span class='caret'></span></a> "
+                +	" <ul class='dropdown-menu'> "
+                +	" <li><a data-target='/Compete' href='/Compete?Q_ID=111'>\( 58\times 62 \)</a></li> "
+
+                +	"<li role='separator' class='divider'></li> "
+                +	"<li class='dropdown-header disabled'>Legend</li> "
+                +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> "
+                +	" <li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> "
+                +	"</ul> "
+                +	" </li> "
+                +	" <li class='dropdown'> "
+                +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Difficult <span class='caret'></span></a> "
+                +	"<ul class='dropdown-menu'> "
+                +	"<li><a data-target='/Compete' href='/Compete?Q_ID=121'>\( \text{Least positive &theta; &SuchThat; }\ 2\sin \left( \theta \right) =-\sqrt {3} \)</a></li> "
+
+                +	"<li role='separator' class='divider'></li> "
+                +	"<li class='dropdown-header disabled'>Legend</li> "
+                +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> "
+                +	"<li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> "
+                +	"</ul> "
+                +	"</li> "
+                +	"</ul> "
+                +	"<form method='POST' action='/Compete' class='navbar-form navbar-right'> "
+                +	"<!-- Button trigger modal --> "
+                +	"<button id='updateScoreboardButton' type='button' class='btn btn-primary'> "
+                +	" Update Scoreboard "
+                +	"</button> "
+                +	"</form> "
+                +	"</div><!--/.nav-collapse --> "
+                +	"</div><!--/.container-fluid --> "
+                +	"</nav> "
+                +	"<!-- End static navbar --> "
+                +	"<!-- Begin container of two jumbotrons --> "
+                +	"<div class='container-fluid'> "
+                +	" <div class='row equal'> "
+                +	"<div class='jumbotron col-md-8' style='margin:20px'> "
+                +	"<h2 class='display-3'>Welcome to Sam's Mental Math Competition!</h2> "
+                +	"<hr class='my-4'> "
+                +	"<p class='lead'>Neither calculator nor scratchpaper are permitted.  You get one guess for each question.</p> "
+                +	"<hr class='my-4'> "
+                +	"<p>To begin, select a question from a drop-down menu above -- Easy, Medium, or Difficult.</p> "
+                +	"<hr class='my-4'> "
+                +	"</div> "
+                +	"<div class='jumbotron col-md-4' style='margin:20px'> "
+                +	"<div class='panel panel-default'> "
+                +	"<div class='panel-heading'> "
+                +	"<h4> Scoreboard </h4> "
+                +	"</div> "
+                +	"<table class='table tbodyScoreboard theadScoreboard trScoreboard'> "
+                +	"<thead> "
+                +	"<tr><th class='col-lg-8'>Competitor</th><th class='col-lg-4'>Points</th></tr> "
+                +	"</thead> "
+                +	"<tbody> "
+                +	"<tr><td class='col-lg-8'>abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-+</td></tr>      </tbody> "
+                +	"</table> "
+                +	"</div> "
+                +	"</div> "
+                +	"</div> "
+                +	"</div> "
+                +	"<!-- End container of two jumbotrons --> "
+                +	"</div> <!-- /container --> "
+                +	" <!-- End outermost container --> " );
+
+
+
+
+
+
+
             
-      
-            out.print ( ""        
-                +   "    <form method='POST'>\n"
-                +   "   <table> "
-                + "     <tr> "
-                + "     <td> "
-                + "     <button type='submit' class='inline_wide' formaction='LogOut' name='username' value='" + username + "'>Log Out</button> "
-                + "     </td>"
-                + "     </tr>\n" ) ;
-
-            out.print  (  "     </table>\n"
-                +    "    </form>\n"
-                +    "    <hr>\n" ) ;
 
         } // end try block
         catch ( SQLException sqlException ) 
