@@ -156,7 +156,7 @@ public class Compete extends HttpServlet
 
                 	// insert the new user into the competitor table 
 				//	String insertUserQuery = 	"INSERT into Math.Competitor ( Username, Score ) "
-											+	"VALUES  ( '" + username + "', 0 )" ;
+				//							+	"VALUES  ( '" + username + "', 0 )" ;
 
 				//	int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
 
