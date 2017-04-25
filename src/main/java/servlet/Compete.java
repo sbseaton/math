@@ -416,7 +416,7 @@ public class Compete extends HttpServlet
             else 
             {	
 
-            	questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
+            	String questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
 
             	ResultSet questionRS = statement.executeQuery ( questionQuery );
 
