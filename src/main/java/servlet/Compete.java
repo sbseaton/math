@@ -319,7 +319,27 @@ public class Compete extends HttpServlet
                 +	" </li> \n"
                 +	"<li class='dropdown'> \n"
                 +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Medium <span class='caret'></span></a> \n"
-                +	" <ul class='dropdown-menu'> \n"
+                +	" <ul class='dropdown-menu'> \n" ) ;
+
+                // medium questions ---------------------------------------------------------------------------------------------
+
+                String questionStringMedium = "SELECT * "
+                + "FROM   Math.Question WHERE PointValue = 3 ";
+
+                ResultSet questionMediumRS = statement.executeQuery ( questionStringMedium ) ;
+                String questionTextMedium = "";
+                String questionIDMedium = "";
+                // display the question text 
+                while (questionMediumRS.next() )
+                {
+                    questionTextMedium = (String) questionMediumRS.getObject("QuestionText") ;
+                    questionIDMedium = "" + questionMediumRS.getObject("ID");
+                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDMedium +"'> " + questionTextMedium + " </a></li> \n" );
+                }
+
+            // ------------------------------------------------------------------------------------------------ 
+
+
                 +	" <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"
 
                 +	"<li role='separator' class='divider'></li> \n"
@@ -330,8 +350,29 @@ public class Compete extends HttpServlet
                 +	" </li> \n"
                 +	" <li class='dropdown'> \n"
                 +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Difficult <span class='caret'></span></a> \n"
-                +	"<ul class='dropdown-menu'> \n"
-                +	"<li><a data-target='/Compete' href='/Compete?Q_ID=121'>HERE IS A QUESTION</a></li> \n"
+                +	"<ul class='dropdown-menu'> \n" ) ; 
+
+
+             // Hard questions ---------------------------------------------------------------------------------------------
+
+                String questionStringHard = "SELECT * "
+                + "FROM   Math.Question WHERE PointValue = 4 ";
+
+                ResultSet questionHardRS = statement.executeQuery ( questionStringHard ) ;
+                String questionTextHard = "";
+                String questionIDHard= "";
+                // display the question text 
+                while (questionHardRS.next() )
+                {
+                    questionTextHard = (String) questionHardRS.getObject("QuestionText") ;
+                    questionIDHard = "" + questionHardRS.getObject("ID");
+                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
+                }
+
+            // ------------------------------------------------------------------------------------------------ 
+
+
+             //   +	"<li><a data-target='/Compete' href='/Compete?Q_ID=121'>HERE IS A QUESTION</a></li> \n"
 
                 +	"<li role='separator' class='divider'></li> \n"
                 +	"<li class='dropdown-header disabled'>Legend</li> \n"
