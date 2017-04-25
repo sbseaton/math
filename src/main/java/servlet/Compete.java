@@ -440,7 +440,8 @@ public class Compete extends HttpServlet
                 // create a result set for the question answers
                 ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 
-                <table class='table table-bordered table-hover' >
+                out.println ( "<table class='table table-bordered table-hover' > " );
+                
                 while (questionAnswers.next() )
                 {
                 	out.println( ""
