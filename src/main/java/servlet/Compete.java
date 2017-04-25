@@ -137,7 +137,7 @@ public class Compete extends HttpServlet
 
             // ---------------------------------------------------------
 
-        	boolean userIsAvailable = false ;				// change this back to false
+        	boolean userIsAvailable = true ;				// change this back to false
 
 /*
         	String submissionQuery = "UPDATE Math.submission "
