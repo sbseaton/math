@@ -423,9 +423,11 @@ public class Compete extends HttpServlet
 
             	ResultSet questionRS = statement.executeQuery ( questionQuery );
 
+            	int correctChoiceID = -1;
             	while (questionRS.next() )
             	{
             		out.println ("<h3>" + questionRS.getObject("QuestionText") + "</h3>\n");
+            		correctChoiceID = Integer.parseInt( "" + questionRS.getObject("correctanswer_choice_id"));
             	} 
 
 
@@ -451,8 +453,17 @@ public class Compete extends HttpServlet
 					+			"<td>"
 					+			"<form method='POST' action='/Compete?Q_ID=" + questionNumber + "'>"
 					+			"<div class='form-check'>"
-					+			"<label class='form-check-label'> &nbsp; "
-					+			"<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> "
+					+			"<label class='form-check-label'> &nbsp; " ); 
+
+                	//correctAnswerQuery = "Select correctanswer_choice_id from math.question "
+
+					if ( correctChoiceID == questionAnswers.getObject("id") )
+						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
+
+					else
+						out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
+
+					out.println( ""
 					+			"&nbsp;" + questionAnswers.getObject("choicetext") + " "
 					+			"</label> "
 					+			"</div> "
