@@ -9,15 +9,17 @@ CREATE SCHEMA Math ;
 CREATE TABLE Math.Competitor
   ( ID          SERIAL       PRIMARY KEY,
     Username    VARCHAR(32)  NOT NULL,
-    Password    VARCHAR(32)  NOT NULL,
+	/* 
+	Password    VARCHAR(32)  NOT NULL,
     FirstName   VARCHAR(32)  NOT NULL,
     LastName    VARCHAR(32)  NOT NULL,
+	*/
     Score       INTEGER       ) ;
 --
 ALTER SEQUENCE Math.Competitor_ID_Seq RESTART WITH 101 ;
-INSERT INTO Math.Competitor ( Username, Password, FirstName, LastName, Score )
-VALUES
-( 'Jeff',        'AppLE',   'Jeff',    'Solheim' , 0   ),
+
+/* 
+
 ( 'Cooper',      'baNANa',  'Cooper',  'Cummings', 0   ),
 ( 'Zachery',     'grAPE',   'Zachery', 'Glass'   , 0   ),
 ( 'Taylor',      'LETTuce', 'Taylor',  'Gonzalez', 0   ),
@@ -31,7 +33,9 @@ VALUES
 ( 'Philip',      'CARrot',  'Philip',  'McCrickard', 0 ),
 ( 'Clinton',     'BeaN',    'Clinton', 'Petrie'    , 0 ),
 ( 'Samuel',      'manGO',   'Samuel',  'Seaton'  , 0   )
-;
+
+*/
+
 
 SELECT * FROM Math.Competitor ;
 --
@@ -39,59 +43,113 @@ CREATE TABLE Math.Choice
   ( ID          SERIAL       PRIMARY KEY,
     ChoiceText  VARCHAR(256)  NOT NULL ) ;
 --
-ALTER SEQUENCE Math.Choice_ID_Seq RESTART WITH 201 ;
+ALTER SEQUENCE Math.Choice_ID_Seq RESTART WITH 1 ;
 INSERT INTO Math.Choice ( ChoiceText )
-VALUES ( '\( \dfrac {17} {12} \)' ) , -- 201
-       ( '\( \dfrac {12} {17} \)' ) , -- 202
-       ( '\( \dfrac {5} {7} \)' ) , -- 203
-       ( '\( \dfrac {7} {5} \)' ) , -- 204
-       ( '\( \dfrac {1-\sqrt {2}} {2} \)' ) , -- 205
-       ( '\( \dfrac {2-\sqrt {3}} {2} \)' ) , -- 206
-       ( '\( \dfrac {3-\sqrt {2}} {3} \)' ) , -- 207
-       ( '\( False \)' ) , -- 208
-       ( '\( True \)' ),   -- 209
+VALUES ('\( 64 \)' ) , -- 1
+       ( '\( 54 \)' ) , -- 2
 	   
-	   ( '99' ), -- 210
-	   ( '100' ), -- 211
-	   ( '101' ), -- 212
-	   ( '102' ), -- 213
+       ( '\( 4096 \)' ) , -- 3
+       ('\( 5144 \)' ) , -- 4
 	   
-	   ( '150' ), -- 214
-	   ( '155' ), -- 215
-	   ( '1500'), -- 216
-	   ( '145' ), -- 217
+       ( '\( False \)' ) , -- 5
+       ( '\( True \)' ) , -- 6
 	   
-	   ( '2'), -- 218
-	   ( '3'), --219
-	   ( '\( \dfrac {1} {2} \)'), --220
-	   ( '4' ), --221
+       ( '\( True \)' ) , -- 7
+       ( '\( False \)' ) , -- 8
 	   
-	   ( '\( \dfrac {1} {6} \)' ) , -- 222
-	   ( '\( \dfrac {2} {3} \)' ) , -- 223
-	   ( '\( \dfrac {5} {6} \)' ) , -- 224
-	   ( '\( \dfrac {1} {4} \)' ) ,  -- 225
+       ( '\( 13 \)' ),   -- 9
+	   ( '\( 11 \)' ), -- 10
 	   
-	   ( '\( \dfrac {1} {2} \)' ) , -- 226
-	   ( '\( \dfrac {1} {3} \)' ) , -- 227
-	   -- 225 
-	   -- 222
+	   ( '\( 22 \)' ), -- 11
+	   ( '\( 86 \)' ), -- 12
+	   ( '\( 16 \)' ), -- 13
 	   
-	   ( '-59' ), -- 228
-	   ( '-57' ), -- 229
-	   ( '-69' ), -- 230
-	   ( '-63' ), -- 231
-	   
-	   ( '132' ), --232
-	   ( '142' ), --233
-	   ( '144' ), --234
-	   ( '122' ) --235
-	   
-	   
-;
+	   ( '\( 2 \)' ), -- 14
+	   ( '\( 168 \)' ), -- 15
+	   ( '\( 178 \)' ), -- 16
+		
+		
+	   ( '\( -11 \)' ), --17
+       ( '\( -9 \)' ), --18
+       ( '\( 1 \)'  ), --19
+       ( '\( \sqrt {3} \)'  ), -- 20
+       ( '\( 3596 \)'  ), -- 21
+       ( '\( 3476 \)'  ), -- 22
+       ( '\( 3582 \)'  ), -- 23
+       ( '\( -7 \)'  ), --24
+       ( '\( -\dfrac {1} {7} \)'  ), --
+       ( '\( -\dfrac {2} {7} \)'  ),
+       ( '\( -2 \)'  ),
+       ( '\( -3 \)'  ),
+       ( '\( -4 \)'  ),
+       ( '\( \left( \dfrac {4} {3},\infty \right)  \)'  ),
+       ( '\( \left( -\infty ,-\dfrac {3} {4}\right)  \)'  ),
+       ( '\( \left( \dfrac {5} {3},\infty \right)  \)'  ),
+       ( '\( -4 \)'  ),
+       ( '\( \dfrac {3\pi } {2} \)'  ),
+       ( '\( -2\pi  \)'  ),
+       ( '\( 3\dfrac {5} {6} \)'  ),
+       ( '\( 5\dfrac {1} {3} \)'  ),
+       ( '\( 4\dfrac {1} {6} \)'  ),
+       ( '\( 57 \)'  ),
+       ( '\( 61 \)'  ),
+       ( '\( 73 \)'  ),
+       ( '\( \dfrac {3} {2} \)'  ),
+       ( '\( \dfrac {5} {3} \)'  ),
+       ( '\( 1\dfrac {5} {6} \)'  ),
+       ( '\( 9996 \)'  ),
+       ( '\( 9656 \)'  ),
+       ( '\( 10056 \)'  ),
+       ( '\( \left( 5,4\right)  \)'  ),
+       ( '\( \left( 4,5\right)  \)'  ),
+       ( '\( \left( 3,6\right)  \)'  ),
+       ( '\( \dfrac {4\pi } {3} \)'  ),
+       ( '\( \dfrac {5\pi } {3} \)'  ),
+       ( '\( \dfrac {7\pi } {6} \)'  ),
+       ( '\( \dfrac {11\pi } {6} \)'  ),
+       ( '\( 496 \)'  ),
+       ( '\( 504 \)'  ),
+       ( '\( 488 \)'  ),
+       ( '\( 484 \)'  ),
+       ( '\( 2x\cdot \cos \left( x^{2}\right) \)'  ),
+       ( '\( 2\cdot \cos \left( 2x\right) \)'  ),
+       ( '\( -2x\cdot \cos \left( 2x^{2}\right) \)'  ),
+       ( '\( 4x\cdot \cos \left( 2x\right)  \)'  ),
+       ( '\( 2331 \)'  ),
+       ( '\( 2341 \)'  ),
+       ( '\( 2351 \)'  ),
+       ( '\( 2361 \)'  ),
+       ( '\( 120 \)'  ),
+       ( '\( 360 \)'  ),
+       ( '\( 240 \)'  ),
+       ( '\( 180 \)'  ),
+       ( '\( 111001 \)'  ),
+       ( '\( 110101 \)'  ),
+       ( '\( 101011 \)'  ),
+       ( '\( 110111 \)'  ),
+       ( '\( 40320 \)'  ),
+       ( '\( 38760 \)'  ),
+       ( '\( 42240 \)'  ),
+       ( '\( 43180 \)'  ),
+       ( '\( 1 \)'  ),
+       ( '\( -2 \)'  ),
+       ( '\( -1 \)'  ),
+       ( '\( 2 \)'  ),
+       ( '\( 792 \)'  ),
+       ( '\( 786 \)'  ),
+       ( '\( 812 \)'  ),
+       ( '\( 772 \)'  ),
+       ( '\( \dfrac {5} {18} \)'  ),
+       ( '\( \dfrac {9} {36} \)'  ),
+       ( '\( \dfrac {7} {18} \)'  ),
+       ( '\( \dfrac {11} {36} \)'  ) ;
+	     
+; 
 SELECT * FROM Math.Choice ;
 --
 CREATE TABLE Math.Question
   ( ID             SERIAL         PRIMARY KEY,
+	PointValue		   INTEGER, 
     QuestionText   VARCHAR(256)   NOT NULL,
     CorrectAnswer_Choice_ID  INTEGER REFERENCES Math.Choice(ID)  NOT NULL,
     Foil1_Choice_ID          INTEGER REFERENCES Math.Choice(ID)  NOT NULL,
@@ -100,35 +158,44 @@ CREATE TABLE Math.Question
     CHECK ( (Foil2_Choice_ID IS NOT NULL) OR (Foil3_Choice_ID IS NULL) ) ) ;
 --
 ALTER SEQUENCE Math.Question_ID_Seq RESTART WITH 301 ;
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '\( \dfrac {2} {3}+\dfrac {3} {4} \)', 201, 202, 203, 204 ) ; -- 301
+INSERT INTO Math.Question ( PointValue, QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID )
+VALUES  ( 2, '\( 0.4\times 160 \)', 1, 2 ),
+        ( 2, '\( 2^{12} \)', 3, 4 ),
+	    ( 2, '\( e^{2}>9 \)', 5, 6 ),
+	    ( 2, '\( 3\ |\ 85203 \)', 7, 8 ),
+	    ( 2, '\( 8x-3=101 \)', 9, 10 ),
+	    ( 2, '\( \left| \begin{matrix} 6& 4\\ 8& 9\end{matrix} \right|  \)', 11, 12 ),
+	    ( 2, '\( x>0\ \land \left( x-7\right) ^{2}=81 \)', 13, 14 ),
+	    ( 2, '\( 35\%\ \ of\ \ 480 \)', 15, 16 ),
+	    ( 2, '\( f\left( 3\right)\ \ \text{if}\ \ f\left( x\right) =2x^{2}-10x+1 \)', 17, 18 ),
+	    ( 2, '\( \sin \left( \dfrac {\pi } {6}\right) +\cos \left( \dfrac {\pi } {3}\right)  \)', 19, 20 ) ;
+
+INSERT INTO Math.Question ( PointValue, QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID )
+VALUES 	   
+		( 3, '\( 58\times 62 \)', 21, 22, 23 ),
+		( 3, '\( m\ \ \text{if}\ \ P_{1}=\left( 16,18\right) \land P_{2}=\left( 9,60\right)  \)', 24, 25, 26 ),
+		( 3, '\( x\ \lt\ 0\ \land \left| 2x-1\right| =5 \)', 27, 28, 29 ),
+		( 3, '\( 5-12y\ \lt\ -11 \)', 30, 31, 32 ),
+		( 3, '\( \int _{\pi }^{2\pi }2\sin \left( x\right) dx \)', 33, 34, 35 ),
+		( 3, '\( \int _{1}^{2}\left( x^{2}+x\right) dx \)', 36, 37, 38 ),
+		( 3, '\( f\text{&prime;}\left( -4\right)  \ \text{if}\ \ f\left( x\right) =x^{3}+x^{2}+x \)', 39, 40, 41 ),
+		( 3, '\( x>1\dfrac {1} {3}\ \ \land\ \ 8x^{2}-22x+15=0 \)', 42, 43, 44 ),
+		( 3, '\( 34\times 294 \)', 45, 46, 47 ),
+		( 3, '\( \begin{align*} & 2x-3y=-2\\ & 4x+y=24\end{align*} \)', 48, 49, 50 ) ;
+
+INSERT INTO Math.Question ( PointValue, QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
+VALUES 		
+		( 4, '\( \text{Least positive &theta; &SuchThat; }\ 2\sin \left( \theta \right) =-\sqrt {3} \)', 51, 52, 53, 54 ),
+		( 4, '\( \log _{10}\left( 2s+8\right) =3 \)', 55, 56, 57, 58 ),
+		( 4, '\( f\text{&prime;}\left( x\right)  \ \text{if}\ \ f\left( x\right) =\sin \left( x^{2}\right)  \)', 59, 60, 61, 62 ),
+		( 4, '\( 37\times 63 \)', 63, 64, 65, 66 ),
+		( 4, '\( \left( \begin{matrix} 10\\ 3\end{matrix} \right)  \)', 67, 68, 69, 70 ),
+		( 4, '\( \text{57 in binary} \)', 71, 72, 73, 74 ),
+		( 4, '\( 8! \)', 75, 76, 77, 78 ),
+		( 4, '\( \text{Least x &SuchThat; }\ \log _{2}\left( x+1\right) +\log _{2}\left( x\right) =1 \)', 79, 80, 81, 82 ),
+		( 4, '\( \dfrac {k} {594}=\dfrac {4} {3} \)', 83, 84, 85, 86 ),
+		( 4, '\( \text{P(doubles or sum=5) if two dice rolled} \)', 87, 88, 89, 90 ) ;
 --
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID )
-VALUES ( '\( \sin \left( \dfrac {\pi } {6}\right) -\cos \left( \dfrac {\pi } {4}\right) \)', 205, 206, 207 ) ; -- 302
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID )
-VALUES ( '\( \dfrac {3} {4}\in \left\{ x|12x^{2}+17x=-6\right\} \)', 208, 209 ) ; -- 303
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '57 + 44', 212 , 210, 211, 213 ) ; -- 304
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '15 x 10', 214, 215, 216, 217) ; -- 305
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '\( 20\div 10 \)', 218, 219, 220, 221) ; -- 306
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '\( \dfrac {1} {3}\times \dfrac {1} {2} \)', 222, 223, 224, 225) ; -- 307
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '\( \dfrac {1} {4} \div \dfrac {1} {2}  \)', 226, 227, 225, 222) ; -- 308
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '16 - 75 ', 228, 229, 230, 231) ; -- 309
---
-INSERT INTO Math.Question ( QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID, Foil2_Choice_ID, Foil3_Choice_ID )
-VALUES ( '12 x 11 ', 232, 233, 234, 235) ; -- 310
 
 
 SELECT * FROM Math.Question ;
@@ -142,10 +209,10 @@ CREATE TABLE Math.Submission
 	PRIMARY KEY ( Competitor_ID, Question_ID ) 
 	) ;	
 --
-INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID )
+ /* INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID )
 VALUES      ( 101, 302, '2017-02-28 14:47:54', 206 ),
             ( 103, 301, '2017-02-28 15:07:59', 203 ),
-            ( 102, 303, '2017-02-28 15:07:59', 208 ) ;
+            ( 102, 303, '2017-02-28 15:07:59', 208 ) ; */
 SELECT * FROM Math.Submission ;
 --
 --\q

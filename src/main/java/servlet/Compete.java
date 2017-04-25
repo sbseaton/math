@@ -247,16 +247,7 @@ public class Compete extends HttpServlet
             // query for question 1 ---------------------------------------------------------------------------------------------------------------------
             if (userLoggedIn == true )
             {
-                questionString = "SELECT * "
-                + "FROM   Math.Question "
-                + "WHERE  ID =" + questionNumber + " ";
-
-                ResultSet questionRS = statement.executeQuery ( questionString ) ;
-                String questionText = "";
-                // display the question text 
-                if (questionRS.next() )
-                    questionText = (String) questionRS.getObject("QuestionText") ;
-
+                
                 // gets the answer text from data-------------------------------------------------------
                 questionAnswersString = "select * " 
                 + "from math.choice "
@@ -299,7 +290,25 @@ public class Compete extends HttpServlet
                 +	"<ul class='nav navbar-nav'> \n"
                 +	"<li class='dropdown'> \n"
                 +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
-                +	"<ul class='dropdown-menu'> \n"
+                +	"<ul class='dropdown-menu'> \n" );
+
+			// easy questions ----------------------------------------------------------------------------------
+               	questionStringEasy = "SELECT * "
+                + "FROM   Math.Question WHERE PointValue = 2 ";
+
+                ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
+                String questionTextEasy = "";
+                // display the question text 
+                while (questionRS.next() )
+                {
+                    string questionTextEast = (String) questionEasyRS.getObject("QuestionText") ;
+                    int questionIDEasy = questionEasyRS.getObject("ID");
+                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionEasyText + " </a></li> \n" );
+                }
+
+            // ------------------------------------------------------------------------------------------------ 
+
+                out.println	( ""
                 +	"<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'> HERE IS A QUESTION </a></li> \n"
 
                 +	"<li role='separator' class='divider'></li> \n"
