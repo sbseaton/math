@@ -302,7 +302,7 @@ public class Compete extends HttpServlet
                 while (questionEasyRS.next() )
                 {
                     String questionTextEast = (String) questionEasyRS.getObject("QuestionText") ;
-                    String questionIDEasy = Integer.parseInt(questionEasyRS.getObject("ID"));
+                    String questionIDEasy = questionEasyRS.getObject("ID");
                     out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionEasyText + " </a></li> \n" );
                 }
 
