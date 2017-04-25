@@ -247,7 +247,7 @@ public class Compete extends HttpServlet
             // query for question 1 ---------------------------------------------------------------------------------------------------------------------
             if (userLoggedIn == true )
             {
-                
+              /*  
                 // gets the answer text from data-------------------------------------------------------
                 questionAnswersString = "select * " 
                 + "from math.choice "
@@ -261,7 +261,7 @@ public class Compete extends HttpServlet
                 // create a result set for the question answers
                 ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 
-           /*      while (questionAnswers.next() )
+                while (questionAnswers.next() )
                 {
                     out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
                 }
@@ -291,7 +291,7 @@ public class Compete extends HttpServlet
                 +	"<li class='dropdown'> \n"
                 +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
                 +	"<ul class='dropdown-menu'> \n" );
-
+/*
 			// easy questions ----------------------------------------------------------------------------------
                	String questionStringEasy = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 2 ";
@@ -306,7 +306,7 @@ public class Compete extends HttpServlet
                     questionIDEasy = (String) questionEasyRS.getObject("ID");
                     out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
                 }
-
+*/
             // ------------------------------------------------------------------------------------------------ 
 
                 out.println	( ""
