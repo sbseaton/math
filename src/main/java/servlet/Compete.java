@@ -293,7 +293,7 @@ public class Compete extends HttpServlet
                 +	"<ul class='dropdown-menu'> \n" );
 
 			// easy questions ----------------------------------------------------------------------------------
-               	questionStringEasy = "SELECT * "
+               	String questionStringEasy = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
