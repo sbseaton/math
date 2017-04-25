@@ -268,7 +268,7 @@ public class Compete extends HttpServlet
 
                out.println  ( "" 
                 +	"<div class='container'>\n"
-                +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
+              /*  +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
                 +	"<div class='modal-dialog modal-sm'> \n"
                 +	"<div class='modal-content'> \n"
                 +	"<div class='modal-header'> \n"
@@ -281,10 +281,10 @@ public class Compete extends HttpServlet
                 +	"</div> \n"
                 +	"<!-- Begin outermost container --> \n"
                 +	"<div class='container'> \n"
-                
+               */ 
                 +	"<nav class='navbar navbar-default'> \n"
                 +	"<div class='container-fluid'> \n"
-                +	"<div id='navbar' c \n"
+             //   +	"<div id='navbar' c \n"
                 +	" <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
                 +	"<ul class='nav navbar-nav'> \n"
                 +	"<li class='dropdown'> \n"
