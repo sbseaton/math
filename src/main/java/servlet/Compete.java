@@ -299,9 +299,9 @@ public class Compete extends HttpServlet
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
                 // display the question text 
-                while (questionRS.next() )
+                while (questionEasyRS.next() )
                 {
-                    string questionTextEast = (String) questionEasyRS.getObject("QuestionText") ;
+                    String questionTextEast = (String) questionEasyRS.getObject("QuestionText") ;
                     int questionIDEasy = questionEasyRS.getObject("ID");
                     out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionEasyText + " </a></li> \n" );
                 }
