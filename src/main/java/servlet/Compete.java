@@ -413,6 +413,7 @@ public class Compete extends HttpServlet
                 +	"<hr class='my-4'> \n" );
             }
 
+
             else 
             {	
 
@@ -422,7 +423,7 @@ public class Compete extends HttpServlet
 
             	while (questionRS.next() )
             	{
-            		out.println ("<p>" + questionRS.getObject("QuestionText") + "</p>\n");
+            		out.println ("<h3>" + questionRS.getObject("QuestionText") + "</h3>\n");
             	} 
 
 
@@ -439,12 +440,28 @@ public class Compete extends HttpServlet
                 // create a result set for the question answers
                 ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 
+                <table class='table table-bordered table-hover' >
                 while (questionAnswers.next() )
                 {
-                    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
-                }
+                	out.println( ""
+					"<tr>"
+					"<td>"
+					"<form method='POST' action='/Compete?Q_ID=" + questionNumber + "'>"
+					"<div class='form-check'>"
+					"<label class='form-check-label'> &nbsp; "
+					"<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> "
+					"&nbsp;" + questionAnswers.getObject("choicetext") + " "
+					"</label> "
+					"</div> "
+					"</form> "
+					"</td> "
+					"</tr> " );
 
-          
+
+                 //    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
+                }
+                out.println ("</table>");
+         	
             }
 
             out.println( ""
