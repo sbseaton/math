@@ -60,13 +60,13 @@ public class Compete extends HttpServlet
       
 
         int questionNumber; 
-        String currentQuestionNumberString = request.getParameter( "questionNumber" );
+        String currentQuestionNumberString = request.getParameter( "Q_ID" );
 
         // find if this is the first question or not ---------------------------------------
         if ( currentQuestionNumberString != null )
             questionNumber = Integer.parseInt(currentQuestionNumberString);
         else
-            questionNumber = 301;
+            questionNumber = -1;
         // ----------------------------------------------------------------------------------
 
         try
@@ -79,6 +79,10 @@ public class Compete extends HttpServlet
             String questionAnswersString = null ;   // question one answer string]
 
         	boolean userLoggedIn = false;
+
+
+
+
 
             // html display ---------------------------------------------------------------
             out.println  ( 	""   
@@ -396,12 +400,57 @@ public class Compete extends HttpServlet
                 +	"<div class='container-fluid'> \n"
                 +	" <div class='row equal'> \n"
                 +	"<div class='jumbotron col-md-8' style='margin:20px'> \n"
+
+
+            if ( questionNumber == -1 )
+            {
+            	out.println( ""
                 +	"<h2 class='display-3'>Welcome to Sam's Mental Math Competition!</h2> \n"
                 +	"<hr class='my-4'> \n"
                 +	"<p class='lead'>Neither calculator nor scratchpaper are permitted.  You get one guess for each question.</p> \n"
                 +	"<hr class='my-4'> \n"
                 +	"<p>To begin, select a question from a drop-down menu above -- Easy, Medium, or Difficult.</p> \n"
-                +	"<hr class='my-4'> \n"
+                +	"<hr class='my-4'> \n" );
+            }
+
+            else 
+            {	
+
+            	questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
+
+            	ResultSet questionRS = statement.executeQuery ( questionQuery );
+
+            	while (questionRS.next() )
+            	{
+            		out.println ("<p>" + questionRS.getObject("QuestionText") + "</p>");
+            	} 
+
+
+            	// gets the answer text from data-------------------------------------------------------
+                questionAnswersString = "select * " 
+                + "from math.choice "
+                + "inner join math.question "
+                + "on (choice.id = question.foil1_choice_id) "
+                + "or (choice.id = question.foil2_choice_id) "
+                + "or (choice.id = question.foil3_choice_id) "
+                + "or (choice.id = question.correctanswer_choice_id)  "
+                + "where question.id =" + questionNumber + " " ;
+
+                // create a result set for the question answers
+                ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
+
+                while (questionAnswers.next() )
+                {
+                    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
+                }
+
+          
+            }
+
+
+
+
+
                 +	"</div> \n"
                 +	"<div class='jumbotron col-md-4' style='margin:20px'> \n"
                 +	"<div class='panel panel-default'> \n"
