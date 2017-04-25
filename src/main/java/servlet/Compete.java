@@ -291,7 +291,7 @@ public class Compete extends HttpServlet
                 +	"<li class='dropdown'> \n"
                 +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
                 +	"<ul class='dropdown-menu'> \n" );
-/*
+
 			// easy questions ----------------------------------------------------------------------------------
                	String questionStringEasy = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 2 ";
@@ -306,11 +306,11 @@ public class Compete extends HttpServlet
                     questionIDEasy = (String) questionEasyRS.getObject("ID");
                     out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
                 }
-*/
+
             // ------------------------------------------------------------------------------------------------ 
 
                 out.println	( ""
-                +	"<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'> HERE IS A QUESTION </a></li> \n"
+               //  +	"<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'> HERE IS A QUESTION </a></li> \n"
 
                 +	"<li role='separator' class='divider'></li> \n"
                 +	"<li class='dropdown-header disabled'>Legend</li> \n"
