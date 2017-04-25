@@ -457,7 +457,7 @@ public class Compete extends HttpServlet
 
                 	//correctAnswerQuery = "Select correctanswer_choice_id from math.question "
 
-					if ( correctChoiceID == questionAnswers.getObject("id") )
+					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
 
 					else
