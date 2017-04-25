@@ -133,8 +133,6 @@ public class Compete extends HttpServlet
 						+	"</head>\n"
 						+	"<body>\n" );
 
-            System.out.println("<h1>" + username + "</h1>");
-
             // ---------------------------------------------------------
 
         	boolean userIsAvailable = true ;				// change this back to false
@@ -270,7 +268,7 @@ public class Compete extends HttpServlet
 
                out.println  ( "" 
                 +	"<div class='container'>\n"
-             /*)   +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
+                +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
                 +	"<div class='modal-dialog modal-sm'> \n"
                 +	"<div class='modal-content'> \n"
                 +	"<div class='modal-header'> \n"
@@ -283,11 +281,11 @@ public class Compete extends HttpServlet
                 +	"</div> \n"
                 +	"<!-- Begin outermost container --> \n"
                 +	"<div class='container'> \n"
-                */
+                
                 +	"<nav class='navbar navbar-default'> \n"
                 +	"<div class='container-fluid'> \n"
-              //  +	"<div id='navbar' c \n"
-                +	" <!-- Begin static navbalass='navbar-collapse collapse'> \n"
+                +	"<div id='navbar' c \n"
+                +	" <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
                 +	"<ul class='nav navbar-nav'> \n"
                 +	"<li class='dropdown'> \n"
                 +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
