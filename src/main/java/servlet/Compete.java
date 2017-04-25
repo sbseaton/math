@@ -441,22 +441,22 @@ public class Compete extends HttpServlet
                 ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
 
                 out.println ( "<table class='table table-bordered table-hover' > " );
-                
+
                 while (questionAnswers.next() )
                 {
                 	out.println( ""
-					"<tr>"
-					"<td>"
-					"<form method='POST' action='/Compete?Q_ID=" + questionNumber + "'>"
-					"<div class='form-check'>"
-					"<label class='form-check-label'> &nbsp; "
-					"<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> "
-					"&nbsp;" + questionAnswers.getObject("choicetext") + " "
-					"</label> "
-					"</div> "
-					"</form> "
-					"</td> "
-					"</tr> " );
+					+			"<tr>"
+					+			"<td>"
+					+			"<form method='POST' action='/Compete?Q_ID=" + questionNumber + "'>"
+					+			"<div class='form-check'>"
+					+			"<label class='form-check-label'> &nbsp; "
+					+			"<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> "
+					+			"&nbsp;" + questionAnswers.getObject("choicetext") + " "
+					+			"</label> "
+					+			"</div> "
+					+			"</form> "
+					+			"</td> "
+					+			"</tr> " );
 
 
                  //    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
