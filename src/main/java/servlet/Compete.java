@@ -137,6 +137,8 @@ public class Compete extends HttpServlet
 						+	"</head>\n"
 						+	"<body>\n" );
 
+
+
             // ---------------------------------------------------------
 
         	boolean userIsAvailable = true ;				// change this back to false
@@ -272,7 +274,7 @@ public class Compete extends HttpServlet
 
                out.println  ( "" 
                 +	"<div class='container'>\n"
-              /*  +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
+                +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
                 +	"<div class='modal-dialog modal-sm'> \n"
                 +	"<div class='modal-content'> \n"
                 +	"<div class='modal-header'> \n"
@@ -285,7 +287,7 @@ public class Compete extends HttpServlet
                 +	"</div> \n"
                 +	"<!-- Begin outermost container --> \n"
                 +	"<div class='container'> \n"
-               */ 
+               
                 +	"<nav class='navbar navbar-default'> \n"
                 +	"<div class='container-fluid'> \n"
              //   +	"<div id='navbar' c \n"
