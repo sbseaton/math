@@ -399,7 +399,7 @@ public class Compete extends HttpServlet
                 +	"<!-- Begin container of two jumbotrons --> \n"
                 +	"<div class='container-fluid'> \n"
                 +	" <div class='row equal'> \n"
-                +	"<div class='jumbotron col-md-8' style='margin:20px'> \n"
+                +	"<div class='jumbotron col-md-8' style='margin:20px'> \n" );
 
 
             if ( questionNumber == -1 )
@@ -422,7 +422,7 @@ public class Compete extends HttpServlet
 
             	while (questionRS.next() )
             	{
-            		out.println ("<p>" + questionRS.getObject("QuestionText") + "</p>");
+            		out.println ("<p>" + questionRS.getObject("QuestionText") + "</p>\n");
             	} 
 
 
@@ -447,10 +447,7 @@ public class Compete extends HttpServlet
           
             }
 
-
-
-
-
+            out.println( ""
                 +	"</div> \n"
                 +	"<div class='jumbotron col-md-4' style='margin:20px'> \n"
                 +	"<div class='panel panel-default'> \n"
