@@ -304,7 +304,7 @@ public class Compete extends HttpServlet
                 {
                     questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                     questionIDEasy = (String) questionEasyRS.getObject("ID");
-                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                    out.println ( " <li><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID= "+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
                 }
 
             // ------------------------------------------------------------------------------------------------ 
