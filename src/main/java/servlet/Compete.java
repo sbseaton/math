@@ -339,7 +339,7 @@ public class Compete extends HttpServlet
 
             // ------------------------------------------------------------------------------------------------ 
 
-
+            out.println( ""
                 +	" <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"
 
                 +	"<li role='separator' class='divider'></li> \n"
@@ -374,6 +374,7 @@ public class Compete extends HttpServlet
 
              //   +	"<li><a data-target='/Compete' href='/Compete?Q_ID=121'>HERE IS A QUESTION</a></li> \n"
 
+            out.println( ""
                 +	"<li role='separator' class='divider'></li> \n"
                 +	"<li class='dropdown-header disabled'>Legend</li> \n"
                 +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
