@@ -50,19 +50,19 @@ public class Compete extends HttpServlet
 
         String username = request.getParameter("username");
 
+         int questionNumber; 
+        String currentQuestionNumberString = request.getParameter( "Q_ID" );
 
-        // -----------------------------------------------------------------------
+
+        // find if the last choice submission is correct or not ---------------------------------------------------------------
 
         String isCorrect = request.getParameter("isCorrect");
         boolan isChoiceCorrect = false;
         if ( isCorrect != null )
         	isChoiceCorrect = Boolean.parseBoolean( isCorrect );
 
-        // -----------------------------------------------------------------------
+        // ----------------------------------------------------------------------------------------------------------------------
 
-
-        int questionNumber; 
-        String currentQuestionNumberString = request.getParameter( "Q_ID" );
 
         // find if this is the first question or not ---------------------------------------
         if ( currentQuestionNumberString != null )
@@ -71,6 +71,10 @@ public class Compete extends HttpServlet
             questionNumber = -1;
         // ----------------------------------------------------------------------------------
 
+
+        // request the point value for the question
+        String pointValue = Integer.parseInt(request.getParameter("pointValue"));
+
         try
         {
 
@@ -78,12 +82,12 @@ public class Compete extends HttpServlet
             // UPDATE totals 
 			//		SET total = total + 1
 			// WHERE name = 'bill';
-			if (isCorrect == true)
+			if (isChoiceCorrect == true)
 			{	
-				 String scoreQuery =  "UPDATE Math.competitor "
-				 					+ "SET score = score + 1 "
+				 String scoreIncrementQuery =  "UPDATE Math.competitor "
+				 					+ "SET score = score + " + pointValue + " "	// increment score by the point value
 				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
-				 int scoreIncrements = statement.executeUpdate (scoreQuery);
+				 int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
 			}
 
 		// incrementing score------------------------------------------------------------------------------------------
@@ -441,11 +445,14 @@ public class Compete extends HttpServlet
 
             	ResultSet questionRS = statement.executeQuery ( questionQuery );
 
+            	int pointValue = 0;	// declare point value for the current question
             	int correctChoiceID = -1;
             	while (questionRS.next() )
             	{
             		out.println ("<h3>" + questionRS.getObject("QuestionText") + "</h3>\n");
             		correctChoiceID = Integer.parseInt( "" + questionRS.getObject("correctanswer_choice_id"));
+            		pointValue = Integer.parseInt( "" + questionRS.getObject("PointValue")); // find the value of the question
+
             	} 
 
 
@@ -475,11 +482,11 @@ public class Compete extends HttpServlet
 
 
                 	//correctAnswerQuery = "Select correctanswer_choice_id from math.question "
-
 					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
 					{
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
 						out.println( "<td><input type='hidden' name='isCorrect' value='True'></td> ");
+						out.println( "<td><input type='hidden' name='pointValue' value='" + pointValue "'></td> ");
 					}
 
 					else
