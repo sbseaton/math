@@ -73,7 +73,7 @@ public class Compete extends HttpServlet
 
 
         // request the point value for the question
-        String pointValue = Integer.parseInt(request.getParameter("pointValue"));
+        String previousQuestionPointValue = Integer.parseInt(request.getParameter("pointValue"));
 
         try
         {
@@ -85,7 +85,7 @@ public class Compete extends HttpServlet
 			if (isChoiceCorrect == true)
 			{	
 				 String scoreIncrementQuery =  "UPDATE Math.competitor "
-				 					+ "SET score = score + " + pointValue + " "	// increment score by the point value
+				 					+ "SET score = score + " + previousQuestionPointValue + " "	// increment score by the point value
 				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
 				 int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
 			}
