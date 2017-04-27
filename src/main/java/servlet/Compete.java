@@ -450,7 +450,7 @@ public class Compete extends HttpServlet
                 	out.println( ""
 					+			"<tr>"
 					+			"<td>"
-					+			"<form method='POST' action='/Compete?Q_ID=" + questionNumber+1 + "'>"
+					+			"<form method='POST' action='/Compete?Q_ID=" + (questionNumber+1) + "'>"
 					+			"<div class='form-check'>"
 					+			"<label class='form-check-label'> &nbsp; " );
 
