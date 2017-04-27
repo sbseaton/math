@@ -57,7 +57,7 @@ public class Compete extends HttpServlet
         // find if the last choice submission is correct or not ---------------------------------------------------------------
 
         String isCorrect = request.getParameter("isCorrect");
-        boolan isChoiceCorrect = false;
+        boolean isChoiceCorrect = false;
         if ( isCorrect != null )
         	isChoiceCorrect = Boolean.parseBoolean( isCorrect );
 
