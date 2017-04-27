@@ -50,8 +50,22 @@ public class Compete extends HttpServlet
 
         String username = request.getParameter("username");
 
-         int questionNumber; 
+        int questionNumber; 
         String currentQuestionNumberString = request.getParameter( "Q_ID" );
+
+        String previousQuestionNumberString = request.getParameter("previousQuestionNumber");   // request previous user's question they answered 
+        int previousQuestionNumber = 0;
+        if (previousQuestionNumbertring != null)
+            previousQuestionNumber = Integer.parseInt(previousQuestionNumberString);    // convert the previous question number to an int
+
+        // request the previous answer ID for submission query
+        String previousAnswerIDString = request.getParameter("Selected_Choice_ID"); 
+        int previousAnswerID = 0;
+        if (previousAnswerIDString != null )
+            previousAnswerID = Integer.parseInt(previousAnswerIDString);
+
+
+
 
 
         // find if the last choice submission is correct or not ---------------------------------------------------------------
@@ -64,11 +78,11 @@ public class Compete extends HttpServlet
         // ----------------------------------------------------------------------------------------------------------------------
 
 
-        // find if this is the first question or not ---------------------------------------
+        // find the current question ID  ---------------------------------------
         if ( currentQuestionNumberString != null )
             questionNumber = Integer.parseInt(currentQuestionNumberString);
         else
-            questionNumber = -1;
+            questionNumber = -1;    // welcome page
         // ----------------------------------------------------------------------------------
 
 
@@ -109,6 +123,16 @@ public class Compete extends HttpServlet
 
         // incrementing score------------------------------------------------------------------------------------------
 
+           // Get the competitor ID for the insert query for submission
+            String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE Username = '" + username + "' ";
+            ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
+            if ( competitor_IDRS.next() )
+                competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
+
+            // query the submission made previously
+            String submissionQuery = "UPDATE Math.submission "
+                                    +"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + previousQuestionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + previousAnswerID + " "
+                                    +"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
 
 
 
@@ -440,10 +464,10 @@ public class Compete extends HttpServlet
                     +           "<div class='form-check'>"
                     +           "<label class='form-check-label'> &nbsp; " );
 
-
+                    int choiceID = Integer.parseInt ( "" + questionAnswers.getObject("id"));
 
                     //correctAnswerQuery = "Select correctanswer_choice_id from math.question "
-                    if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
+                    if ( correctChoiceID ==  choiceID )
                     {
                         out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> ");
                         out.println( "<input type='hidden' name='isCorrect' value='True'> ");
@@ -456,10 +480,14 @@ public class Compete extends HttpServlet
                         out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> " );
                         out.println( "<input type='hidden' name='isCorrect' value='False'> ");
                         out.println("<input type='hidden' name='username' value='" + username + "'>");
-
                     }
 
+                    out.println( "<input type='hidden' name='previousQuestionNumber' value='" + questionNumber + "'>");     // pass the question number
                     out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
+                    
+                    // pass the current answer ID for 
+                    out.println( "<input type='hidden' name='Selected_Choice_ID' value='"+ choiceID +"'>");
+
 
                     out.println( ""
                     +           "&nbsp;" + questionAnswers.getObject("choicetext") + " "
