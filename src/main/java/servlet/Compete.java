@@ -499,7 +499,7 @@ public class Compete extends HttpServlet
 
             	while (usernames.next() )
             	{
-            		out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td></tr> ");
+            		out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td><td class='col-lg-4'>" + usernames.getObject("score") + "</td></tr> ");
             	} // end while
 
             	out.println( ""
