@@ -46,14 +46,18 @@ public class Compete extends HttpServlet
         String             userIdAttribute  =  ( "LOGGED_IN_USER_" + sessionId ) ;
 
         ServletContext     context          =  this.getServletContext() ;
-//      String             storedPassword   =  null ;
         String      userChoice = null;
+
+        String username = request.getParameter("username");
 
 
         // -----------------------------------------------------------------------
-        String username = request.getParameter("username");
-        boolean isCorrect = request.getParameter("isCorrect");
-        boolean questionIsAnswered = false;
+
+        String isCorrect = request.getParameter("isCorrect");
+        boolan isChoiceCorrect = false;
+        if ( isCorrect != null )
+        	isChoiceCorrect = Boolean.parseBoolean( isCorrect );
+
         // -----------------------------------------------------------------------
 
 
@@ -475,13 +479,13 @@ public class Compete extends HttpServlet
 					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
 					{
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
-						out.println( "<td><input type='hidden' name='isCorrect' value='true'></td> ");
+						out.println( "<td><input type='hidden' name='isCorrect' value='True'></td> ");
 					}
 
 					else
 					{
 						out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
-						out.println( "<td><input type='hidden' name='isCorrect' value='false'></td> ");
+						out.println( "<td><input type='hidden' name='isCorrect' value='False'></td> ");
 
 					}
 
