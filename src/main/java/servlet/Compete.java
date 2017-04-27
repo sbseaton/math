@@ -122,7 +122,6 @@ public class Compete extends HttpServlet
                         +   "<meta name='viewport' content='width=device-width, initial-scale=1'>\n"
                         +   "<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->\n"
                         +   "<title>FHSU 2017 Mental Math</title>\n"
-                        +   "<!-- ======================= jQuery (necessary for Bootstrap's JavaScript plugins) ======================= -->\n"
                         +   "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>\n"
                         +   "<!-- Bootstrap -->\n"
                         +   "<!-- Latest compiled and minified CSS -->\n"
@@ -180,30 +179,7 @@ public class Compete extends HttpServlet
             // ---------------------------------------------------------
 
 
-       //     String questionNumberString = null ; 
-        /*    if ( username != null )
-            {
-               username     =  username.substring(0,1).toUpperCase() + username.substring(1).toLowerCase() ;
-                queryString  = "select Password from Math.Competitor "
-                +  "WHERE lower(Username) = lower('" + username + "') " ;
-                System.out.println ( "-------------------------------------" ) ;
-                System.out.println (queryString) ;
-                System.out.println ( "-------------------------------------" ) ;
-                ResultSet resultSet = statement.executeQuery ( queryString ) ;
-                // two possibilities:
-                // 1. resultSet is empty (username entered by user was not found in database)
-                // 2. resultSet is non-empty (username was found in database)
-                
-
-               // if ( resultSet.next() )
-                 //   storedPassword  =  (String) resultSet.getObject("Password") ;     
-
-            } // end if
-            */
-
-         //   boolean  userExists      =   (storedPassword != null) ;
-         //   boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
-          
+   
 
             String getUserQuery = "SELECT * FROM MATH.Competitor WHERE username = lower('" + username + "') ";
             ResultSet usernameRS = statement.executeQuery ( getUserQuery ) ;
@@ -235,12 +211,7 @@ public class Compete extends HttpServlet
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
 
-               /*     // set score back to zero when there is new session
-                    String setScoreQuery =  "UPDATE Math.competitor "
-                                    + "SET score = 0 "
-                                    + "WHERE lower(Username) = lower('" + username + "') " ; 
-                    int scoreZero = statement.executeUpdate (setScoreQuery);
-                */
+            
 
                 }
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
@@ -278,26 +249,6 @@ public class Compete extends HttpServlet
             // query for question 1 ---------------------------------------------------------------------------------------------------------------------
             if (userLoggedIn == true )
             {
-              /*  
-                // gets the answer text from data-------------------------------------------------------
-                questionAnswersString = "select * " 
-                + "from math.choice "
-                + "inner join math.question "
-                + "on (choice.id = question.foil1_choice_id) "
-                + "or (choice.id = question.foil2_choice_id) "
-                + "or (choice.id = question.foil3_choice_id) "
-                + "or (choice.id = question.correctanswer_choice_id)  "
-                + "where question.id =" + questionNumber + " " ;
-
-                // create a result set for the question answers
-                ResultSet questionAnswers = statement.executeQuery ( questionAnswersString ) ;
-
-                while (questionAnswers.next() )
-                {
-                    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
-                }
-
-                */
 
                out.println  ( "" 
                 +   "<div class='container'>\n"
@@ -494,7 +445,7 @@ public class Compete extends HttpServlet
                     //correctAnswerQuery = "Select correctanswer_choice_id from math.question "
                     if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
                     {
-                        out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
+                        out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> ");
                         out.println( "<input type='hidden' name='isCorrect' value='True'> ");
                         out.println( "<input type='hidden' name='username' value='" + username + "'>");
 
@@ -502,7 +453,7 @@ public class Compete extends HttpServlet
 
                     else
                     {
-                        out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
+                        out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> " );
                         out.println( "<input type='hidden' name='isCorrect' value='False'> ");
                         out.println("<input type='hidden' name='username' value='" + username + "'>");
 
