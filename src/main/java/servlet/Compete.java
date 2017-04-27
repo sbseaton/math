@@ -6,6 +6,8 @@
 /* 
 here is how you display the answer text : 
 
+Select * from Math.Question, Math.Submission WHERE question_id = id AND competitor_id = 3 AND question_id = 1 ;
+
 select *
 from math.choice
 inner join math.question 
@@ -52,7 +54,7 @@ public class Compete extends HttpServlet
         int competitor_ID = -1; // declare competitor_ID
 
 
-        int questionNumber; 
+        int questionNumber;     // declare question number
         String currentQuestionNumberString = request.getParameter( "Q_ID" );
 
         String previousQuestionNumberString = request.getParameter("previousQuestionNumber");   // request previous user's question they answered 
@@ -318,12 +320,32 @@ public class Compete extends HttpServlet
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
-                    questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
-                    questionIDEasy = "" + questionEasyRS.getObject("ID");
-                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                    String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
+                                            + " WHERE question_id = question_id "
+                                            + " AND competitor_id = " + competitor_ID + " "
+                                            + " AND question_id = " + questionNumber + "; " ;
+                    ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
+
+                    if ( isAnswered.next() )    // if the question has been answered do this
+                    {   
+                        if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
+                            out.println(" <li class='bg-danger success disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> ");
+                        else 
+                            out.println(" <li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> "); 
+                    }
+                    
+
+                    else                // if it has not been answered, print out the option for the user to choose
+                    {
+                        questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
+                        questionIDEasy = "" + questionEasyRS.getObject("ID");
+                        out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                    }
+
+ 
                 }
 
-            // ------------------------------------------------------------------------------------------------ 
+            //  end easy questions------------------------------------------------------------------------------------------------ 
 
                 out.println ( ""
                //  +    "<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'> HERE IS A QUESTION </a></li> \n"
