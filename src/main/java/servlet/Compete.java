@@ -57,7 +57,7 @@ public class Compete extends HttpServlet
 
         String previousQuestionNumberString = request.getParameter("previousQuestionNumber");   // request previous user's question they answered 
         int previousQuestionNumber = 0;
-        if (previousQuestionNumbertring != null)
+        if (previousQuestionNumberString != null)
             previousQuestionNumber = Integer.parseInt(previousQuestionNumberString);    // convert the previous question number to an int
 
         // request the previous answer ID for submission query
