@@ -132,9 +132,10 @@ public class Compete extends HttpServlet
                 competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
 
             // query the submission made previously
-            String submissionQuery = "UPDATE Math.submission "
-                                    +"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + previousQuestionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + previousAnswerID + " "
-                                    +"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
+            String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID )
+                                    VALUES      ( " + Competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + questionNumber + " ) " ;
+
+            int submission = statement.executeUpdate( submissionQuery );
 
 
 
