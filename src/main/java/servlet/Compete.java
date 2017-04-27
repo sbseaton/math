@@ -59,7 +59,7 @@ public class Compete extends HttpServlet
         String isCorrect = request.getParameter("isCorrect");
         boolean isChoiceCorrect = false;
         if ( isCorrect != null )
-        	isChoiceCorrect = Boolean.parseBoolean( isCorrect );
+            isChoiceCorrect = Boolean.parseBoolean( isCorrect );
 
         // ----------------------------------------------------------------------------------------------------------------------
 
@@ -77,24 +77,24 @@ public class Compete extends HttpServlet
         int previousQuestionPointValue = 0;
 
         if (previousQuestionPointValueString != null)
-       		previousQuestionPointValue = Integer.parseInt(previousQuestionPointValueString);
+            previousQuestionPointValue = Integer.parseInt(previousQuestionPointValueString);
 
         try
         {
 
         // incrementing score-----------------------------------------------------------------------------------------
             // UPDATE totals 
-			//		SET total = total + 1
-			// WHERE name = 'bill';
-			if (isChoiceCorrect == true)
-			{	
-				 String scoreIncrementQuery =  "UPDATE Math.competitor "
-				 					+ "SET score = score + " + previousQuestionPointValue + " "	// increment score by the point value
-				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
-				 int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
-			}
+            //      SET total = total + 1
+            // WHERE name = 'bill';
+            if (isChoiceCorrect == true)
+            {   
+                 String scoreIncrementQuery =  "UPDATE Math.competitor "
+                                          + "SET score = score + " + previousQuestionPointValue + " "   // increment score by the point value
+                                          + "WHERE lower(Username) = lower('" + username + "') " ; 
+                 int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
+            }
 
-		// incrementing score------------------------------------------------------------------------------------------
+        // incrementing score------------------------------------------------------------------------------------------
 
 
             connection = DriverManager.getConnection ( DB_URL ) ;
@@ -103,78 +103,78 @@ public class Compete extends HttpServlet
             String questionString = null;
             String questionAnswersString = null ;   // question one answer string]
 
-        	boolean userLoggedIn = false;
+            boolean userLoggedIn = false;
 
 
 
 
 
             // html display ---------------------------------------------------------------
-            out.println  ( 	""   
-            			+	"<!DOCTYPE html>\n"
-						+	"<html lang='en'>\n"
-  						+	"<head>\n"
-    					+	"<meta charset='utf-8'>\n"
-    					+	"<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n"
-    					+	"<meta name='viewport' content='width=device-width, initial-scale=1'>\n"
-    					+	"<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->\n"
-    					+	"<title>FHSU 2017 Mental Math</title>\n"
-    					+	"<!-- ======================= jQuery (necessary for Bootstrap's JavaScript plugins) ======================= -->\n"
-    					+	"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>\n"
-    					+	"<!-- Bootstrap -->\n"
-    					+	"<!-- Latest compiled and minified CSS -->\n"
-    					+	"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' \n"
-    					+	"      integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>\n"
-    					+	"<!-- Optional theme --> \n"
-    					+	"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' \n"
-    					+	"      integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp' crossorigin='anonymous'> \n"
-    					+	"<!-- Latest compiled and minified JavaScript --> \n"
-    					+	"<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' \n"
-    					+	"        integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script> \n"
-    					+	"<script type='text/javascript' async \n"
-    					+	"  src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'> \n"
-    					+	"</script> \n"
-    				
-    					+	"<!-- styles below to *FOLLOW* Bootstrap's CSS (which is above) -->\n"
-					
-    					+	"<style>\n"
-    					+	"  .dropdown:hover .dropdown-menu { display: block; }\n"
-    					+	"  .equal { display: flex; display: -webkit-flex; }\n"
-    					+	"  .tbodyScoreboard { display:block; height:300px; overflow:auto; }\n"
-    					+	"  .theadScoreboard .tbodyScoreboard .trScoreboard { display:table; width:100%; table-layout:fixed; }\n"
-    					+	"  .theadScoreboard { width: calc( 100% - 1em ) }\n"
-    					+	"  .not-active { pointer-events: none; cursor: default; }\n"
-    					+	"</style>\n"
+            out.println  (  ""   
+                        +   "<!DOCTYPE html>\n"
+                        +   "<html lang='en'>\n"
+                        +   "<head>\n"
+                        +   "<meta charset='utf-8'>\n"
+                        +   "<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n"
+                        +   "<meta name='viewport' content='width=device-width, initial-scale=1'>\n"
+                        +   "<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->\n"
+                        +   "<title>FHSU 2017 Mental Math</title>\n"
+                        +   "<!-- ======================= jQuery (necessary for Bootstrap's JavaScript plugins) ======================= -->\n"
+                        +   "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>\n"
+                        +   "<!-- Bootstrap -->\n"
+                        +   "<!-- Latest compiled and minified CSS -->\n"
+                        +   "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' \n"
+                        +   "      integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>\n"
+                        +   "<!-- Optional theme --> \n"
+                        +   "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' \n"
+                        +   "      integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp' crossorigin='anonymous'> \n"
+                        +   "<!-- Latest compiled and minified JavaScript --> \n"
+                        +   "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' \n"
+                        +   "        integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script> \n"
+                        +   "<script type='text/javascript' async \n"
+                        +   "  src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'> \n"
+                        +   "</script> \n"
+                    
+                        +   "<!-- styles below to *FOLLOW* Bootstrap's CSS (which is above) -->\n"
+                    
+                        +   "<style>\n"
+                        +   "  .dropdown:hover .dropdown-menu { display: block; }\n"
+                        +   "  .equal { display: flex; display: -webkit-flex; }\n"
+                        +   "  .tbodyScoreboard { display:block; height:300px; overflow:auto; }\n"
+                        +   "  .theadScoreboard .tbodyScoreboard .trScoreboard { display:table; width:100%; table-layout:fixed; }\n"
+                        +   "  .theadScoreboard { width: calc( 100% - 1em ) }\n"
+                        +   "  .not-active { pointer-events: none; cursor: default; }\n"
+                        +   "</style>\n"
 
-    					+	"<script>\n"
-    					+	"  $(document).on('change','input[type=radio]', function( event )\n"
-    					+	"    { \n"
-    					+	"    if ( $(event.target).hasClass('correct') )\n"
-    					+	"      $('#feedbackHeader').text( 'Correct!' ) ;\n"
-    					+	"    else if ( $(event.target).hasClass('incorrect') )\n"
-    					+	"      $('#feedbackHeader').text( 'Sorry, incorrect.' ) ;\n"
-    					+	"    $('#feedbackModal').modal ( 'show' ) ;\n"
-    					+	"    setTimeout ( function() { $('#feedbackModal').modal('hide'); }, 2000 ) ;\n"
-    					+	"    setTimeout ( function() { $(event.target).closest('form').submit() }, 2500 ) ;\n"
-    					+	"    } ) ;\n"
-    					+	"  $(document).on('click','#updateScoreboardButton', function( ) {$('#updateScoreboardButton').closest('form').submit();} ) ;\n"
-    					+	"</script>\n"
-						+	"</head>\n"
-						+	"<body>\n" );
+                        +   "<script>\n"
+                        +   "  $(document).on('change','input[type=radio]', function( event )\n"
+                        +   "    { \n"
+                        +   "    if ( $(event.target).hasClass('correct') )\n"
+                        +   "      $('#feedbackHeader').text( 'Correct!' ) ;\n"
+                        +   "    else if ( $(event.target).hasClass('incorrect') )\n"
+                        +   "      $('#feedbackHeader').text( 'Sorry, incorrect.' ) ;\n"
+                        +   "    $('#feedbackModal').modal ( 'show' ) ;\n"
+                        +   "    setTimeout ( function() { $('#feedbackModal').modal('hide'); }, 2000 ) ;\n"
+                        +   "    setTimeout ( function() { $(event.target).closest('form').submit() }, 2500 ) ;\n"
+                        +   "    } ) ;\n"
+                        +   "  $(document).on('click','#updateScoreboardButton', function( ) {$('#updateScoreboardButton').closest('form').submit();} ) ;\n"
+                        +   "</script>\n"
+                        +   "</head>\n"
+                        +   "<body>\n" );
 
 
 
             // ---------------------------------------------------------
 
-        	boolean userIsAvailable = false ;				// change this back to false
+            boolean userIsAvailable = false ;               // change this back to false
 
 /*
-        	String submissionQuery = "UPDATE Math.submission "
-									+"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
-									+"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
+            String submissionQuery = "UPDATE Math.submission "
+                                    +"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
+                                    +"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
 */
 
-        	// ---------------------------------------------------------
+            // ---------------------------------------------------------
 
 
        //     String questionNumberString = null ; 
@@ -202,16 +202,16 @@ public class Compete extends HttpServlet
          //   boolean  passwordsMatch  =   ( (password != null) && (storedPassword != null) && (password. equals (storedPassword)) ) ;
           
 
-        	String getUserQuery = "SELECT * FROM MATH.Competitor WHERE username = lower('" + username + "') ";
-        	ResultSet usernameRS = statement.executeQuery ( getUserQuery ) ;
-        	
-        	// find if the username is available
-        	// changed this from if to while
-        	if ( ! usernameRS.next() )
-        	{
-        		userIsAvailable = true; 	// set the available to true if the result set can't find the username
-        	
-        	}
+            String getUserQuery = "SELECT * FROM MATH.Competitor WHERE username = lower('" + username + "') ";
+            ResultSet usernameRS = statement.executeQuery ( getUserQuery ) ;
+            
+            // find if the username is available
+            // changed this from if to while
+            if ( ! usernameRS.next() )
+            {
+                userIsAvailable = true;     // set the available to true if the result set can't find the username
+            
+            }
 
             
             if ( session.isNew() )
@@ -221,29 +221,29 @@ public class Compete extends HttpServlet
                if ( userIsAvailable == true  ) // if the userIs available, update the competitor table 
                 {
 
-                	// insert the new user into the competitor table 
-					String insertUserQuery = 	"INSERT into Math.Competitor ( Username, Score ) "
-											+	"VALUES  ( '" + username + "', 0 )" ;
+                    // insert the new user into the competitor table 
+                    String insertUserQuery =    "INSERT into Math.Competitor ( Username, Score ) "
+                                            +   "VALUES  ( '" + username + "', 0 )" ;
 
-					int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
+                    int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
 
-		
+        
 
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
 
                /*     // set score back to zero when there is new session
                     String setScoreQuery =  "UPDATE Math.competitor "
-				 					+ "SET score = 0 "
-				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
-				 	int scoreZero = statement.executeUpdate (setScoreQuery);
-				*/
+                                    + "SET score = 0 "
+                                    + "WHERE lower(Username) = lower('" + username + "') " ; 
+                    int scoreZero = statement.executeUpdate (setScoreQuery);
+                */
 
                 }
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
                 else    
                 { 
-                	userLoggedIn = false;
+                    userLoggedIn = false;
                     session.invalidate(); 
                     out.println ( "    <form action='LogOut' method='POST'>" ) ;
                     out.print  (  ""
@@ -297,34 +297,34 @@ public class Compete extends HttpServlet
                 */
 
                out.println  ( "" 
-                +	"<div class='container'>\n"
-                +	"<div class='modal fade' id='feedbackModal' role='dialog'>\n"
-                +	"<div class='modal-dialog modal-sm'> \n"
-                +	"<div class='modal-content'> \n"
-                +	"<div class='modal-header'> \n"
-                +	"<button type='button' class='close' data-dismiss='modal'>&times;</button> \n"
-                +	"<h4 class='modal-title' id='feedbackHeader'>TO BE SET BY SCRIPT</h4> \n"
-                +	"</div> \n"
-                +	"</div> \n"
-                +	" </div> \n"
-                +	"</div> \n"
-                +	"</div> \n"
-                +	"<!-- Begin outermost container --> \n"
-                +	"<div class='container'> \n"
+                +   "<div class='container'>\n"
+                +   "<div class='modal fade' id='feedbackModal' role='dialog'>\n"
+                +   "<div class='modal-dialog modal-sm'> \n"
+                +   "<div class='modal-content'> \n"
+                +   "<div class='modal-header'> \n"
+                +   "<button type='button' class='close' data-dismiss='modal'>&times;</button> \n"
+                +   "<h4 class='modal-title' id='feedbackHeader'>TO BE SET BY SCRIPT</h4> \n"
+                +   "</div> \n"
+                +   "</div> \n"
+                +   " </div> \n"
+                +   "</div> \n"
+                +   "</div> \n"
+                +   "<!-- Begin outermost container --> \n"
+                +   "<div class='container'> \n"
                
-                +	"<nav class='navbar navbar-default'> \n"
-                +	"<div class='container-fluid'> \n"
-             //   +	"<div id='navbar' c \n"
-                +	" <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
-                +	"<ul class='nav navbar-nav'> \n"
-                +	"<li class='dropdown'> \n"
-                +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
-                +	"<ul class='dropdown-menu'> \n" );
+                +   "<nav class='navbar navbar-default'> \n"
+                +   "<div class='container-fluid'> \n"
+             //   + "<div id='navbar' c \n"
+                +   " <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
+                +   "<ul class='nav navbar-nav'> \n"
+                +   "<li class='dropdown'> \n"
+                +   "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
+                +   "<ul class='dropdown-menu'> \n" );
 
-				// easy questions ----------------------------------------------------------------------------------
-            	// pull from database and display --------------------------------------
+                // easy questions ----------------------------------------------------------------------------------
+                // pull from database and display --------------------------------------
 
-               	String questionStringEasy = "SELECT * "
+                String questionStringEasy = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
@@ -340,18 +340,18 @@ public class Compete extends HttpServlet
 
             // ------------------------------------------------------------------------------------------------ 
 
-                out.println	( ""
-               //  +	"<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'> HERE IS A QUESTION </a></li> \n"
+                out.println ( ""
+               //  +    "<li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID=101'> HERE IS A QUESTION </a></li> \n"
 
-                +	"<li role='separator' class='divider'></li> \n"
-                +	"<li class='dropdown-header disabled'>Legend</li> \n"
-                +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
-                +	"<li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> \n"
-                +	"</ul> \n"
-                +	" </li> \n"
-                +	"<li class='dropdown'> \n"
-                +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Medium <span class='caret'></span></a> \n"
-                +	" <ul class='dropdown-menu'> \n" ) ;
+                +   "<li role='separator' class='divider'></li> \n"
+                +   "<li class='dropdown-header disabled'>Legend</li> \n"
+                +   "<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
+                +   "<li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> \n"
+                +   "</ul> \n"
+                +   " </li> \n"
+                +   "<li class='dropdown'> \n"
+                +   " <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Medium <span class='caret'></span></a> \n"
+                +   " <ul class='dropdown-menu'> \n" ) ;
 
                 // medium questions ---------------------------------------------------------------------------------------------
                 // pull from database and display --------------------------------------
@@ -372,17 +372,17 @@ public class Compete extends HttpServlet
             // ------------------------------------------------------------------------------------------------ 
 
             out.println( ""
-             //    +	" <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"
+             //    +    " <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"
 
-                +	"<li role='separator' class='divider'></li> \n"
-                +	"<li class='dropdown-header disabled'>Legend</li> \n"
-                +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
-                +	" <li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> \n"
-                +	"</ul> \n"
-                +	" </li> \n"
-                +	" <li class='dropdown'> \n"
-                +	" <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Difficult <span class='caret'></span></a> \n"
-                +	"<ul class='dropdown-menu'> \n" ) ; 
+                +   "<li role='separator' class='divider'></li> \n"
+                +   "<li class='dropdown-header disabled'>Legend</li> \n"
+                +   "<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
+                +   " <li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> \n"
+                +   "</ul> \n"
+                +   " </li> \n"
+                +   " <li class='dropdown'> \n"
+                +   " <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Difficult <span class='caret'></span></a> \n"
+                +   "<ul class='dropdown-menu'> \n" ) ; 
 
 
              // Hard questions ---------------------------------------------------------------------------------------------
@@ -404,63 +404,63 @@ public class Compete extends HttpServlet
             // ------------------------------------------------------------------------------------------------ 
 
 
-             //   +	"<li><a data-target='/Compete' href='/Compete?Q_ID=121'>HERE IS A QUESTION</a></li> \n"
+             //   + "<li><a data-target='/Compete' href='/Compete?Q_ID=121'>HERE IS A QUESTION</a></li> \n"
 
             out.println( ""
-                +	"<li role='separator' class='divider'></li> \n"
-                +	"<li class='dropdown-header disabled'>Legend</li> \n"
-                +	"<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
-                +	"<li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> \n"
-                +	"</ul> \n"
-                +	"</li> \n"
-                +	"</ul> \n"
-                +	"<form method='POST' action='/Compete' class='navbar-form navbar-right'> \n"
-                +	"<!-- Button trigger modal --> \n"
-                +	"<button id='updateScoreboardButton' type='button' class='btn btn-primary'> \n"
-                +	" Update Scoreboard \n"
-                +	"</button> \n"
-                +	"</form> \n"
-               //  +	"</div><!--/.nav-collapse --> \n"
-                +	"</div><!--/.container-fluid --> \n"
-                +	"</nav> \n"
-                +	"<!-- End static navbar --> \n"
-                +	"<!-- Begin container of two jumbotrons --> \n"
-                +	"<div class='container-fluid'> \n"
-                +	" <div class='row equal'> \n"
-                +	"<div class='jumbotron col-md-8' style='margin:20px'> \n" );
+                +   "<li role='separator' class='divider'></li> \n"
+                +   "<li class='dropdown-header disabled'>Legend</li> \n"
+                +   "<li class='bg-success disabled'><a href='#'>Green = Answered Correctly</a></li> \n"
+                +   "<li class='bg-danger disabled'><a href='#'>Red = Answered Incorrectly</a></li> \n"
+                +   "</ul> \n"
+                +   "</li> \n"
+                +   "</ul> \n"
+                +   "<form method='POST' action='/Compete' class='navbar-form navbar-right'> \n"
+                +   "<!-- Button trigger modal --> \n"
+                +   "<button id='updateScoreboardButton' type='button' class='btn btn-primary'> \n"
+                +   " Update Scoreboard \n"
+                +   "</button> \n"
+                +   "</form> \n"
+               //  +    "</div><!--/.nav-collapse --> \n"
+                +   "</div><!--/.container-fluid --> \n"
+                +   "</nav> \n"
+                +   "<!-- End static navbar --> \n"
+                +   "<!-- Begin container of two jumbotrons --> \n"
+                +   "<div class='container-fluid'> \n"
+                +   " <div class='row equal'> \n"
+                +   "<div class='jumbotron col-md-8' style='margin:20px'> \n" );
 
 
             if ( questionNumber == -1 )
             {
-            	out.println( ""
-                +	"<h2 class='display-3'>Welcome to Sam's Mental Math Competition!</h2> \n"
-                +	"<hr class='my-4'> \n"
-                +	"<p class='lead'>Neither calculator nor scratchpaper are permitted.  You get one guess for each question.</p> \n"
-                +	"<hr class='my-4'> \n"
-                +	"<p>To begin, select a question from a drop-down menu above -- Easy, Medium, or Difficult.</p> \n"
-                +	"<hr class='my-4'> \n" );
+                out.println( ""
+                +   "<h2 class='display-3'>Welcome to Sam's Mental Math Competition!</h2> \n"
+                +   "<hr class='my-4'> \n"
+                +   "<p class='lead'>Neither calculator nor scratchpaper are permitted.  You get one guess for each question.</p> \n"
+                +   "<hr class='my-4'> \n"
+                +   "<p>To begin, select a question from a drop-down menu above -- Easy, Medium, or Difficult.</p> \n"
+                +   "<hr class='my-4'> \n" );
             }
 
 
             else 
-            {	
+            {   
 
-            	String questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
+                String questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
 
-            	ResultSet questionRS = statement.executeQuery ( questionQuery );
+                ResultSet questionRS = statement.executeQuery ( questionQuery );
 
-            	int pointValue = 0;	// declare point value for the current question
-            	int correctChoiceID = -1;
-            	while (questionRS.next() )
-            	{
-            		out.println ("<h3>" + questionRS.getObject("QuestionText") + "</h3>\n");
-            		correctChoiceID = Integer.parseInt( "" + questionRS.getObject("correctanswer_choice_id"));
-            		pointValue = Integer.parseInt( "" + questionRS.getObject("PointValue")); // find the value of the question
+                int pointValue = 0; // declare point value for the current question
+                int correctChoiceID = -1;
+                while (questionRS.next() )
+                {
+                    out.println ("<h3>" + questionRS.getObject("QuestionText") + "</h3>\n");
+                    correctChoiceID = Integer.parseInt( "" + questionRS.getObject("correctanswer_choice_id"));
+                    pointValue = Integer.parseInt( "" + questionRS.getObject("PointValue")); // find the value of the question
 
-            	} 
+                } 
 
 
-            	// gets the answer text from data-------------------------------------------------------
+                // gets the answer text from data-------------------------------------------------------
                 questionAnswersString = "select * " 
                 + "from math.choice "
                 + "inner join math.question "
@@ -475,86 +475,92 @@ public class Compete extends HttpServlet
 
                 out.println ( "<table class='table table-bordered table-hover' > " );
 
+
+                out.println( ""
+                    +           "<tr>"
+                    +           "<td>"
+                    +           "<form method='POST' action='/Compete?Q_ID=" + (questionNumber+1) + "'>"
+                    +           "<div class='form-check'>"
+                    +           "<label class='form-check-label'> &nbsp; " );
+
+
                 while (questionAnswers.next() )
                 {
-                	out.println( ""
-					+			"<tr>"
-					+			"<td>"
-					+			"<form method='POST' action='/Compete?Q_ID=" + (questionNumber+1) + "'>"
-					+			"<div class='form-check'>"
-					+			"<label class='form-check-label'> &nbsp; " );
+                    
 
+                    //correctAnswerQuery = "Select correctanswer_choice_id from math.question "
+                    if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
+                    {
+                        out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
+                        out.println( "<input type='hidden' name='isCorrect' value='True'> ");
+                        out.println("<input type='hidden' name='username' value='" + username + "'>");
 
-                	//correctAnswerQuery = "Select correctanswer_choice_id from math.question "
-					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
-					{
-						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
-						out.println( "<input type='hidden' name='isCorrect' value='True'> ");
-					}
+                    }
 
-					else
-					{
-						out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
-						out.println( "<input type='hidden' name='isCorrect' value='False'> ");
-					}
+                    else
+                    {
+                        out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
+                        out.println( "<input type='hidden' name='isCorrect' value='False'> ");
+                        out.println("<input type='hidden' name='username' value='" + username + "'>");
 
-                    out.println("<input type='hidden' name= 'username' value='" + username + "'>");
-					out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
+                    }
 
-					out.println( ""
-					+			"&nbsp;" + questionAnswers.getObject("choicetext") + " "
-					+			"</label> "
-					+			"</div> "
-					+			"</form> "
-					+			"</td> "
-					+			"</tr> " );
+                    out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
+
+                    out.println( ""
+                    +           "&nbsp;" + questionAnswers.getObject("choicetext") + " "
+                    +           "</label> "
+                    +           "</div> "
+                    +           "</form> "
+                    +           "</td> "
+                    +           "</tr> " );
 
 
                  //    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
                 }
                 out.println ("</table>");
-         	
+            
             }
 
       
 
             out.println( ""
-                +	"</div> \n"
-                +	"<div class='jumbotron col-md-4' style='margin:20px'> \n"
-                +	"<div class='panel panel-default'> \n"
-                +	"<div class='panel-heading'> \n"
-                +	"<h4> Scoreboard </h4> \n"
-                +	"</div> \n"
-                +	"<table class='table tbodyScoreboard theadScoreboard trScoreboard'> \n"
-                +	"<thead> \n"
-                +	"<tr><th class='col-lg-8'>Competitor</th><th class='col-lg-4'>Points</th></tr> \n"
-                +	"</thead> \n"
-                +	"<tbody> \n" ); 
+                +   "</div> \n"
+                +   "<div class='jumbotron col-md-4' style='margin:20px'> \n"
+                +   "<div class='panel panel-default'> \n"
+                +   "<div class='panel-heading'> \n"
+                +   "<h4> Scoreboard </h4> \n"
+                +   "</div> \n"
+                +   "<table class='table tbodyScoreboard theadScoreboard trScoreboard'> \n"
+                +   "<thead> \n"
+                +   "<tr><th class='col-lg-8'>Competitor</th><th class='col-lg-4'>Points</th></tr> \n"
+                +   "</thead> \n"
+                +   "<tbody> \n" ); 
 
-            	String usernameQuery = "Select * from Math.Competitor " ;
-            	ResultSet usernames = statement.executeQuery(usernameQuery);
+                String usernameQuery = "Select * from Math.Competitor " ;
+                ResultSet usernames = statement.executeQuery(usernameQuery);
 
-            	while (usernames.next() )
-            	{
-            		out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td><td class='col-lg-4'>" + usernames.getObject("score") + "</td></tr> ");
-            	} // end while
+                while (usernames.next() )
+                {
+                    out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td><td class='col-lg-4'>" + usernames.getObject("score") + "</td></tr> ");
+                } // end while
 
-            	out.println( ""
-                +	"</table> \n"
-                +	"</div> \n"
-                +	"</div> \n"
-                +	"</div> \n"
-                +	"</div> \n"
-                +	"<!-- End container of two jumbotrons --> \n"
-                +	"</div> <!-- /container --> \n"
-                +	" <!-- End outermost container -->\n " );
+                out.println( ""
+                +   "</table> \n"
+                +   "</div> \n"
+                +   "</div> \n"
+                +   "</div> \n"
+                +   "</div> \n"
+                +   "<!-- End container of two jumbotrons --> \n"
+                +   "</div> <!-- /container --> \n"
+                +   " <!-- End outermost container -->\n " );
 
 
 
 
          
 
-			}	// end if userloggedin is true 
+            }   // end if userloggedin is true 
 
         } // end try block
         catch ( SQLException sqlException ) 
