@@ -136,7 +136,7 @@ public class Compete extends HttpServlet
             {
                 // query the submission made previously
                 String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
-                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + Selected_Choice_ID + " ) " ;
+                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
 
                 int submission = statement.executeUpdate( submissionQuery );
             }
