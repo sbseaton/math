@@ -16,7 +16,7 @@ CREATE TABLE Math.Competitor
 	*/
     Score       INTEGER       ) ;
 --
-ALTER SEQUENCE Math.Competitor_ID_Seq RESTART WITH 101 ;
+ALTER SEQUENCE Math.Competitor_ID_Seq RESTART WITH 1 ;
 
 /* 
 
