@@ -90,8 +90,10 @@ public class Compete extends HttpServlet
             {   
                  String scoreIncrementQuery =  "UPDATE Math.competitor "
                                           + "SET score = score + " + previousQuestionPointValue + " "   // increment score by the point value
-                                          + "WHERE lower(Username) = lower('" + username + "') " ; 
-                 int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
+                                          + "WHERE lower(Username) = lower('" + username + "') " ;
+                out.println("<h3> " + username + "</h3>"); 
+                out.println("<h3> " + previousQuestionPointValue + "</h3>"); 
+                 //int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
             }
 
         // incrementing score------------------------------------------------------------------------------------------
