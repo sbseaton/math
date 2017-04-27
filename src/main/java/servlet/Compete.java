@@ -123,7 +123,7 @@ public class Compete extends HttpServlet
                 statement.executeUpdate (scoreIncrementQuery);
             }
 
-        // incrementing score------------------------------------------------------------------------------------------
+            // end incrementing score------------------------------------------------------------------------------------------
 
            // Get the competitor ID for the insert query for submission
             String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE Username = '" + username + "' ";
@@ -131,11 +131,15 @@ public class Compete extends HttpServlet
             if ( competitor_IDRS.next() )
                 competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
 
-            // query the submission made previously
-            String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
-                                    + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + questionNumber + " ) " ;
 
-            int submission = statement.executeUpdate( submissionQuery );
+            if (previousAnswerIDString != null )
+            {
+                // query the submission made previously
+                String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
+                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + Selected_Choice_ID + " ) " ;
+
+                int submission = statement.executeUpdate( submissionQuery );
+            }
 
 
 
