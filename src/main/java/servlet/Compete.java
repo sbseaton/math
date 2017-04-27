@@ -498,6 +498,7 @@ public class Compete extends HttpServlet
 						out.println( "<input type='hidden' name='isCorrect' value='False'> ");
 					}
 
+                    out.println("<input type='hidden' name= 'username' value='" + username + "'>");
 					out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
 
 					out.println( ""
