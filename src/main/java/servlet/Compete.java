@@ -73,7 +73,9 @@ public class Compete extends HttpServlet
 
 
         // request the point value for the question
-        String previousQuestionPointValue = Integer.parseInt(request.getParameter("pointValue"));
+        String previousQuestionPointValueString = request.getParameter("pointValue");
+        int previousQuestionPointValue = 0;
+       	previousQuestionPointValue = Integer.parseInt(previousQuestionPointValueString);
 
         try
         {
