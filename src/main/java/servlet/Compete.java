@@ -141,7 +141,7 @@ public class Compete extends HttpServlet
 
             // ---------------------------------------------------------
 
-        	boolean userIsAvailable = true ;				// change this back to false
+        	boolean userIsAvailable = false ;				// change this back to false
 
 /*
         	String submissionQuery = "UPDATE Math.submission "
@@ -458,10 +458,14 @@ public class Compete extends HttpServlet
                 	//correctAnswerQuery = "Select correctanswer_choice_id from math.question "
 
 					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
+					{
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
+					}
 
 					else
+					{
 						out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
+					}
 
 					out.println( ""
 					+			"&nbsp;" + questionAnswers.getObject("choicetext") + " "
