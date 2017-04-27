@@ -182,12 +182,10 @@ public class Compete extends HttpServlet
         	
         	// find if the username is available
         	// changed this from if to while
-        	while (usernameRS.next() )
+        	while ( ! usernameRS.next() )
         	{
-        		if (usernameRS.getObject("username") == null )
-        		{
-        			userIsAvailable = true; 	// set the available to true if the result set can't find the username
-        		}
+        		userIsAvailable = true; 	// set the available to true if the result set can't find the username
+        	
         	}
 
             
