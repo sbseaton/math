@@ -486,7 +486,7 @@ public class Compete extends HttpServlet
 					{
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
 						out.println( "<td><input type='hidden' name='isCorrect' value='True'></td> ");
-						out.println( "<td><input type='hidden' name='pointValue' value='" + pointValue "'></td> ");
+						out.println( "<td><input type='hidden' name='pointValue' value='" + pointValue + "'></td> ");
 					}
 
 					else
