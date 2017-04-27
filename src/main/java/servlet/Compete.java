@@ -93,7 +93,7 @@ public class Compete extends HttpServlet
                                           + "WHERE lower(Username) = lower('" + username + "') " ;
                 out.println("<h3> " + username + "</h3>"); 
                 out.println("<h3> " + previousQuestionPointValue + "</h3>"); 
-                 //int scoreIncrements = statement.executeUpdate (scoreIncrementQuery);
+                statement.executeUpdate (scoreIncrementQuery);
             }
 
         // incrementing score------------------------------------------------------------------------------------------
