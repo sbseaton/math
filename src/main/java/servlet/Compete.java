@@ -501,7 +501,7 @@ public class Compete extends HttpServlet
             		out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td></tr> ");
             	}
 
-
+            	out.println( ""
                 +	"<tr><td class='col-lg-8'>THIS IS WHERE USERNAME ENTRIES GO</td></tr>      </tbody> \n"
                 +	"</table> \n"
                 +	"</div> \n"
