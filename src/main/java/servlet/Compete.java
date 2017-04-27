@@ -218,6 +218,7 @@ public class Compete extends HttpServlet
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
                 else    
                 { 
+                	userLoggedIn = false;
                     session.invalidate(); 
                     out.println ( "    <form action='LogOut' method='POST'>" ) ;
                     out.print  (  ""
@@ -499,7 +500,7 @@ public class Compete extends HttpServlet
             	while (usernames.next() )
             	{
             		out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td></tr> ");
-            	}
+            	} // end while
 
             	out.println( ""
                 +	"<tr><td class='col-lg-8'>THIS IS WHERE USERNAME ENTRIES GO</td></tr>      </tbody> \n"
