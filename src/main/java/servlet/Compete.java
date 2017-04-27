@@ -49,6 +49,8 @@ public class Compete extends HttpServlet
         String      userChoice = null;
 
         String username = request.getParameter("username");
+        int competitor_ID = -1; // declare competitor_ID
+
 
         int questionNumber; 
         String currentQuestionNumberString = request.getParameter( "Q_ID" );
