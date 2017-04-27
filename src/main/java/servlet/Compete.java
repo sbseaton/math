@@ -185,6 +185,7 @@ public class Compete extends HttpServlet
         	if ( ! usernameRS.next() )
         	{
         		userIsAvailable = true; 	// set the available to true if the result set can't find the username
+        	
         	}
 
             
@@ -196,12 +197,12 @@ public class Compete extends HttpServlet
                 {
 
                 	// insert the new user into the competitor table 
-		/*			String insertUserQuery = 	"INSERT into Math.Competitor ( Username, Score ) "
+					String insertUserQuery = 	"INSERT into Math.Competitor ( Username, Score ) "
 											+	"VALUES  ( '" + username + "', 0 )" ;
 
 					int insertUser = statement.executeUpdate( insertUserQuery ); // execute the query
 
-		*/
+		
 
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
@@ -490,7 +491,17 @@ public class Compete extends HttpServlet
                 +	"<thead> \n"
                 +	"<tr><th class='col-lg-8'>Competitor</th><th class='col-lg-4'>Points</th></tr> \n"
                 +	"</thead> \n"
-                +	"<tbody> \n"
+                +	"<tbody> \n" ); 
+
+            	usernameQuery = "Select * from Math.Competitor "
+            	ResultSet usernames = statement.executeQuery(usernameQuery);
+
+            	while (usernames.next() )
+            	{
+            		out.println("<tr><td class='col-lg-8'>" + usernames.getObject("Username") + "</td></tr> ");
+            	}
+
+
                 +	"<tr><td class='col-lg-8'>THIS IS WHERE USERNAME ENTRIES GO</td></tr>      </tbody> \n"
                 +	"</table> \n"
                 +	"</div> \n"
