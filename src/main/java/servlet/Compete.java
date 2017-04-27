@@ -82,22 +82,7 @@ public class Compete extends HttpServlet
         try
         {
 
-        // incrementing score-----------------------------------------------------------------------------------------
-            // UPDATE totals 
-            //      SET total = total + 1
-            // WHERE name = 'bill';
-            if (isChoiceCorrect == true)
-            {   
-                 String scoreIncrementQuery =  "UPDATE Math.competitor "
-                                          + "SET score = score + " + previousQuestionPointValue + " "   // increment score by the point value
-                                          + "WHERE lower(Username) = lower('" + username + "') " ;
-                out.println("<h3> " + username + "</h3>"); 
-                out.println("<h3> " + previousQuestionPointValue + "</h3>"); 
-                statement.executeUpdate (scoreIncrementQuery);
-            }
-
-        // incrementing score------------------------------------------------------------------------------------------
-
+        
 
             connection = DriverManager.getConnection ( DB_URL ) ;
             statement = connection.createStatement() ;
@@ -107,6 +92,22 @@ public class Compete extends HttpServlet
 
             boolean userLoggedIn = false;
 
+
+            // incrementing score-----------------------------------------------------------------------------------------
+            // UPDATE totals 
+            //      SET total = total + 1
+            // WHERE name = 'bill';
+            if (isChoiceCorrect == true)
+            {   
+                 String scoreIncrementQuery =  "UPDATE Math.competitor "
+                                          + "SET score = score + " + previousQuestionPointValue + " "   // increment score by the point value
+                                          + "WHERE lower(Username) = lower('" + username + "') " ;
+                //out.println("<h3> " + username + "</h3>"); 
+                //out.println("<h3> " + previousQuestionPointValue + "</h3>"); 
+                statement.executeUpdate (scoreIncrementQuery);
+            }
+
+        // incrementing score------------------------------------------------------------------------------------------
 
 
 
