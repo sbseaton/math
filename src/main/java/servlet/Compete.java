@@ -476,6 +476,9 @@ public class Compete extends HttpServlet
                 out.println ( "<table class='table table-bordered table-hover' > " );
 
 
+                while (questionAnswers.next() )
+                {
+                    
                 out.println( ""
                     +           "<tr>"
                     +           "<td>"
@@ -484,16 +487,13 @@ public class Compete extends HttpServlet
                     +           "<label class='form-check-label'> &nbsp; " );
 
 
-                while (questionAnswers.next() )
-                {
-                    
 
                     //correctAnswerQuery = "Select correctanswer_choice_id from math.question "
                     if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
                     {
                         out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
                         out.println( "<input type='hidden' name='isCorrect' value='True'> ");
-                        out.println("<input type='hidden' name='username' value='" + username + "'>");
+                        out.println( "<input type='hidden' name='username' value='" + username + "'>");
 
                     }
 
