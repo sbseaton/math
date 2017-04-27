@@ -450,9 +450,10 @@ public class Compete extends HttpServlet
                 	out.println( ""
 					+			"<tr>"
 					+			"<td>"
-					+			"<form method='POST' action='/Compete?Q_ID=" + questionNumber + "'>"
+					+			"<form method='POST' action='/Compete?Q_ID=" + questionNumber+1 + "'>"
 					+			"<div class='form-check'>"
-					+			"<label class='form-check-label'> &nbsp; " ); 
+					+			"<label class='form-check-label'> &nbsp; " );
+
 
                 	//correctAnswerQuery = "Select correctanswer_choice_id from math.question "
 
@@ -503,7 +504,6 @@ public class Compete extends HttpServlet
             	} // end while
 
             	out.println( ""
-                +	"<tr><td class='col-lg-8'>THIS IS WHERE USERNAME ENTRIES GO</td></tr>      </tbody> \n"
                 +	"</table> \n"
                 +	"</div> \n"
                 +	"</div> \n"
@@ -513,13 +513,7 @@ public class Compete extends HttpServlet
                 +	"</div> <!-- /container --> \n"
                 +	" <!-- End outermost container -->\n " );
 
-
-
-			}	// end if userloggedin is true
-
-
-
-            
+			}	// end if userloggedin is true 
 
         } // end try block
         catch ( SQLException sqlException ) 
