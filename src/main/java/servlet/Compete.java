@@ -489,16 +489,16 @@ public class Compete extends HttpServlet
 					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
 					{
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
-						out.println( "<td><input type='hidden' name='isCorrect' value='True'></td> ");
+						out.println( "<input type='hidden' name='isCorrect' value='True'> ");
 					}
 
 					else
 					{
 						out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
-						out.println( "<td><input type='hidden' name='isCorrect' value='False'></td> ");
+						out.println( "<input type='hidden' name='isCorrect' value='False'> ");
 					}
 
-					out.println( "<td><input type='hidden' name='pointValue' value='" + pointValue + "'></td> "); // pass the value of the question 
+					out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
 
 					out.println( ""
 					+			"&nbsp;" + questionAnswers.getObject("choicetext") + " "
