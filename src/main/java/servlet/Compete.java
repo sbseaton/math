@@ -52,12 +52,10 @@ public class Compete extends HttpServlet
 
         // -----------------------------------------------------------------------
         String username = request.getParameter("username");
-
-
-
+        boolean isCorrect = request.getParameter("isCorrect");
+        boolean questionIsAnswered = false;
         // -----------------------------------------------------------------------
 
-      
 
         int questionNumber; 
         String currentQuestionNumberString = request.getParameter( "Q_ID" );
@@ -71,6 +69,21 @@ public class Compete extends HttpServlet
 
         try
         {
+
+        // incrementing score-----------------------------------------------------------------------------------------
+            // UPDATE totals 
+			//		SET total = total + 1
+			// WHERE name = 'bill';
+			if (isCorrect == true)
+			{	
+				 String scoreQuery =  "UPDATE Math.competitor "
+				 					+ "SET score = score + 1 "
+				 					+ "WHERE lower(Username) = lower('" + username + "') " ; 
+				 int scoreIncrements = statement.executeUpdate (scoreQuery);
+			}
+
+		// incrementing score------------------------------------------------------------------------------------------
+
 
             connection = DriverManager.getConnection ( DB_URL ) ;
             statement = connection.createStatement() ;
@@ -296,7 +309,9 @@ public class Compete extends HttpServlet
                 +	"<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Easy <span class='caret'></span></a> \n"
                 +	"<ul class='dropdown-menu'> \n" );
 
-			// easy questions ----------------------------------------------------------------------------------
+				// easy questions ----------------------------------------------------------------------------------
+            	// pull from database and display --------------------------------------
+
                	String questionStringEasy = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 2 ";
 
@@ -327,7 +342,7 @@ public class Compete extends HttpServlet
                 +	" <ul class='dropdown-menu'> \n" ) ;
 
                 // medium questions ---------------------------------------------------------------------------------------------
-
+                // pull from database and display --------------------------------------
                 String questionStringMedium = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 3 ";
 
@@ -359,7 +374,7 @@ public class Compete extends HttpServlet
 
 
              // Hard questions ---------------------------------------------------------------------------------------------
-
+             // pull from database and display --------------------------------------
                 String questionStringHard = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 4 ";
 
@@ -460,11 +475,14 @@ public class Compete extends HttpServlet
 					if ( correctChoiceID == Integer.parseInt ( "" + questionAnswers.getObject("id")) )
 					{
 						out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value="+ questionAnswers.getObject("id") + "'> ");
+						out.println( "<td><input type='hidden' name='isCorrect' value='true'></td> ");
 					}
 
 					else
 					{
 						out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value="+ questionAnswers.getObject("id") + "'> " );
+						out.println( "<td><input type='hidden' name='isCorrect' value='false'></td> ");
+
 					}
 
 					out.println( ""
@@ -481,6 +499,8 @@ public class Compete extends HttpServlet
                 out.println ("</table>");
          	
             }
+
+      
 
             out.println( ""
                 +	"</div> \n"
@@ -512,6 +532,11 @@ public class Compete extends HttpServlet
                 +	"<!-- End container of two jumbotrons --> \n"
                 +	"</div> <!-- /container --> \n"
                 +	" <!-- End outermost container -->\n " );
+
+
+
+
+         
 
 			}	// end if userloggedin is true 
 
