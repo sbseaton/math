@@ -321,7 +321,7 @@ public class Compete extends HttpServlet
                 while (questionEasyRS.next() )
                 {
                     String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
-                                            + " WHERE question_id = question_id "
+                                            + " WHERE question_id = id "
                                             + " AND competitor_id = " + competitor_ID + " "
                                             + " AND question_id = " + questionNumber + "; " ;
                     ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
