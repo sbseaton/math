@@ -6,7 +6,7 @@
 /* 
 here is how you display the answer text : 
 
-Select * from Math.Question, Math.Submission WHERE question_id = id AND competitor_id = 3 AND question_id = 1 ;
+Select * from Math.Question, Math.Submission WHERE question_id = id AND competitor_id = 3 AND question_id = 301 ;
 
 select *
 from math.choice
@@ -320,10 +320,12 @@ public class Compete extends HttpServlet
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
+
                     String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
                                             + " WHERE question_id = id "
                                             + " AND competitor_id = " + competitor_ID + " "
                                             + " AND question_id = " + questionNumber + "; " ;
+                    System.out.println( isAnsweredQuery );
                     ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
 
                     if ( isAnswered.next() )    // if the question has been answered do this
