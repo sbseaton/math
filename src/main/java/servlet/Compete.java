@@ -131,7 +131,7 @@ public class Compete extends HttpServlet
             String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
             ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
 
-            out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
+           // out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
 
             if ( competitor_IDRS.next() )
                 competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
