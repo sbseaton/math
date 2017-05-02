@@ -127,7 +127,7 @@ public class Compete extends HttpServlet
 
             // end incrementing score------------------------------------------------------------------------------------------
 
-           // Get the competitor ID for the insert query for submission
+          /* // Get the competitor ID for the insert query for submission
             String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
             ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
 
@@ -146,6 +146,7 @@ public class Compete extends HttpServlet
                 int submission = statement.executeUpdate( submissionQuery );
             }
             
+            */
 
 
 
