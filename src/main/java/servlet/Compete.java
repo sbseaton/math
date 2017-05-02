@@ -402,7 +402,7 @@ public class Compete extends HttpServlet
                     try 
                     {
 
-                        int currentQuestionIDEasy =  Integer.parseInt( "" + questionEasyRS.next("ID") );
+                        int currentQuestionIDEasy =  Integer.parseInt( "" + questionEasyRS.getObject("ID") );
 
                         boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
 
