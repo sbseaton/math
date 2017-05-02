@@ -370,33 +370,25 @@ public class Compete extends HttpServlet
 
 
                 out.println("Test 3");
-                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
-                //out.println(getAnswersQuery);
-                ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
+                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + currentCompetitorID + " ";
+           
+            ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
-                out.println(" TEST 4 ");
+            while ( getAnswersRS.next() )
+            {
+                int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
+                int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
+                int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
 
-                while ( getAnswersRS.next() )
+                if ( usersAnswerID == correctAnswerID )
                 {
-                    int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
-                    int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
-                    int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
+                    questionsAnswered.add(tempQuestionID, true);
+                } else {
+                    questionsAnswered.add(tempQuestionID, false);
+                }// end if else
 
-                     out.println("Test 4.1");
-                    if ( usersAnswerID == correctAnswerID )
-                    {   
-                       
-                        answeredQuestions.add(tempQuestionID, true);
-                        out.println(answeredQuestions.get(tempQuestionID));
+            }// end while
 
-                    } else {
-
-                        answeredQuestions.add(tempQuestionID, false);
-                        out.println(answeredQuestions.get(tempQuestionID));
-
-                    }// end if else
-
-                }// end while
 
                 out.println("Test 5");
 
