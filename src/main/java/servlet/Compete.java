@@ -401,7 +401,7 @@ public class Compete extends HttpServlet
 
                     try 
                     {
-                        boolean isCorrect = answeredQuestions( Integer.parseInt( "" + questionEasyRS.next("ID") ) );
+                        boolean isCorrect = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.next("ID") ) );
 
                         if (isCorrect == true)
                             liClass = "bg-success disabled" ;
@@ -414,7 +414,7 @@ public class Compete extends HttpServlet
                         // if the user hasn't answered this question, it will display available for them to click on
                         liClass = "";
                     }
-                    
+
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
                         out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
