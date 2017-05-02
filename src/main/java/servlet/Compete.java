@@ -146,7 +146,7 @@ public class Compete extends HttpServlet
                 int submission = statement.executeUpdate( submissionQuery );
             }
             
-            */
+            */ 
 
 
 
@@ -351,6 +351,37 @@ public class Compete extends HttpServlet
                 +   "<ul class='dropdown-menu'> \n" );
 
                 // easy questions ----------------------------------------------------------------------------------
+
+
+
+
+                ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
+               
+                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + currentCompetitorID + " ";
+                //out.println(getAnswersQuery);
+                ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
+
+                while ( getAnswersRS.next() )
+                {
+                    int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
+                    int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
+                    int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
+
+                    if ( usersAnswerID == correctAnswerID )
+                    {
+                        answeredQuestions.add(tempQuestionID, true);
+                    } else {
+                        answeredQuestions.add(tempQuestionID, false);
+                    }// end if else
+
+                }// end while
+
+
+
+
+
+
+
                 // pull from database and display --------------------------------------
 
                 String questionStringEasy = "SELECT * "
@@ -359,32 +390,34 @@ public class Compete extends HttpServlet
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
                 String questionIDEasy = "";
+
+                int i = 0 ; 
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
-                    
-                 /*   String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
-                                            + " WHERE question_id = id "
-                                            + " AND competitor_id = " + competitor_ID + " "
-                                            + " AND question_id = " + questionEasyRS.getObject("id") + "; " ;
-                    System.out.println( isAnsweredQuery );
-                    ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
-				
-                    if ( isAnswered.next() )    // if the question has been answered do this
-                    {   
-                        if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
-                            out.println(" <li class='bg-danger success disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> ");
+
+                    String liClass = "";
+
+
+                    try 
+                    {
+                        boolean isCorrect = answeredQuestions( Integer.parseInt( "" + questionEasyRS.next("ID") ) );
+
+                        if (isCorrect == true)
+                            liClass = "bg-success disabled" ;
                         else 
-                            out.println(" <li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> "); 
+                            liClass = "bg-danger disabled" ;
+
+                    }
+                    catch ( IndexOutOfBoundsException e )
+                    {
+                        // if the user hasn't answered this question, it will display available for them to click on
+                        liClass = "";
                     }
                     
-
-                    else                // if it has not been answered, print out the option for the user to choose
-                    {	
-                    	*/
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
-                        out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                        out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
                    	// }
 
  
