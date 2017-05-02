@@ -127,7 +127,26 @@ public class Compete extends HttpServlet
 
             // end incrementing score------------------------------------------------------------------------------------------
 
-          
+          //  Get the competitor ID for the insert query for submission
+            String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
+            ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
+
+           // out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
+
+            if ( competitor_IDRS.next() )
+                competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
+
+
+            if (previousAnswerIDString != null )
+            {
+                // query the submission made previously
+                String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
+                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
+
+                int submission = statement.executeUpdate( submissionQuery );
+            }
+            
+
 
 
             // html display ---------------------------------------------------------------
@@ -325,103 +344,44 @@ public class Compete extends HttpServlet
                 +   "<ul class='dropdown-menu'> \n" );
 
                 // easy questions ----------------------------------------------------------------------------------
-
-        // --------------------------------------------------------------------------------------------------------------------
-
-                out.println("Test 1");
-                ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
-
-                out.println("Test 2");
-
-                out.print("ArrayList entries:");
-                // fill array with null values
-                for (int i = 0; i < 31; i++ )
-                {
-                    answeredQuestions.add(null);
-                    out.print(answeredQuestions.get(i) + ", ");
-
-                }
-
-
-                out.println("Test 3");
-                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
-           
-                ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
-
-                out.println("Test 4");
-                out.println("Competitor id = " + competitor_ID );
-                out.println("Result Set is = " + getAnswersRS.next() );
-            /* while ( getAnswersRS.next() )
-            {
-                int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
-                int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
-                int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
-
-                out.println("Test 4.1");
-
-                if ( usersAnswerID == correctAnswerID )
-                {
-                    answeredQuestions.add(tempQuestionID, true);
-                } else {
-                    answeredQuestions.add(tempQuestionID, false);
-                }// end if else
-
-            }// end while
-    */
-
-                out.println("Test 5");
-
-
                 // pull from database and display --------------------------------------
 
-                String questionStringEasy = "SELECT * FROM   Math.Question WHERE PointValue = 2 ";
+                String questionStringEasy = "SELECT * "
+                + "FROM   Math.Question WHERE PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
                 String questionIDEasy = "";
-
-                out.println("Test 6");
-                
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
-
-                    out.println("Test 7");
-
-                    String liClass = "";
-
-                    out.println("Test 7.2");
-                    Boolean isCorrectAnswer = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) );
-
-                    out.println("Test 7.3");
-                    if (isCorrectAnswer == null){
-                        out.println("Test 7.4");
-                        liClass = "" ;
-                    }
-                    else
-                    {
-                        if (isCorrectAnswer == true)
-                        {
-                            out.println("Test 7.5");
-                            liClass = "bg-success disabled" ;
-                        }   
+                    
+                 /*   String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
+                                            + " WHERE question_id = id "
+                                            + " AND competitor_id = " + competitor_ID + " "
+                                            + " AND question_id = " + questionEasyRS.getObject("id") + "; " ;
+                    System.out.println( isAnsweredQuery );
+                    ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
+				
+                    if ( isAnswered.next() )    // if the question has been answered do this
+                    {   
+                        if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
+                            out.println(" <li class='bg-danger success disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> ");
                         else 
-                        {
-                            out.println("Test 7.6");
-                            liClass = "bg-danger disabled" ;
-                        }
-                    }   
+                            out.println(" <li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> "); 
+                    }
+                    
 
-                   out.println("Test 8");
-                    questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
-                    questionIDEasy = "" + questionEasyRS.getObject("ID");
-                    out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-               
-                out.println("Test 9");
+                    else                // if it has not been answered, print out the option for the user to choose
+                    {	
+                    	*/
+                        questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
+                        questionIDEasy = "" + questionEasyRS.getObject("ID");
+                        out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                   	// }
+
  
                 }
-    // --------------------------------------------------------------------------------------------------------------------
-
 
             //  end easy questions------------------------------------------------------------------------------------------------ 
 
