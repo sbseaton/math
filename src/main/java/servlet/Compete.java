@@ -403,7 +403,7 @@ public class Compete extends HttpServlet
                     boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
 
                     if (isCorrectAnswer == null)
-                        liClass = "" 
+                        liClass = "" ;
                     else if (isCorrectAnswer == true)
                         liClass = "bg-success disabled" ;
                     else 
