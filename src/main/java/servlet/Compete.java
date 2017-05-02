@@ -406,7 +406,7 @@ public class Compete extends HttpServlet
                     String liClass = "";
 
                     out.println("Test 7.2");
-                    Boolean isCorrectAnswer = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") );
+                    Boolean isCorrectAnswer = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) );
 
                     out.println("Test 7.3");
                     if (isCorrectAnswer == null){
