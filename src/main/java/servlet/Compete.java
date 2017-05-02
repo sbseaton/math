@@ -370,7 +370,7 @@ public class Compete extends HttpServlet
 
 
                 out.println("Test 3");
-                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + currentCompetitorID + " ";
+                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
            
             ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
