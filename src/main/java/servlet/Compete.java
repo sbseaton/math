@@ -127,19 +127,15 @@ public class Compete extends HttpServlet
 
             // end incrementing score------------------------------------------------------------------------------------------
 
-/*
-
-            // Get the competitor ID for the insert query for submission
-           
-             String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
+           // Get the competitor ID for the insert query for submission
+            String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
             ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
 
             out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
 
-            // if ( session.isNew )
             if ( competitor_IDRS.next() )
                 competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
-    */
+    
 
             if (previousAnswerIDString != null )
             {
@@ -251,24 +247,6 @@ public class Compete extends HttpServlet
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
 
-
-                    // Get the competitor ID for the insert query for submission
-                    String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
-                    ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
-
-                   // out.println("<h1> in if statement and result set = " + competitor_IDRS.next() + "</h1> " );
-
-                    if ( competitor_IDRS.next() )
-                    {   out.println("<p> competitor_ID before change = " + competitor_ID );
-                        competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
-                        out.println("<p> competitor_ID after change = " + competitor_ID );
-
-                    }
-
-                  
-                        out.println("<p> competitor_ID after change = " + competitor_ID );
-
-
             
 
                 }
@@ -301,25 +279,6 @@ public class Compete extends HttpServlet
                 // and is returning from checkAnswer servlet for a new problem
                 userLoggedIn = true;
                 username = (String) session.getAttribute (userIdAttribute) ;
-
-            // copied to get old competitor ID ----------------------------------------------------------------------------------------------------
-                    // Get the competitor ID for the insert query for submission
-                    String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
-                    ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
-
-                   // out.println("<h1> in if statement and result set = " + competitor_IDRS.next() + "</h1> " );
-
-                    if ( competitor_IDRS.next() )
-                    {   out.println("<p> competitor_ID before change = " + competitor_ID );
-                        competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
-                        out.println("<p> competitor_ID after change = " + competitor_ID );
-
-                    }
-
-                  
-                        out.println("<p> competitor_ID after change = " + competitor_ID );
-
-
                 
             }   // end else
 
@@ -363,11 +322,9 @@ public class Compete extends HttpServlet
                 String questionIDEasy = "";
                 // display the question text 
                 while (questionEasyRS.next() )
-                {   
-                    out.println("<p>before query competitor_ID = " + competitor_ID + "</p> ");
-    
-                    /*
-                    String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
+                {
+                    
+                 /*   String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
                                             + " WHERE question_id = id "
                                             + " AND competitor_id = " + competitor_ID + " "
                                             + " AND question_id = " + questionEasyRS.getObject("id") + "; " ;
@@ -562,7 +519,6 @@ public class Compete extends HttpServlet
 
                     out.println( "<input type='hidden' name='previousQuestionNumber' value='" + questionNumber + "'>");     // pass the question number
                     out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
-
                     
                     // pass the current answer ID for 
                     out.println( "<input type='hidden' name='Selected_Choice_ID' value='"+ choiceID +"'>");
