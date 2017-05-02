@@ -400,7 +400,7 @@ public class Compete extends HttpServlet
                 
                     int currentQuestionIDEasy =  Integer.parseInt( "" + questionEasyRS.getObject("ID") );
 
-                    boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
+                    Boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
 
                     if (isCorrectAnswer == null)
                         liClass = "" ;
