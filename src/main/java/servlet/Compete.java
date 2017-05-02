@@ -135,7 +135,7 @@ public class Compete extends HttpServlet
 
             if ( competitor_IDRS.next() )
                 competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
-    
+
 
             if (previousAnswerIDString != null )
             {
@@ -330,7 +330,7 @@ public class Compete extends HttpServlet
                                             + " AND question_id = " + questionEasyRS.getObject("id") + "; " ;
                     System.out.println( isAnsweredQuery );
                     ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
-                
+				
                     if ( isAnswered.next() )    // if the question has been answered do this
                     {   
                         if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
@@ -341,12 +341,12 @@ public class Compete extends HttpServlet
                     
 
                     else                // if it has not been answered, print out the option for the user to choose
-                    {   
-                        */
+                    {	
+                    	*/
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
                         out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                    // }
+                   	// }
 
  
                 }
