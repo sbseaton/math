@@ -62,53 +62,54 @@ public class Compete extends HttpServlet
         if (previousQuestionNumberString != null)
             previousQuestionNumber = Integer.parseInt(previousQuestionNumberString);    // convert the previous question number to an int
 
-        // request the previous answer ID for submission query
-        String previousAnswerIDString = request.getParameter("Selected_Choice_ID"); 
-        int previousAnswerID = 0;
-        if (previousAnswerIDString != null )
-            previousAnswerID = Integer.parseInt(previousAnswerIDString);
-
-
-
-
-
-        // find if the last choice submission is correct or not ---------------------------------------------------------------
-
-        String isCorrect = request.getParameter("isCorrect");
-        boolean isChoiceCorrect = false;
-        if ( isCorrect != null )
-            isChoiceCorrect = Boolean.parseBoolean( isCorrect );
-
-        // ----------------------------------------------------------------------------------------------------------------------
-
-
-        // find the current question ID  ---------------------------------------
-        if ( currentQuestionNumberString != null )
-            questionNumber = Integer.parseInt(currentQuestionNumberString);
-        else
-            questionNumber = -1;    // welcome page
-        // ----------------------------------------------------------------------------------
-
-
-        // request the point value for the question
-        String previousQuestionPointValueString = request.getParameter("pointValue");
-        int previousQuestionPointValue = 0;
-
-        if (previousQuestionPointValueString != null)
-            previousQuestionPointValue = Integer.parseInt(previousQuestionPointValueString);
+        
 
         try
         {
 
-        
+                // request the previous answer ID for submission query
+            String previousAnswerIDString = request.getParameter("Selected_Choice_ID"); 
+            int previousAnswerID = 0;
+            if (previousAnswerIDString != null )
+                previousAnswerID = Integer.parseInt(previousAnswerIDString);
 
-            connection = DriverManager.getConnection ( DB_URL ) ;
-            statement = connection.createStatement() ;
-            String queryString  =  null ;
-            String questionString = null;
-            String questionAnswersString = null ;   // question one answer string]
 
-            boolean userLoggedIn = false;
+
+
+
+            // find if the last choice submission is correct or not ---------------------------------------------------------------
+
+            String isCorrect = request.getParameter("isCorrect");
+            boolean isChoiceCorrect = false;
+            if ( isCorrect != null )
+                isChoiceCorrect = Boolean.parseBoolean( isCorrect );
+
+            // ----------------------------------------------------------------------------------------------------------------------
+
+
+            // find the current question ID  ---------------------------------------
+            if ( currentQuestionNumberString != null )
+                questionNumber = Integer.parseInt(currentQuestionNumberString);
+            else
+                questionNumber = -1;    // welcome page
+            // ----------------------------------------------------------------------------------
+
+
+            // request the point value for the question
+            String previousQuestionPointValueString = request.getParameter("pointValue");
+            int previousQuestionPointValue = 0;
+
+            if (previousQuestionPointValueString != null)
+                previousQuestionPointValue = Integer.parseInt(previousQuestionPointValueString);
+            
+
+                connection = DriverManager.getConnection ( DB_URL ) ;
+                statement = connection.createStatement() ;
+                String queryString  =  null ;
+                String questionString = null;
+                String questionAnswersString = null ;   // question one answer string]
+
+                boolean userLoggedIn = false;
 
 
             // incrementing score-----------------------------------------------------------------------------------------
@@ -126,6 +127,27 @@ public class Compete extends HttpServlet
             }
 
             // end incrementing score------------------------------------------------------------------------------------------
+
+          /* // Get the competitor ID for the insert query for submission
+            String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
+            ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
+
+           // out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
+
+            if ( competitor_IDRS.next() )
+                competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
+
+
+            if (previousAnswerIDString != null )
+            {
+                // query the submission made previously
+                String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
+                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
+
+                int submission = statement.executeUpdate( submissionQuery );
+            }
+            
+            */ 
 
 
 
@@ -186,6 +208,12 @@ public class Compete extends HttpServlet
             // ---------------------------------------------------------
 
             boolean userIsAvailable = false ;               // change this back to false
+
+/*
+            String submissionQuery = "UPDATE Math.submission "
+                                    +"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
+                                    +"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
+*/
 
             // ---------------------------------------------------------
 
@@ -324,77 +352,92 @@ public class Compete extends HttpServlet
                 +   "<ul class='dropdown-menu'> \n" );
 
                 // easy questions ----------------------------------------------------------------------------------
+
+        // --------------------------------------------------------------------------------------------------------------------
+
+                out.println("Test 1");
+                ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
+
+                out.println("Test 2");
+                // fill array with null values
+                for (int i = 0; i < 40; i++ )
+                    answeredQuestions.add(null);
+
+                out.println("Test 3");
+                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
+                //out.println(getAnswersQuery);
+                ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
+
+                out.println(" TEST 4 ");
+
+                while ( getAnswersRS.next() )
+                {
+                    int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
+                    int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
+                    int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
+
+                    if ( usersAnswerID == correctAnswerID )
+                    {
+                        answeredQuestions.add(tempQuestionID, true);
+                    } else {
+                        answeredQuestions.add(tempQuestionID, false);
+                    }// end if else
+
+                }// end while
+
+                out.println("Test 5");
+
+
                 // pull from database and display --------------------------------------
 
-
-
-
-
-
-
-            ArrayList<Boolean> questionsAnswered = new ArrayList<Boolean>();// holds which quesiton currentCompetitor has answered and if correct or not
-            // fill list with null values
-            for (int i = 0; i < 40 ; i++ ) {
-                questionsAnswered.add(null);
-            }// end for
-
-            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
-           
-            ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
-
-            while ( getAnswersRS.next() )
-            {
-                int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
-                int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
-                int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
-
-                if ( usersAnswerID == correctAnswerID )
-                {
-                    questionsAnswered.add(tempQuestionID, true);
-                } else {
-                    questionsAnswered.add(tempQuestionID, false);
-                }// end if else
-
-            }// end while
-
-
-
-
-
-
-
-                String questionStringEasy = "SELECT * "
-                + "FROM   Math.Question WHERE PointValue = 2 ";
+                String questionStringEasy = "SELECT * FROM   Math.Question WHERE PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
                 String questionIDEasy = "";
+
+                out.println("Test 6");
+                
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
-                    
-                    String liClasses = "";
-                    Boolean isCorrectAnswer = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
-                    if (isCorrectAnswer == null) {
-                        liClasses = "";
-                    } else {
-                        if (isCorrectAnswer) {
-                            liClasses = "bg-success disabled";
-                        } else {
-                            liClasses = "bg-danger disabled";
-                        }// end inner if else
-                    }// end outer if-else
-        
-                    String tempQuestionText = (String) questionEasyRS.getObject("QuestionText") ;   
-                    int    tempQuestionID   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
-                        
+                    out.println("Test 7");
+
+                    String liClass = "";
+
+                    out.println("Test 7.2");
+                    Boolean isCorrectAnswer = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) );
+
+                    out.println("Test 7.3");
+                    if (isCorrectAnswer == null){
+                        out.println("Test 7.4");
+                        liClass = "" ;
+                    }
+                    else
+                    {
+                        if (isCorrectAnswer == true)
+                        {
+                            out.println("Test 7.5");
+                            liClass = "bg-success disabled" ;
+                        }   
+                        else 
+                        {
+                            out.println("Test 7.6");
+                            liClass = "bg-danger disabled" ;
+                        }
+                    }   
+
+                   out.println("Test 8");
                     questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                     questionIDEasy = "" + questionEasyRS.getObject("ID");
-                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-        
+                    out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+               
+                out.println("Test 9");
  
                 }
+    // --------------------------------------------------------------------------------------------------------------------
+
 
             //  end easy questions------------------------------------------------------------------------------------------------ 
 
