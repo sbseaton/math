@@ -338,7 +338,7 @@ public class Compete extends HttpServlet
                 // display the question text 
                 while (questionEasyRS.next() )
                 {   
-                    out.println("<h1>before query competitor_ID = " + Competitor_ID + "</h1> ");
+                    out.println("<h1>before query competitor_ID = " + competitor_ID + "</h1> ");
     
                     /*
                     String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
