@@ -261,6 +261,8 @@ public class Compete extends HttpServlet
                     if ( competitor_IDRS.next() )
                         competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
 
+                    out.println("userIsAvailable = true AND competitor_ID is now = " + competitor_ID );
+
 
             
 
@@ -338,7 +340,7 @@ public class Compete extends HttpServlet
                 // display the question text 
                 while (questionEasyRS.next() )
                 {   
-                    out.println("<h1>before query competitor_ID = " + competitor_ID + "</h1> ");
+                    out.println("<p>before query competitor_ID = " + competitor_ID + "</p> ");
     
                     /*
                     String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
