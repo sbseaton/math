@@ -384,8 +384,7 @@ public class Compete extends HttpServlet
 
                 // pull from database and display --------------------------------------
 
-                String questionStringEasy = "SELECT * "
-                + "FROM   Math.Question WHERE PointValue = 2 ";
+                String questionStringEasy = "SELECT * FROM   Math.Question WHERE PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
@@ -404,16 +403,20 @@ public class Compete extends HttpServlet
 
                     if (isCorrectAnswer == null)
                         liClass = "" ;
-                    else if (isCorrectAnswer == true)
+                    else{
+                    
+                    if 
+                     (isCorrectAnswer == true)
                         liClass = "bg-success disabled" ;
                     else 
                         liClass = "bg-danger disabled" ;
+                      }   
 
                    
-                        questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
-                        questionIDEasy = "" + questionEasyRS.getObject("ID");
-                        out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                   	// }
+                    questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
+                    questionIDEasy = "" + questionEasyRS.getObject("ID");
+                    out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+               
 
  
                 }
