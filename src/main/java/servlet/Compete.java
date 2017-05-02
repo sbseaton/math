@@ -365,12 +365,12 @@ public class Compete extends HttpServlet
             {
 
                 String liClasses = "";
-                Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + easyQuestionsResultSet.getObject("ID") ) ) ;
+                Boolean isCorrectAnswer = questionsAnswered.get( Integer.parseInt( "" + easyQuestionsResultSet.getObject("ID") ) ) ;
 
-                if (isCorrect == null) {
+                if (isCorrectAnswer == null) {
                     liClasses = "";
                 } else {
-                    if (isCorrect) {
+                    if (isCorrectAnswer) {
                         liClasses = "bg-success disabled";
                     } else {
                         liClasses = "bg-danger disabled";
