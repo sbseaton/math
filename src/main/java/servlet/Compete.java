@@ -374,7 +374,7 @@ public class Compete extends HttpServlet
                 {
                     
                     String liClasses = "";
-                    Boolean isCorrectAnswer = questionsAnswered.get( Integer.parseInt( "" + easyQuestionsResultSet.getObject("ID") ) ) ;
+                    Boolean isCorrectAnswer = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
                     if (isCorrectAnswer == null) {
                         liClasses = "";
@@ -386,8 +386,8 @@ public class Compete extends HttpServlet
                         }// end inner if else
                     }// end outer if-else
         
-                    String tempQuestionText = (String) easyQuestionsResultSet.getObject("QuestionText") ;   
-                    int    tempQuestionID   = Integer.parseInt ( "" + easyQuestionsResultSet.getObject("id") ) ;
+                    String tempQuestionText = (String) questionEasyRS.getObject("QuestionText") ;   
+                    int    tempQuestionID   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
                         
                     questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                     questionIDEasy = "" + questionEasyRS.getObject("ID");
