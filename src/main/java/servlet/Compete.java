@@ -139,7 +139,7 @@ public class Compete extends HttpServlet
             // if ( session.isNew )
             if ( competitor_IDRS.next() )
                 competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
-    */
+    
 
             if (previousAnswerIDString != null )
             {
@@ -150,7 +150,7 @@ public class Compete extends HttpServlet
                 int submission = statement.executeUpdate( submissionQuery );
             }
 
-
+    */
 
             // html display ---------------------------------------------------------------
             out.println  (  ""   
@@ -295,12 +295,23 @@ public class Compete extends HttpServlet
                 //-------------------------------------------------------------------------------------------------------------------------------------------
             } // end if session.isNew() 
 
+
             else 
             {
                 // the session is not new, but the user is logged in 
                 // and is returning from checkAnswer servlet for a new problem
                 userLoggedIn = true;
                 username = (String) session.getAttribute (userIdAttribute) ;
+
+                 if (previousAnswerIDString != null )
+                {
+                    // query the submission made previously
+                    String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
+                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
+
+                    int submission = statement.executeUpdate( submissionQuery );
+                }
+
                 
             }   // end else
 
