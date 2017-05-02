@@ -361,10 +361,10 @@ public class Compete extends HttpServlet
 
                 out.print("ArrayList entries:");
                 // fill array with null values
-                for (int i = 0; i < 40; i++ )
+                for (int i = 0; i < 31; i++ )
                 {
                     answeredQuestions.add(null);
-                    out.print(answeredQuestions(i));
+                    out.print(answeredQuestions.get(i) + ", ");
 
                 }
 
