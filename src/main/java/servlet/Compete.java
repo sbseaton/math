@@ -354,17 +354,20 @@ public class Compete extends HttpServlet
 
         // --------------------------------------------------------------------------------------------------------------------
 
-
+                out.println("Test 1");
                 ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
 
+                out.println("Test 2");
                 // fill array with null values
                 for (int i = 0; i < 40; i++ )
                     answeredQuestions.add(null);
 
-               
+                out.println("Test 3");
                 String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
                 //out.println(getAnswersQuery);
                 ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
+
+                out.println(" TEST 4 ");
 
                 while ( getAnswersRS.next() )
                 {
@@ -381,6 +384,8 @@ public class Compete extends HttpServlet
 
                 }// end while
 
+                out.println("Test 5");
+
 
                 // pull from database and display --------------------------------------
 
@@ -390,10 +395,13 @@ public class Compete extends HttpServlet
                 String questionTextEasy = "";
                 String questionIDEasy = "";
 
+                out.println("Test 6");
                 
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
+
+                    out.println("Test 7");
 
                     String liClass = "";
                 
@@ -412,12 +420,12 @@ public class Compete extends HttpServlet
                         liClass = "bg-danger disabled" ;
                       }   
 
-                   
+                   out.println("Test 8");
                     questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                     questionIDEasy = "" + questionEasyRS.getObject("ID");
                     out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
                
-
+                out.println("Test 9");
  
                 }
     // --------------------------------------------------------------------------------------------------------------------
