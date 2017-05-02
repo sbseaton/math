@@ -337,8 +337,10 @@ public class Compete extends HttpServlet
                 String questionIDEasy = "";
                 // display the question text 
                 while (questionEasyRS.next() )
-                {
-                    
+                {   
+                    out.println("<h1>before query competitor_ID = " + Competitor_ID + "</h1> ");
+    
+                    /*
                     String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
                                             + " WHERE question_id = id "
                                             + " AND competitor_id = " + competitor_ID + " "
@@ -357,11 +359,11 @@ public class Compete extends HttpServlet
 
                     else                // if it has not been answered, print out the option for the user to choose
                     {   
-                        
+                        */
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
                         out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                     }
+                    // }
 
  
                 }
