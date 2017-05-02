@@ -266,6 +266,7 @@ public class Compete extends HttpServlet
                     }
 
                   
+                        out.println("<p> competitor_ID after change = " + competitor_ID );
 
 
             
