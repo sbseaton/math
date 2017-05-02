@@ -329,96 +329,57 @@ public class Compete extends HttpServlet
         // --------------------------------------------------------------------------------------------------------------------
 
                 out.println("Test 1");
-                ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
+               
+            ArrayList<Boolean> questionsAnswered = new ArrayList<Boolean>();// holds which quesiton currentCompetitor has answered and if correct or not
+            // fill list with null values
+            for (int i = 0; i < 40 ; i++ ) {
+                questionsAnswered.add(null);
+            }// end for
 
-                out.println("Test 2");
-
-                out.print("ArrayList entries:");
-                // fill array with null values
-                for (int i = 0; i < 31; i++ )
-                {
-                    answeredQuestions.add(null);
-                    out.print(answeredQuestions.get(i) + ", ");
-
-                }
-
-
-                out.println("Test 3");
-                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
+            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + currentCompetitorID + " ";
            
             ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
-            out.println("Test 4");
-            out.println("Result Set rs is = " + getAnswersRS.next() );
-            /* while ( getAnswersRS.next() )
+            while ( getAnswersRS.next() )
             {
                 int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
                 int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
                 int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
 
-                out.println("Test 4.1");
-
                 if ( usersAnswerID == correctAnswerID )
                 {
-                    answeredQuestions.add(tempQuestionID, true);
+                    questionsAnswered.add(tempQuestionID, true);
                 } else {
-                    answeredQuestions.add(tempQuestionID, false);
+                    questionsAnswered.add(tempQuestionID, false);
                 }// end if else
 
             }// end while
-    */
 
-                out.println("Test 5");
+            //--------------------------------------------------------//
 
+            String easyQuestionsQuery = "SELECT * FROM Math.Question WHERE PointValue = 2";
+            ResultSet easyQuestionsResultSet = statement.executeQuery ( easyQuestionsQuery ) ;
 
-                // pull from database and display --------------------------------------
+            //output EASY questions to dropdown menu
+            while ( easyQuestionsResultSet.next() ) 
+            {
 
-                String questionStringEasy = "SELECT * FROM   Math.Question WHERE PointValue = 2 ";
+                String liClasses = "";
+                Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + easyQuestionsResultSet.getObject("ID") ) ) ;
 
-                ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
-                String questionTextEasy = "";
-                String questionIDEasy = "";
-
-                out.println("Test 6");
-                
-                // display the question text 
-                while (questionEasyRS.next() )
-                {
-
-                    out.println("Test 7");
-
-                    String liClass = "";
-
-                    out.println("Test 7.2");
-                    Boolean isCorrectAnswer = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) );
-
-                    out.println("Test 7.3");
-                    if (isCorrectAnswer == null){
-                        out.println("Test 7.4");
-                        liClass = "" ;
-                    }
-                    else
-                    {
-                        if (isCorrectAnswer == true)
-                        {
-                            out.println("Test 7.5");
-                            liClass = "bg-success disabled" ;
-                        }   
-                        else 
-                        {
-                            out.println("Test 7.6");
-                            liClass = "bg-danger disabled" ;
-                        }
-                    }   
-
-                   out.println("Test 8");
-                    questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
-                    questionIDEasy = "" + questionEasyRS.getObject("ID");
-                    out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-               
-                out.println("Test 9");
- 
-                }
+                if (isCorrect == null) {
+                    liClasses = "";
+                } else {
+                    if (isCorrect) {
+                        liClasses = "bg-success disabled";
+                    } else {
+                        liClasses = "bg-danger disabled";
+                    }// end inner if else
+                }// end outer if-else
+    
+                String tempQuestionText = (String) easyQuestionsResultSet.getObject("QuestionText") ;   
+                int    tempQuestionID   = Integer.parseInt ( "" + easyQuestionsResultSet.getObject("id") ) ;
+                out.println ( "             <li class='" + liClasses + "'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID="+ tempQuestionID +"'>"+ tempQuestionText +"</a></li>");
     // --------------------------------------------------------------------------------------------------------------------
 
 
