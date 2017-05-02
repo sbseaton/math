@@ -404,21 +404,32 @@ public class Compete extends HttpServlet
                     out.println("Test 7");
 
                     String liClass = "";
-                
+                    
+                    out.println("Test 7.1");
                     int currentQuestionIDEasy =  Integer.parseInt( "" + questionEasyRS.getObject("ID") );
 
+                    out.println("Test 7.2");
                     Boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
 
+                    out.println("Test 7.3");
                     if (isCorrectAnswer == null)
+                        out.println("Test 7.4");
                         liClass = "" ;
-                    else{
-                    
-                    if 
-                     (isCorrectAnswer == true)
-                        liClass = "bg-success disabled" ;
-                    else 
-                        liClass = "bg-danger disabled" ;
-                      }   
+
+                    else
+                    {
+                        if 
+                         (isCorrectAnswer == true)
+                        {
+                            out.println("Test 7.5");
+                            liClass = "bg-success disabled" ;
+                        }   
+                        else 
+                        {
+                            out.println("Test 7.6");
+                            liClass = "bg-danger disabled" ;
+                        }
+                    }   
 
                    out.println("Test 8");
                     questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
