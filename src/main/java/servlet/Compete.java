@@ -544,6 +544,7 @@ public class Compete extends HttpServlet
                     out.println( "<input type='hidden' name='previousQuestionNumber' value='" + questionNumber + "'>");     // pass the question number
                     out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
                     
+                    
                     // pass the current answer ID for 
                     out.println( "<input type='hidden' name='Selected_Choice_ID' value='"+ choiceID +"'>");
 
