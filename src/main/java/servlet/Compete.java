@@ -312,7 +312,7 @@ public class Compete extends HttpServlet
                     competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
 
 
-                if (previousQuestionNumberString != null && )
+                if (previousQuestionNumberString != null && previousAnswerIDString != null )
                 {
                     // INSERT the submission made previously
                     String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
