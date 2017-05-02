@@ -401,9 +401,9 @@ public class Compete extends HttpServlet
 
                     try 
                     {
-                        boolean isCorrect = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.next("ID") ) );
+                        boolean isCorrectAnswer = answeredQuestions.get( Integer.parseInt( "" + questionEasyRS.next("ID") ) );
 
-                        if (isCorrect == true)
+                        if (isCorrectAnswer == true)
                             liClass = "bg-success disabled" ;
                         else 
                             liClass = "bg-danger disabled" ;
