@@ -319,6 +319,9 @@ public class Compete extends HttpServlet
                                             + " AND competitor_id = " + competitor_ID + " "
                                             + " AND question_id = " + questionEasyRS.getObject("id") + " " 
                                             + " AND PointValue = 2 ";
+                                            
+                System.out.println( isAnsweredQuery );
+                ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
