@@ -315,7 +315,7 @@ public class Compete extends HttpServlet
                 // pull from database and display --------------------------------------
 
                 String questionStringEasy = "SELECT * "
-                                          + "FROM   Math.Question WHERE PointValue = 2 ";
+                + "FROM   Math.Question WHERE PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
@@ -382,7 +382,7 @@ public class Compete extends HttpServlet
                     out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDMedium +"'> " + questionTextMedium + " </a></li> \n" );
                 }
 
-            // ------------------------------------------------------------------------------------------------------------ 
+            // ------------------------------------------------------------------------------------------------ 
 
             out.println( ""
              //    +    " <li><a data-target='/Compete' href='/Compete?Q_ID=111'> HERE IS A QUESTION </a></li> \n"
