@@ -286,6 +286,22 @@ public class Compete extends HttpServlet
                 userLoggedIn = true;
                 username = (String) session.getAttribute (userIdAttribute) ;
 
+
+                // get the question id of the previous problem
+                String previousQuestionNumberString = request.getParameter("previousQuestionNumber");   // request previous user's question they answered 
+                int previousQuestionNumber = 0;
+                if (previousQuestionNumberString != null)
+                    previousQuestionNumber = Integer.parseInt(previousQuestionNumberString);    // convert the previous question number to an int
+
+
+
+                // request the previous answer ID for submission query
+                String previousAnswerIDString = request.getParameter("Selected_Choice_ID"); 
+                int previousAnswerID = 0;
+                if (previousAnswerIDString != null )
+                    previousAnswerID = Integer.parseInt(previousAnswerIDString);
+
+
                 // Get the competitor ID for the insert query for submission
                 String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
                 ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
@@ -296,14 +312,7 @@ public class Compete extends HttpServlet
                     competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
 
 
-              // get the question id of the previous problem
-                String previousQuestionNumberString = request.getParameter("previousQuestionNumber");   // request previous user's question they answered 
-                int previousQuestionNumber = 0;
-                if (previousQuestionNumberString != null)
-                    previousQuestionNumber = Integer.parseInt(previousQuestionNumberString);    // convert the previous question number to an int
-
-            
-                if (previousQuestionNumberString != null )
+                if (previousQuestionNumberString != null && )
                 {
                     // INSERT the submission made previously
                     String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
