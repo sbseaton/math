@@ -77,7 +77,7 @@ public class Compete extends HttpServlet
             String isPrevChoiceCorrectString = request.getParameter("isCorrect");
             boolean isPrevChoiceCorrect = false;
             if ( isPrevChoiceCorrectString != null )
-                isChoiceCorrect = Boolean.parseBoolean( isPrevChoiceCorrectString );
+                isPrevChoiceCorrect = Boolean.parseBoolean( isPrevChoiceCorrectString );
 
             // ----------------------------------------------------------------------------------------------------------------------
 
