@@ -127,27 +127,7 @@ public class Compete extends HttpServlet
 
             // end incrementing score------------------------------------------------------------------------------------------
 
-          /* // Get the competitor ID for the insert query for submission
-            String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
-            ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
-
-           // out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
-
-            if ( competitor_IDRS.next() )
-                competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
-
-
-            if (previousAnswerIDString != null )
-            {
-                // query the submission made previously
-                String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
-                                        + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
-
-                int submission = statement.executeUpdate( submissionQuery );
-            }
-            
-            */ 
-
+          
 
 
             // html display ---------------------------------------------------------------
@@ -207,12 +187,6 @@ public class Compete extends HttpServlet
             // ---------------------------------------------------------
 
             boolean userIsAvailable = false ;               // change this back to false
-
-/*
-            String submissionQuery = "UPDATE Math.submission "
-                                    +"SET competitor_ID = "+ competitor_ID + ", Question_ID =" + questionNumber + ", AtTime = '" + (new java.util.Date() ) + "', Selected_Choice_ID = " + Integer.parseInt( usersChoiceID ) + " "
-                                    +"WHERE competitor_ID = "+ competitor_ID + " AND Question_ID = " + questionNumber + "; ";
-*/
 
             // ---------------------------------------------------------
 
@@ -375,7 +349,8 @@ public class Compete extends HttpServlet
             ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
             out.println("Test 4");
-            while ( getAnswersRS.next() )
+            out.println("Result Set rs is = " + getAnswersRS );
+            /* while ( getAnswersRS.next() )
             {
                 int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
                 int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
@@ -391,7 +366,7 @@ public class Compete extends HttpServlet
                 }// end if else
 
             }// end while
-
+    */
 
                 out.println("Test 5");
 
