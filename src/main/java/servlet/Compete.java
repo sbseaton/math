@@ -145,6 +145,7 @@ public class Compete extends HttpServlet
 
                 int submission = statement.executeUpdate( submissionQuery );
             }
+            
 
 
 
@@ -247,7 +248,25 @@ public class Compete extends HttpServlet
                     session.setAttribute ( userIdAttribute, username ) ;
                     userLoggedIn = true; 
 
-            
+                    // Get the competitor ID for the insert query for submission
+                    String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
+                    ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
+
+                   // out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
+
+                    if ( competitor_IDRS.next() )
+                        competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
+
+
+                    if (previousAnswerIDString != null )
+                    {
+                        // query the submission made previously
+                        String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
+                                                + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
+
+                        int submission = statement.executeUpdate( submissionQuery );
+                    }
+                    
 
                 }
                 //  if the username and password don't match then display no user is logged in page ---------------------------------------------------------
@@ -279,6 +298,25 @@ public class Compete extends HttpServlet
                 // and is returning from checkAnswer servlet for a new problem
                 userLoggedIn = true;
                 username = (String) session.getAttribute (userIdAttribute) ;
+
+                // Get the competitor ID for the insert query for submission
+                String competitor_IDQuery = "SELECT * FROM Math.Competitor WHERE lower( Username ) = lower('" + username + "') ";
+                ResultSet competitor_IDRS = statement.executeQuery (competitor_IDQuery );
+
+               // out.println("<h1>" + competitor_IDRS.next() + "</h1> " );
+
+                if ( competitor_IDRS.next() )
+                    competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
+
+
+                if (previousAnswerIDString != null )
+                {
+                    // query the submission made previously
+                    String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
+                                            + "VALUES ( " + competitor_ID + " , " + previousQuestionNumber + " , '" + (new java.util.Date() ) + "' , " + previousAnswerID + " ) " ;
+
+                    int submission = statement.executeUpdate( submissionQuery );
+                }
                 
             }   // end else
 
