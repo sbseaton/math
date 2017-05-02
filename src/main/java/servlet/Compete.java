@@ -349,6 +349,7 @@ public class Compete extends HttpServlet
                 ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
                 out.println("Test 4");
+                out.println("Competitor id = " + competitor_ID );
                 out.println("Result Set is = " + getAnswersRS.next() );
             /* while ( getAnswersRS.next() )
             {
