@@ -357,7 +357,7 @@ public class Compete extends HttpServlet
 
                 ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
                
-                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitorID + " ";
+                String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
                 //out.println(getAnswersQuery);
                 ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
