@@ -319,9 +319,8 @@ public class Compete extends HttpServlet
                                             + " AND competitor_id = " + competitor_ID + " "
                                             + " AND question_id = " + questionEasyRS.getObject("id") + " " 
                                             + " AND PointValue = 2 ";
-                                            
-                System.out.println( isAnsweredQuery );
-                ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
+
+               
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
                 String questionTextEasy = "";
@@ -338,22 +337,22 @@ public class Compete extends HttpServlet
                     ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
                     */
                 
-                    if ( isAnswered.next() )    // if the question has been answered do this
-                    {   
-                        if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
+                    // if ( isAnswered.next() )    // if the question has been answered do this
+                    // {   
+                    /*    if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
                             out.println(" <li class='bg-danger success disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> ");
-                        else 
+                        else if ()
                             out.println(" <li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> "); 
-                    }
+                    // }
                     
 
                     else                // if it has not been answered, print out the option for the user to choose
                     {   
-                        
+                        */
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
                         out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                     }
+                     // }
 
  
                 }
