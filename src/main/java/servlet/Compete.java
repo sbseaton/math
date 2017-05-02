@@ -317,7 +317,7 @@ public class Compete extends HttpServlet
                 String questionStringEasy =   "Select * from Math.Question, Math.Submission "
                                             + " WHERE question_id = id "
                                             + " AND competitor_id = " + competitor_ID + " "
-                                            + " AND question_id = " + questionEasyRS.getObject("id") + "; " ;
+                                            + " AND question_id = " + questionEasyRS.getObject("id") + " " 
                                             + " AND PointValue = 2 ";
 
                 ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
