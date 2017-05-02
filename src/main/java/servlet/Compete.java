@@ -96,7 +96,7 @@ public class Compete extends HttpServlet
 
 
         // incrementing score-----------------------------------------------------------------------------------------
-            if (isChoiceCorrect == true)
+            if (isPrevChoiceCorrect == true)
             {   
                  String scoreIncrementQuery =  "UPDATE Math.competitor "
                                           + "SET score = score + " + previousQuestionPointValue + " "   // increment score by the point value
@@ -351,7 +351,7 @@ public class Compete extends HttpServlet
                 questionsAnswered.add(null);
             }// end for
 
-            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + currentCompetitorID + " ";
+            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
            
             ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
