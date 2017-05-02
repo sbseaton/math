@@ -320,15 +320,15 @@ public class Compete extends HttpServlet
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
-
-                    String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
+                    
+                 /*   String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
                                             + " WHERE question_id = id "
                                             + " AND competitor_id = " + competitor_ID + " "
                                             + " AND question_id = " + questionNumber + "; " ;
                     System.out.println( isAnsweredQuery );
                     ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
-
-                    if ( isAnswered.next() )    // if the question has been answered do this
+				
+                //    if ( isAnswered.next() )    // if the question has been answered do this
                     {   
                         if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
                             out.println(" <li class='bg-danger success disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> ");
@@ -339,10 +339,11 @@ public class Compete extends HttpServlet
 
                     else                // if it has not been answered, print out the option for the user to choose
                     {
+                    	*/
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
                         out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                    }
+                    //}
 
  
                 }
