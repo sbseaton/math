@@ -326,6 +326,43 @@ public class Compete extends HttpServlet
                 // easy questions ----------------------------------------------------------------------------------
                 // pull from database and display --------------------------------------
 
+
+
+
+
+
+
+            ArrayList<Boolean> questionsAnswered = new ArrayList<Boolean>();// holds which quesiton currentCompetitor has answered and if correct or not
+            // fill list with null values
+            for (int i = 0; i < 40 ; i++ ) {
+                questionsAnswered.add(null);
+            }// end for
+
+            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
+           
+            ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
+
+            while ( getAnswersRS.next() )
+            {
+                int tempQuestionID  = Integer.parseInt("" + getAnswersRS.getObject("Question_ID") );
+                int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
+                int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
+
+                if ( usersAnswerID == correctAnswerID )
+                {
+                    questionsAnswered.add(tempQuestionID, true);
+                } else {
+                    questionsAnswered.add(tempQuestionID, false);
+                }// end if else
+
+            }// end while
+
+
+
+
+
+
+
                 String questionStringEasy = "SELECT * "
                 + "FROM   Math.Question WHERE PointValue = 2 ";
 
@@ -336,30 +373,26 @@ public class Compete extends HttpServlet
                 while (questionEasyRS.next() )
                 {
                     
-                 /*   String isAnsweredQuery =  " Select * from Math.Question, Math.Submission "
-                                            + " WHERE question_id = id "
-                                            + " AND competitor_id = " + competitor_ID + " "
-                                            + " AND question_id = " + questionEasyRS.getObject("id") + "; " ;
-                    System.out.println( isAnsweredQuery );
-                    ResultSet isAnswered = statement.executeQuery( isAnsweredQuery );
-				
-                    if ( isAnswered.next() )    // if the question has been answered do this
-                    {   
-                        if ( isAnswered.getObject("correctanswer_choice_id") == isAnswered.getObject("Selected_Choice_ID") )
-                            out.println(" <li class='bg-danger success disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> ");
-                        else 
-                            out.println(" <li class='bg-danger disabled'><a  class='not-active' data-target='/Compete' href='/Compete?Q_ID='"+ questionIDEasy +"'>" + questionTextEasy + "</a></li> "); 
-                    }
-                    
+                    String liClasses = "";
+                    Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + easyQuestionsResultSet.getObject("ID") ) ) ;
 
-                    else                // if it has not been answered, print out the option for the user to choose
-                    {	
-                    	*/
-                        questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
-                        questionIDEasy = "" + questionEasyRS.getObject("ID");
-                        out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                   	// }
-
+                    if (isCorrect == null) {
+                        liClasses = "";
+                    } else {
+                        if (isCorrect) {
+                            liClasses = "bg-success disabled";
+                        } else {
+                            liClasses = "bg-danger disabled";
+                        }// end inner if else
+                    }// end outer if-else
+        
+                    String tempQuestionText = (String) easyQuestionsResultSet.getObject("QuestionText") ;   
+                    int    tempQuestionID   = Integer.parseInt ( "" + easyQuestionsResultSet.getObject("id") ) ;
+                        
+                    questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
+                    questionIDEasy = "" + questionEasyRS.getObject("ID");
+                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+        
  
                 }
 
