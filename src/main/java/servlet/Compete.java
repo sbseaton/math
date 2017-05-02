@@ -412,14 +412,13 @@ public class Compete extends HttpServlet
                     Boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
 
                     out.println("Test 7.3");
-                    if (isCorrectAnswer == null)
+                    if (isCorrectAnswer == null){
                         out.println("Test 7.4");
                         liClass = "" ;
-
+                    }
                     else
                     {
-                        if 
-                         (isCorrectAnswer == true)
+                        if (isCorrectAnswer == true)
                         {
                             out.println("Test 7.5");
                             liClass = "bg-success disabled" ;
