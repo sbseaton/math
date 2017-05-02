@@ -382,9 +382,9 @@ public class Compete extends HttpServlet
 
                 if ( usersAnswerID == correctAnswerID )
                 {
-                    questionsAnswered.add(tempQuestionID, true);
+                    answeredQuestions.add(tempQuestionID, true);
                 } else {
-                    questionsAnswered.add(tempQuestionID, false);
+                    answeredQuestions.add(tempQuestionID, false);
                 }// end if else
 
             }// end while
