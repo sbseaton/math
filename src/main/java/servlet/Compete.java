@@ -295,6 +295,12 @@ public class Compete extends HttpServlet
                 if ( competitor_IDRS.next() )
                     competitor_ID = Integer.parseInt ("" + competitor_IDRS.getObject("ID"));
 
+                   // request the previous answer ID for submission query
+                String previousAnswerIDString = request.getParameter("Selected_Choice_ID"); 
+                int previousAnswerID = 0;
+                if (previousAnswerIDString != null )
+                    previousAnswerID = Integer.parseInt(previousAnswerIDString);
+
 
                 if (previousAnswerIDString != null )
                 {
