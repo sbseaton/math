@@ -303,7 +303,7 @@ public class Compete extends HttpServlet
                 userLoggedIn = true;
                 username = (String) session.getAttribute (userIdAttribute) ;
 
-                 if (previousAnswerIDString != null )
+              /*   if (previousAnswerIDString != null )
                 {
                     // query the submission made previously
                     String submissionQuery = "INSERT INTO Math.Submission ( Competitor_ID, Question_ID, AtTime, Selected_Choice_ID ) " 
@@ -311,7 +311,7 @@ public class Compete extends HttpServlet
 
                     int submission = statement.executeUpdate( submissionQuery );
                 }
-
+    */
                 
             }   // end else
 
