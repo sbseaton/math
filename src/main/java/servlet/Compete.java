@@ -352,10 +352,15 @@ public class Compete extends HttpServlet
 
                 // easy questions ----------------------------------------------------------------------------------
 
-
+        // --------------------------------------------------------------------------------------------------------------------
 
 
                 ArrayList<Boolean> answeredQuestions = new ArrayList<Boolean>();// holds which question currentCompetitor has answered and if correct or not
+
+                // fill array with null values
+                for (int i = 0; i < 40; i++ )
+                    answeredQuestions.add(null);
+
                
                 String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
                 //out.println(getAnswersQuery);
@@ -377,11 +382,6 @@ public class Compete extends HttpServlet
                 }// end while
 
 
-
-
-
-
-
                 // pull from database and display --------------------------------------
 
                 String questionStringEasy = "SELECT * "
@@ -391,33 +391,25 @@ public class Compete extends HttpServlet
                 String questionTextEasy = "";
                 String questionIDEasy = "";
 
-                int i = 0 ; 
+                
                 // display the question text 
                 while (questionEasyRS.next() )
                 {
 
                     String liClass = "";
+                
+                    int currentQuestionIDEasy =  Integer.parseInt( "" + questionEasyRS.getObject("ID") );
 
+                    boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
 
-                    try 
-                    {
+                    if (isCorrectAnswer == null)
+                        liClass = "" 
+                    else if (isCorrectAnswer == true)
+                        liClass = "bg-success disabled" ;
+                    else 
+                        liClass = "bg-danger disabled" ;
 
-                        int currentQuestionIDEasy =  Integer.parseInt( "" + questionEasyRS.getObject("ID") );
-
-                        boolean isCorrectAnswer = answeredQuestions.get( currentQuestionIDEasy );
-
-                        if (isCorrectAnswer == true)
-                            liClass = "bg-success disabled" ;
-                        else 
-                            liClass = "bg-danger disabled" ;
-
-                    }
-                    catch ( IndexOutOfBoundsException e )
-                    {
-                        // if the user hasn't answered this question, it will display available for them to click on
-                        liClass = "";
-                    }
-
+                   
                         questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;
                         questionIDEasy = "" + questionEasyRS.getObject("ID");
                         out.println ( " <li class = '" + liClass + "'> <a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
@@ -425,6 +417,8 @@ public class Compete extends HttpServlet
 
  
                 }
+    // --------------------------------------------------------------------------------------------------------------------
+
 
             //  end easy questions------------------------------------------------------------------------------------------------ 
 
