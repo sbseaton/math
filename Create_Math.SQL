@@ -144,7 +144,7 @@ VALUES ('\( 64 \)' ) , -- 1
        ( '\( \dfrac {7} {18} \)'  ),
        ( '\( \dfrac {11} {36} \)'  ) ;
 	     
-; 
+
 SELECT * FROM Math.Choice ;
 --
 CREATE TABLE Math.Question
@@ -157,7 +157,7 @@ CREATE TABLE Math.Question
     Foil3_Choice_ID          INTEGER REFERENCES Math.Choice(ID)  NULL,
     CHECK ( (Foil2_Choice_ID IS NOT NULL) OR (Foil3_Choice_ID IS NULL) ) ) ;
 --
-ALTER SEQUENCE Math.Question_ID_Seq RESTART WITH 301 ;
+ALTER SEQUENCE Math.Question_ID_Seq RESTART WITH 1 ;
 INSERT INTO Math.Question ( PointValue, QuestionText, CorrectAnswer_Choice_ID, Foil1_Choice_ID )
 VALUES  ( 2, '\( 0.4\times 160 \)', 1, 2 ),
         ( 2, '\( 2^{12} \)', 3, 4 ),
