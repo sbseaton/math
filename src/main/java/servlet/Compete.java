@@ -249,7 +249,7 @@ public class Compete extends HttpServlet
 
 
 
-        } // end if else is session new or old
+        } // end if else is session new or old?
 
         // -------------------------- HTML if Logged in ------------------------------------- // 
         if (isUserLoggedIn)
