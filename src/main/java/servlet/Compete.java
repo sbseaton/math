@@ -485,7 +485,7 @@ public class Compete extends HttpServlet
 	                // end outer if-else
 	    
 	                String questionTextHard = (String) questionHardRS.getObject("QuestionText") ;   
-	                int    questionIDEasy   = Integer.parseInt ( "" + questionHardRS.getObject("id") ) ;
+	                int    questionIDHard   = Integer.parseInt ( "" + questionHardRS.getObject("id") ) ;
 	                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
 	            
 	 
