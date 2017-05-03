@@ -345,7 +345,7 @@ public class Compete extends HttpServlet
 
         // --------------------------------------------------------------------------------------------------------------------
 
-               ArrayList<Boolean> questionsAnswered = new ArrayList<Boolean>();// holds which quesiton currentCompetitor has answered and if correct or not
+            ArrayList<Boolean> questionsAnswered = new ArrayList<Boolean>();// holds which quesiton currentCompetitor has answered and if correct or not
             // fill list with null values
             for (int i = 0; i < 40 ; i++ ) {
                 questionsAnswered.add(null);
@@ -372,25 +372,24 @@ public class Compete extends HttpServlet
 
             //--------------------------------------------------------//
 
-            String easyQuestionsQuery = "SELECT * FROM Math.Question WHERE PointValue = 2";
-            ResultSet easyQuestionsResultSet = statement.executeQuery ( easyQuestionsQuery ) ;
+            String questionStringEasy = "SELECT * FROM Math.Question WHERE PointValue = 2";
+            ResultSet questionEasyRS = statement.executeQuery ( questionStringEasy ) ;
 
             //output EASY questions to dropdown menu
-            while ( easyQuestionsResultSet.next() ) 
+            while ( questionEasyRS.next() ) 
             {
 
                 String liClasses = "";
-                Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + easyQuestionsResultSet.getObject("ID") ) ) ;
+                Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
-                if (isCorrect == null) {
+                if (isCorrect == null)
                     liClasses = "";
-                } else {
-                    if (isCorrect) {
-                        liClasses = "bg-success disabled";
-                    } else {
-                        liClasses = "bg-danger disabled";
-                    }// end inner if else
-                }// end outer if-else
+                else if (isCorrect) 
+                    liClasses = "bg-success disabled";
+                else
+                    liClasses = "bg-danger disabled";
+                  	// end inner if else
+                // end outer if-else
     
                 String questionTextEasy = (String) easyQuestionsResultSet.getObject("QuestionText") ;   
                 int    questionIDEasy   = Integer.parseInt ( "" + easyQuestionsResultSet.getObject("id") ) ;
