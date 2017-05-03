@@ -273,7 +273,7 @@ public class Compete extends HttpServlet
           		questionsAnswered.add(null);
           	}// end for
 
-            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + competitor_ID + " ";
+            String getAnswersQuery = "SELECT * FROM Math.Question LEFT JOIN Math.Submission ON (Question.ID = Submission.Question_ID) WHERE competitor_ID = " + currentCompetitorID + " ";
            
             ResultSet getAnswersRS = statement.executeQuery(getAnswersQuery);
 
