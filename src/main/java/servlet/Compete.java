@@ -488,7 +488,6 @@ public class Compete extends HttpServlet
 	                int    questionIDHard   = Integer.parseInt ( "" + questionHardRS.getObject("id") ) ;
 	                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
 	            
-	 
 	            }
     // --------------------------------------------------------------------------------------------------------------------
 
