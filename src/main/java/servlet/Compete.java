@@ -394,7 +394,7 @@ public class Compete extends HttpServlet
     
                 String questionTextEasy = (String) easyQuestionsResultSet.getObject("QuestionText") ;   
                 int    questionIDEasy   = Integer.parseInt ( "" + easyQuestionsResultSet.getObject("id") ) ;
-                out.println ( " <li class='" + liClasses + "' ><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
             
  
                 }
