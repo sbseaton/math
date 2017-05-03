@@ -416,20 +416,34 @@ public class Compete extends HttpServlet
                 +   " <ul class='dropdown-menu'> \n" ) ;
 
                 // medium questions ---------------------------------------------------------------------------------------------
-                // pull from database and display --------------------------------------
-                String questionStringMedium = "SELECT * "
-                + "FROM   Math.Question WHERE PointValue = 3 ";
+                 //--------------------------------------------------------//
 
-                ResultSet questionMediumRS = statement.executeQuery ( questionStringMedium ) ;
-                String questionTextMedium = "";
-                String questionIDMedium = "";
-                // display the question text 
-                while (questionMediumRS.next() )
-                {
-                    questionTextMedium = (String) questionMediumRS.getObject("QuestionText") ;
-                    questionIDMedium = "" + questionMediumRS.getObject("ID");
-                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDMedium +"'> " + questionTextMedium + " </a></li> \n" );
+            String questionStringMedium = "SELECT * FROM Math.Question WHERE PointValue = 3";
+            ResultSet questionMediumRS = statement.executeQuery ( questionStringMedium ) ;
+
+            //output medium questions to dropdown menu
+            while ( questionMediumRS.next() ) 
+            {
+
+                String liClasses = "";
+                Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionMediumRS.getObject("ID") ) ) ;
+
+                if (isCorrect == null)
+                    liClasses = "";
+                else if (isCorrect) 
+                    liClasses = "bg-success disabled";
+                else
+                    liClasses = "bg-danger disabled";
+                  	// end inner if else
+                // end outer if-else
+    
+                String questionTextMedium = (String) questionMediumRS.getObject("QuestionText") ;   
+                int    questionIDMedium   = Integer.parseInt ( "" + questionMediumRS.getObject("id") ) ;
+                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDMedium +"'> " + questionTextMedium + " </a></li> \n" );
+            
+ 
                 }
+    // --------------------------------------------------------------------------------------------------------------------
 
             // ------------------------------------------------------------------------------------------------ 
 
@@ -449,19 +463,34 @@ public class Compete extends HttpServlet
 
              // Hard questions ---------------------------------------------------------------------------------------------
              // pull from database and display --------------------------------------
-                String questionStringHard = "SELECT * "
-                + "FROM   Math.Question WHERE PointValue = 4 ";
+                  //--------------------------------------------------------//
 
-                ResultSet questionHardRS = statement.executeQuery ( questionStringHard ) ;
-                String questionTextHard = "";
-                String questionIDHard= "";
-                // display the question text 
-                while (questionHardRS.next() )
-                {
-                    questionTextHard = (String) questionHardRS.getObject("QuestionText") ;
-                    questionIDHard = "" + questionHardRS.getObject("ID");
-                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
-                }
+	            String questionStringHard = "SELECT * FROM Math.Question WHERE PointValue = 4";
+	            ResultSet questionHardRS = statement.executeQuery ( questionStringHard ) ;
+
+	            //output EASY questions to dropdown menu
+	            while ( questionHardRS.next() ) 
+	            {
+
+	                String liClasses = "";
+	                Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionHardRS.getObject("ID") ) ) ;
+
+	                if (isCorrect == null)
+	                    liClasses = "";
+	                else if (isCorrect) 
+	                    liClasses = "bg-success disabled";
+	                else
+	                    liClasses = "bg-danger disabled";
+	                  	// end inner if else
+	                // end outer if-else
+	    
+	                String questionTextHard = (String) questionHardRS.getObject("QuestionText") ;   
+	                int    questionIDEasy   = Integer.parseInt ( "" + questionHardRS.getObject("id") ) ;
+	                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
+	            
+	 
+	            }
+    // --------------------------------------------------------------------------------------------------------------------
 
             // ------------------------------------------------------------------------------------------------ 
 
