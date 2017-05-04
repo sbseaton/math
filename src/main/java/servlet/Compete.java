@@ -527,8 +527,7 @@ public class Compete extends HttpServlet
 			if (numOfQuestionsCompletedRS.next() )
 				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
 
-          //  if ( questionNumber == -1 )
-			if ( numOfQuestionsCompleted == 0 )
+        	if ( questionNumber == -1 )
             {
                 out.println( ""
                 +   "<h2 class='display-3'>Welcome to Sam's Mental Math Competition!</h2> \n"
