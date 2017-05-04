@@ -650,7 +650,7 @@ public class Compete extends HttpServlet
                     currentChoiceHTML +=           "</div> ";
                     currentChoiceHTML +=           "</form> ";
                     currentChoiceHTML +=           "</td> ";
-                    currentChoiceHTML +=           "</tr> " );
+                    currentChoiceHTML +=           "</tr> " ;
 		
 					questionChoices.add(currentChoiceHTML);
 
@@ -658,7 +658,7 @@ public class Compete extends HttpServlet
                 }
 
                 out.println(questionChoices);
-                
+
                 out.println ("</table>");
             
             }
