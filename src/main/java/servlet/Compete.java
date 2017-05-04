@@ -531,7 +531,15 @@ public class Compete extends HttpServlet
                 +   "<hr class='my-4'> \n" );
             }
 
-            else if ( questionNumber == 31 )
+            String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
+            ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
+
+            int numOfQuestionsCompleted = 0 ;
+				
+			if (numOfQuestionsCompletedRS.next() )
+				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
+
+            else if ( numOfQuestionsCompleted == 30 )
             {
             	out.println( ""
                 +   "<h2 class='display-3'>There are no more questions available.</h2> \n"
@@ -559,7 +567,7 @@ public class Compete extends HttpServlet
                 //  find the next question available--------------------------------------------------------------------------
                 int nextQuestionAvailable = questionNumber + 1;
 
-
+                /*
                 String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
                 ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
 
@@ -567,7 +575,7 @@ public class Compete extends HttpServlet
 				
 				if (numOfQuestionsCompletedRS.next() )
 					numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
-
+				*/
 
 	                while ( true ) 
 	                {
