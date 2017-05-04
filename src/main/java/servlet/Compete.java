@@ -255,7 +255,6 @@ public class Compete extends HttpServlet
                         +    "      <table>\n"
                         +    "   <tr style='font-size:x-large;'> "
                         +    "        <tr style='font-size:x-large;'><td>This username is already taken. Please use a different name. </td></tr>\n"
-                        //  +   "<button type='submit' class='btn btn-primary'> \n"
                         +    "        <tr><td><button type='submit' class='btn btn-primary' formaction='index.html'>Log In</button></td></tr>\n"
                         +    "      </table>\n"
                         +    "    </form>\n"
