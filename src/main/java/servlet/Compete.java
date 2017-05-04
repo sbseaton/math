@@ -334,7 +334,7 @@ public class Compete extends HttpServlet
                
                 +   "<nav class='navbar navbar-default'> \n"
                 +   "<div class='container-fluid'> \n"
-            // + "<div id='navbar' > \n"
+             //   + "<div id='navbar' c \n"
                 +   " <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
                 +   "<ul class='nav navbar-nav'> \n"
                 +   "<li class='dropdown'> \n"
@@ -361,8 +361,6 @@ public class Compete extends HttpServlet
                 int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
                 int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
 
-                questionsAnswered.remove(tempQuestionID);
-
                 if ( usersAnswerID == correctAnswerID )
                 {
                     questionsAnswered.add(tempQuestionID, true);
@@ -380,27 +378,25 @@ public class Compete extends HttpServlet
             //output EASY questions to dropdown menu
             while ( questionEasyRS.next() ) 
             {
-            	String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
-                int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
 
+                String liClasses = "";
                 Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
                 if (isCorrect == null)
-                {
-                    out.println ( " <li><a class='not-active' data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-                }
+                    liClasses = "";
                 else if (isCorrect) 
-                {
-                    out.println ( " <li class='bg-success disabled'><a class='not-active'> " + questionTextEasy + "</a></li> \n" );
-                }
+                    liClasses = "bg-success disabled";
                 else
-                {
-                    out.println ( " <li class='bg-danger disabled'><a class='not-active'> " + questionTextEasy + " </a></li> \n" );
-  
-                }
+                    liClasses = "bg-danger disabled";
                   	// end inner if else
                 // end outer if-else
-             } // end while
+    
+                String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
+                int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
+                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+            
+ 
+                }
     // --------------------------------------------------------------------------------------------------------------------
 
 
@@ -514,7 +510,7 @@ public class Compete extends HttpServlet
                 +   " Update Scoreboard \n"
                 +   "</button> \n"
                 +   "</form> \n"
-           //  +    "</div><!--/.nav-collapse --> \n"
+               //  +    "</div><!--/.nav-collapse --> \n"
                 +   "</div><!--/.container-fluid --> \n"
                 +   "</nav> \n"
                 +   "<!-- End static navbar --> \n"
@@ -585,7 +581,7 @@ public class Compete extends HttpServlet
 					numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
 				*/
 
-	           /*     while ( true ) 
+	                while ( true ) 
 	                {
 	                	if (nextQuestionAvailable > 30)
                   			nextQuestionAvailable = 1;
@@ -598,7 +594,6 @@ public class Compete extends HttpServlet
 	                	nextQuestionAvailable++;
 
 	               	}// end while
-	               	*/
 	          
                 // --------------------------------------------------------------------------------------------------------
 
