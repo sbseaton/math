@@ -519,7 +519,7 @@ public class Compete extends HttpServlet
                 +   " <div class='row equal'> \n"
                 +   "<div class='jumbotron col-md-8' style='margin:20px'> \n" );
 
-            // String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
+            String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
             ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
 
             int numOfQuestionsCompleted = 0 ;
