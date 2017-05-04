@@ -380,7 +380,9 @@ public class Compete extends HttpServlet
             while ( questionEasyRS.next() ) 
             {
 
-                
+            	String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
+                int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
+                            
                 Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
                 if (isCorrect == null)
@@ -392,13 +394,7 @@ public class Compete extends HttpServlet
                		out.println ( " <li class='bg-danger disabled'><a class='not-active'> " + questionTextEasy + " </a></li> \n" );
                   	// end inner if else
                 // end outer if-else
-    
-                String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
-                int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
-                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
-            
- 
-                }
+            }
     // --------------------------------------------------------------------------------------------------------------------
 
 
