@@ -659,7 +659,9 @@ public class Compete extends HttpServlet
                 }
 
                 Collections.shuffle( questionChoices ); // shuffle the array list
-                out.println(questionChoices);
+                
+                for ( String choice : questionChoices )
+                	out.println ( choice );
 
                 out.println ("</table>");
             
