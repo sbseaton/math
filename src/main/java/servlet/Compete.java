@@ -361,6 +361,7 @@ public class Compete extends HttpServlet
                 int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
                 int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
 
+                questionsAnswered.remove(tempQuestionID);
                 if ( usersAnswerID == correctAnswerID )
                 {
                     questionsAnswered.add(tempQuestionID, true);
@@ -379,15 +380,16 @@ public class Compete extends HttpServlet
             while ( questionEasyRS.next() ) 
             {
 
-                String liClasses = "";
+                
                 Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
                 if (isCorrect == null)
-                    liClasses = "";
+                    out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+
                 else if (isCorrect) 
-                    liClasses = "bg-success disabled";
+                	out.println ( " <li class='bg-success disabled'><a class='not-active'> " + questionTextEasy + " </a></li> \n" );
                 else
-                    liClasses = "bg-danger disabled";
+               		out.println ( " <li class='bg-danger disabled'><a class='not-active'> " + questionTextEasy + " </a></li> \n" );
                   	// end inner if else
                 // end outer if-else
     
