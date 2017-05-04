@@ -361,6 +361,8 @@ public class Compete extends HttpServlet
                 int correctAnswerID = Integer.parseInt("" + getAnswersRS.getObject("CorrectAnswer_Choice_ID"));
                 int usersAnswerID   = Integer.parseInt("" + getAnswersRS.getObject("Selected_Choice_ID") );
 
+                questionsAnswered.remove(tempQuestionID);
+
                 if ( usersAnswerID == correctAnswerID )
                 {
                     questionsAnswered.add(tempQuestionID, true);
