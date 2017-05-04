@@ -608,10 +608,11 @@ public class Compete extends HttpServlet
 
                 // declare array list to hold all of the answers -----------------------------------------
                 ArrayList<String> questionChoices = new ArrayList<String>();
+
 	           
                 while (questionAnswers.next() )
                 {
-                    String currentChoiceHTML = "";
+                    String currentChoiceHTML = "";	// create a string to hold the html for each answer during the loop 
 
 
                     currentChoiceHTML +=           "<tr>";
@@ -652,11 +653,12 @@ public class Compete extends HttpServlet
                     currentChoiceHTML +=           "</td> ";
                     currentChoiceHTML +=           "</tr> " ;
 		
-					questionChoices.add(currentChoiceHTML);
+					questionChoices.add(currentChoiceHTML);		// insert each loop into the array list for shuffling
 
                  //    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
                 }
 
+                Collections.shuffle( questionChoices ); // shuffle the array list
                 out.println(questionChoices);
 
                 out.println ("</table>");
