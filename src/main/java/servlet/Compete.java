@@ -385,10 +385,8 @@ public class Compete extends HttpServlet
                 {
                     out.println ( " <li><a class='not-active' data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
                 }
-
                 else if (isCorrect) 
                 {
-                    liClasses = ;
                     out.println ( " <li class='bg-success disabled'><a class='not-active'> " + questionTextEasy + "</a></li> \n" );
                 }
                 else
