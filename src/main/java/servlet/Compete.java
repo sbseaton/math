@@ -156,7 +156,7 @@ public class Compete extends HttpServlet
                         +   "    setTimeout ( function() { $('#feedbackModal').modal('hide'); }, 2000 ) ;\n"
                         +   "    setTimeout ( function() { $(event.target).closest('form').submit() }, 2500 ) ;\n"
                         +   "    } ) ;\n"
-                        +   "  $(document).on('click','#updateScoreboardButton', function( ) {$('#updateScoreboardButton').closest('form').submit();} ) ;\n"
+                       // +   "  $(document).on('click','#updateScoreboardButton', function( ) {$('#updateScoreboardButton').closest('form').submit();} ) ;\n"
                         +   "</script>\n"
                         +   "</head>\n"
                         +   "<body>\n" );
@@ -504,7 +504,7 @@ public class Compete extends HttpServlet
                 +   "</ul> \n"
                 +   "<form method='POST' action='/Compete' class='navbar-form navbar-right'> \n"
                 +   "<!-- Button trigger modal --> \n"
-                +   "<button id='updateScoreboardButton' type='button' class='btn btn-primary'> \n"
+                +   "<button> type='submit' class='btn btn-primary'> \n"
                 +   " Update Scoreboard \n"
                 +   "</button> \n"
                 +   "</form> \n"
@@ -546,7 +546,7 @@ public class Compete extends HttpServlet
             else if ( numOfQuestionsCompleted == 30 )
             {
             	out.println( ""
-                +   "<h2 class='display-3'>There are no more questions available.</h2> \n"
+                +   "<h2 class='display-3'>There are no more questions to answer.</h2> \n"
                 +   "<hr class='my-4'> \n"
                 +   "<p class='lead'>Thank you for participating.</p> \n"
                 +   "<hr class='my-4'> \n" );
