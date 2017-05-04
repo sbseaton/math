@@ -247,10 +247,10 @@ public class Compete extends HttpServlet
             
                 else
                 //  if the username and password don't match then display no user is logged in page -----------------
-                 { 
+                { 
                     userLoggedIn = false;
                     session.invalidate(); 
-                    out.println ( "    <form action='LogOut' method='POST'>" ) ;
+                    out.println ( "    <form method='POST'>" ) ;
                     out.print  (  ""
                         +    "      <table>\n"
                         +    "   <tr style='font-size:x-large;'> "
@@ -262,7 +262,7 @@ public class Compete extends HttpServlet
                         +    "  </body>\n"
                         +    "</html>\n"  ) ;
                     out.close() ;
-                    out.close() ;
+                   
                     return ;
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------------------
