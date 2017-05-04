@@ -334,7 +334,7 @@ public class Compete extends HttpServlet
                
                 +   "<nav class='navbar navbar-default'> \n"
                 +   "<div class='container-fluid'> \n"
-             + "<div id='navbar' > \n"
+            // + "<div id='navbar' > \n"
                 +   " <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
                 +   "<ul class='nav navbar-nav'> \n"
                 +   "<li class='dropdown'> \n"
@@ -379,21 +379,28 @@ public class Compete extends HttpServlet
             while ( questionEasyRS.next() ) 
             {
 
-                String liClasses = "";
                 Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
                 if (isCorrect == null)
-                    liClasses = "";
+                {
+                    out.println ( " <li><a class='not-active' data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                }
+
                 else if (isCorrect) 
-                    liClasses = "bg-success disabled";
+                {
+                    liClasses = ;
+                    out.println ( " <li class='bg-success disabled'><a class='not-active'> " + questionTextEasy + "</a></li> \n" );
+                }
                 else
-                    liClasses = "bg-danger disabled";
+                {
+                    out.println ( " <li class='bg-danger disabled'><a class='not-active'> " + questionTextEasy + " </a></li> \n" );
+  
+                }
                   	// end inner if else
                 // end outer if-else
     
                 String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
                 int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
-                out.println ( " <li class='" + liClasses + "'><a class='not-active' data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
             
  
                 }
@@ -510,7 +517,7 @@ public class Compete extends HttpServlet
                 +   " Update Scoreboard \n"
                 +   "</button> \n"
                 +   "</form> \n"
-             +    "</div><!--/.nav-collapse --> \n"
+           //  +    "</div><!--/.nav-collapse --> \n"
                 +   "</div><!--/.container-fluid --> \n"
                 +   "</nav> \n"
                 +   "<!-- End static navbar --> \n"
