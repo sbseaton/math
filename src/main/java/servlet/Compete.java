@@ -519,7 +519,7 @@ public class Compete extends HttpServlet
                 +   " <div class='row equal'> \n"
                 +   "<div class='jumbotron col-md-8' style='margin:20px'> \n" );
 
-            String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
+         /*   String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
             ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
 
             int numOfQuestionsCompleted = 0 ;
@@ -528,8 +528,9 @@ public class Compete extends HttpServlet
 
 			if (numOfQuestionsCompletedRS.next() )
 				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
-			
+
 			out.println("<h2>number of questions completed: " + numOfQuestionsCompleted + "</h2>");
+			*/
 
         	if ( questionNumber == -1 )
             {
@@ -541,6 +542,7 @@ public class Compete extends HttpServlet
                 +   "<p>To begin, select a question from a drop-down menu above -- Easy, Medium, or Difficult.</p> \n"
                 +   "<hr class='my-4'> \n" );
             }
+        /*
             else if ( numOfQuestionsCompleted == 30 )
             {
             	out.println( ""
@@ -549,6 +551,7 @@ public class Compete extends HttpServlet
                 +   "<p class='lead'>Thank you for participating.</p> \n"
                 +   "<hr class='my-4'> \n" );
             }
+           */
             else 
             {   
 
