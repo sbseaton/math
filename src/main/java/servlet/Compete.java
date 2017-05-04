@@ -569,10 +569,6 @@ public class Compete extends HttpServlet
 					numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
 
 
-				if (numOfQuestionsCompleted == 30)
-					questionNumber = 31;
-
-               	
 	                while ( true ) 
 	                {
 	                	if (nextQuestionAvailable > 30)
@@ -586,7 +582,7 @@ public class Compete extends HttpServlet
 	                	nextQuestionAvailable++;
 
 	               	}// end while
-	             
+	          
                 // --------------------------------------------------------------------------------------------------------
 
 
