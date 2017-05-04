@@ -566,7 +566,7 @@ public class Compete extends HttpServlet
                 int numOfQuestionsCompleted ;
 				
 				if (numOfQuestionsCompletedRS.next() )
-					numOfQuestionsCompleted = numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted");
+					numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
 
 
 				if (numOfQuestionsCompleted == 30)
