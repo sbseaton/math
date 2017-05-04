@@ -531,19 +531,12 @@ public class Compete extends HttpServlet
                 +   "<hr class='my-4'> \n" );
             }
 
-            else if ( questionNumber == 31 )
-            {
-            	out.println( ""
-                +   "<h2 class='display-3'>There are no more questions available.</h2> \n"
-                +   "<hr class='my-4'> \n"
-                +   "<p class='lead'>Thank you for participating.</p> \n"
-                +   "<hr class='my-4'> \n" );
-            }
 
             else 
             {   
 
                 String questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
+
                 ResultSet questionRS = statement.executeQuery ( questionQuery );
 
                 int pointValue = 0; // declare point value for the current question
@@ -559,25 +552,10 @@ public class Compete extends HttpServlet
                 //  find the next question available--------------------------------------------------------------------------
                 int nextQuestionAvailable = questionNumber + 1;
 
+                
 
-                String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
-                ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfCompletedQuestionsQuery) ;
-
-                int numOfQuestionsCompleted ;
-				
-				if (numOfQuestionsCompletedRS.next() )
-					numOfQuestionsCompleted = numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted");
-
-
-				if (numOfQuestionsCompleted == 30)
-					questionNumber = 31;
-
-               
 	                while ( true ) 
 	                {
-	                	if (nextQuestionAvailable > 30)
-                  			nextQuestionAvailable = 1;
-
 	                   	String nextQuestionAvailableString = "Select * from math.submission where competitor_ID =" + competitor_ID + " AND question_id =" + nextQuestionAvailable ;
 	                	ResultSet nextQuestionAvailableRS = statement.executeQuery (nextQuestionAvailableString);
 	                	if (! nextQuestionAvailableRS.next())
@@ -586,7 +564,6 @@ public class Compete extends HttpServlet
 	                	nextQuestionAvailable++;
 
 	               	}// end while
-	             }
                 // --------------------------------------------------------------------------------------------------------
 
 
