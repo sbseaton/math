@@ -547,7 +547,24 @@ public class Compete extends HttpServlet
                     correctChoiceID = Integer.parseInt( "" + questionRS.getObject("correctanswer_choice_id"));
                     pointValue = Integer.parseInt( "" + questionRS.getObject("PointValue")); // find the value of the question
 
-                } 
+                } // end while
+
+                //  find the next question available--------------------------------------------------------------------------
+                int nextQuestionAvailable = questionNumber + 1;
+
+                while ( true ) 
+                {
+                   	String nextQuestionAvailableString = "Select * from math.submission where competitor_ID =" + competitor_ID + " AND question_id =" + nextQuestionAvailable ;
+
+                	ResultSet nextQuestionAvailableRS = statement.executeQuery (nextQuestionAvailableString);
+
+                	if (! nextQuestionAvailableRS.next())
+                		break;
+
+                	nextQuestionAvailable++;
+
+               	}// end while
+                // --------------------------------------------------------------------------------------------------------
 
 
                 // gets the answer text from data-------------------------------------------------------
@@ -569,10 +586,11 @@ public class Compete extends HttpServlet
                 while (questionAnswers.next() )
                 {
                     
+
                 out.println( ""
                     +           "<tr>"
                     +           "<td>"
-                    +           "<form method='POST' action='/Compete?Q_ID=" + (questionNumber+1) + "'>"
+                    +           "<form method='POST' action='/Compete?Q_ID=" + (nextQuestionAvailable) + "'>"
                     +           "<div class='form-check'>"
                     +           "<label class='form-check-label'> &nbsp; " );
 
