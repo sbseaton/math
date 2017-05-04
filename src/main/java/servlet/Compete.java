@@ -334,7 +334,7 @@ public class Compete extends HttpServlet
                
                 +   "<nav class='navbar navbar-default'> \n"
                 +   "<div class='container-fluid'> \n"
-             + "<div id='navbar' c \n"
+             + "<div id='navbar' > \n"
                 +   " <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
                 +   "<ul class='nav navbar-nav'> \n"
                 +   "<li class='dropdown'> \n"
