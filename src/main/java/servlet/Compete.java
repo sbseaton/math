@@ -528,7 +528,7 @@ public class Compete extends HttpServlet
 			if (numOfQuestionsCompletedRS.next() )
 				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
 
-			out.println("<h2>number of questions completed: " + numOfQuestionsCompleted + "</h2>");
+			// out.println("<h2>number of questions completed: " + numOfQuestionsCompleted + "</h2>");
 			
 
         	if ( questionNumber == -1 )
@@ -570,18 +570,10 @@ public class Compete extends HttpServlet
 
                 //  find the next question available--------------------------------------------------------------------------
                 
-                int nextQuestionAvailable = questionNumber + 1;
 
-                /*
-                String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
-                ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
+				// ------------------finds the next available question ------------------------------------------------
 
-                int numOfQuestionsCompleted = 0 ;
-				
-				if (numOfQuestionsCompletedRS.next() )
-					numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
-				*/
-
+					int nextQuestionAvailable = questionNumber + 1;
 	                while ( true ) 
 	                {
 	                	if (nextQuestionAvailable > 30)
@@ -614,54 +606,59 @@ public class Compete extends HttpServlet
 
                 out.println ( "<table class='table table-bordered table-hover' > " );
 
-
+                // declare array list to hold all of the answers -----------------------------------------
+                ArrayList<String> questionChoices = new ArrayList<String>();
+	           
                 while (questionAnswers.next() )
                 {
-                    
+                    String currentChoiceHTML = "";
 
-                out.println( ""
-                    +           "<tr>"
-                    +           "<td>"
-                    +           "<form method='POST' action='/Compete?Q_ID=" + (nextQuestionAvailable) + "'>"
-                    +           "<div class='form-check'>"
-                    +           "<label class='form-check-label'> &nbsp; " );
+
+                    currentChoiceHTML +=           "<tr>";
+                    currentChoiceHTML +=           "<td>";
+                    currentChoiceHTML +=           "<form method='POST' action='/Compete?Q_ID=" + (nextQuestionAvailable) + "'>";
+                    currentChoiceHTML +=           "<div class='form-check'>";
+                    currentChoiceHTML +=           "<label class='form-check-label'> &nbsp; " ;
 
                     int choiceID = Integer.parseInt ( "" + questionAnswers.getObject("id"));
 
                     //correctAnswerQuery = "Select correctanswer_choice_id from math.question "
                     if ( correctChoiceID ==  choiceID )
                     {
-                        out.println( "<input type='radio' class='form-check-input correct' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> ");
-                        out.println( "<input type='hidden' name='isCorrect' value='True'> ");
-                        out.println( "<input type='hidden' name='username' value='" + username + "'>");
+                        currentChoiceHTML += "<input type='radio' class='form-check-input correct' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> ";
+                        currentChoiceHTML += "<input type='hidden' name='isCorrect' value='True'> ";
+                        currentChoiceHTML += "<input type='hidden' name='username' value='" + username + "'>";
 
                     }
 
                     else
                     {
-                        out.println( "<input type='radio' class='form-check-input incorrect' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> " );
-                        out.println( "<input type='hidden' name='isCorrect' value='False'> ");
-                        out.println("<input type='hidden' name='username' value='" + username + "'>");
+                        currentChoiceHTML += "<input type='radio' class='form-check-input incorrect' name='C_ID' value='"+ questionAnswers.getObject("id") + "'> " ;
+                        currentChoiceHTML += "<input type='hidden' name='isCorrect' value='False'> ";
+                        currentChoiceHTML +="<input type='hidden' name='username' value='" + username + "'>";
                     }
 
-                    out.println( "<input type='hidden' name='previousQuestionNumber' value='" + questionNumber + "'>");     // pass the question number
-                    out.println( "<input type='hidden' name='pointValue' value='" + pointValue + "'> "); // pass the value of the question 
+                    currentChoiceHTML += "<input type='hidden' name='previousQuestionNumber' value='" + questionNumber + "'>";     // pass the question number
+                    currentChoiceHTML += "<input type='hidden' name='pointValue' value='" + pointValue + "'> "; // pass the value of the question 
                     
                     // pass the current answer ID for 
-                    out.println( "<input type='hidden' name='Selected_Choice_ID' value='"+ choiceID +"'>");
+                    currentChoiceHTML += "<input type='hidden' name='Selected_Choice_ID' value='"+ choiceID +"'>";
 
 
-                    out.println( ""
-                    +           "&nbsp;" + questionAnswers.getObject("choicetext") + " "
-                    +           "</label> "
-                    +           "</div> "
-                    +           "</form> "
-                    +           "</td> "
-                    +           "</tr> " );
-
+                    currentChoiceHTML +=           "&nbsp;" + questionAnswers.getObject("choicetext") + " ";
+                    currentChoiceHTML +=           "</label> ";
+                    currentChoiceHTML +=           "</div> ";
+                    currentChoiceHTML +=           "</form> ";
+                    currentChoiceHTML +=           "</td> ";
+                    currentChoiceHTML +=           "</tr> " );
+		
+					questionChoices.add(currentChoiceHTML);
 
                  //    out.println ( " <input type=\"radio\" name=\"choice\" value="+ questionAnswers.getObject("id") + " >&nbsp;&ensp;&ensp;" + questionAnswers.getObject("choicetext") + "<br><br> \n " );
                 }
+
+                out.println(questionChoices);
+                
                 out.println ("</table>");
             
             }
