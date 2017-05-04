@@ -380,6 +380,8 @@ public class Compete extends HttpServlet
             //output EASY questions to dropdown menu
             while ( questionEasyRS.next() ) 
             {
+            	String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
+                int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
 
                 Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionEasyRS.getObject("ID") ) ) ;
 
@@ -398,12 +400,7 @@ public class Compete extends HttpServlet
                 }
                   	// end inner if else
                 // end outer if-else
-    
-                String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
-                int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
-            
- 
-                }
+             } // end while
     // --------------------------------------------------------------------------------------------------------------------
 
 
