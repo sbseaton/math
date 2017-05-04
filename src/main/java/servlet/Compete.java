@@ -682,7 +682,7 @@ public class Compete extends HttpServlet
                 +   "</thead> \n"
                 +   "<tbody> \n" ); 
 
-                String usernameQuery = "Select * from Math.Competitor " ;
+                String usernameQuery = "Select * from Math.Competitor ORDER BY Score " ;
                 ResultSet usernames = statement.executeQuery(usernameQuery);
 
                 while (usernames.next() )
