@@ -519,8 +519,16 @@ public class Compete extends HttpServlet
                 +   " <div class='row equal'> \n"
                 +   "<div class='jumbotron col-md-8' style='margin:20px'> \n" );
 
+            String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
+            ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
 
-            if ( questionNumber == -1 )
+            int numOfQuestionsCompleted = 0 ;
+				
+			if (numOfQuestionsCompletedRS.next() )
+				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
+
+          //  if ( questionNumber == -1 )
+			if ( numOfQuestionsCompleted == 0 )
             {
                 out.println( ""
                 +   "<h2 class='display-3'>Welcome to Sam's Mental Math Competition!</h2> \n"
@@ -530,15 +538,6 @@ public class Compete extends HttpServlet
                 +   "<p>To begin, select a question from a drop-down menu above -- Easy, Medium, or Difficult.</p> \n"
                 +   "<hr class='my-4'> \n" );
             }
-
-            String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
-            ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
-
-            int numOfQuestionsCompleted = 0 ;
-				
-			if (numOfQuestionsCompletedRS.next() )
-				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
-
             else if ( numOfQuestionsCompleted == 30 )
             {
             	out.println( ""
@@ -547,7 +546,6 @@ public class Compete extends HttpServlet
                 +   "<p class='lead'>Thank you for participating.</p> \n"
                 +   "<hr class='my-4'> \n" );
             }
-
             else 
             {   
 
