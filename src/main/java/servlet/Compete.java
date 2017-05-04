@@ -504,7 +504,7 @@ public class Compete extends HttpServlet
                 +   "</ul> \n"
                 +   "<form method='POST' action='/Compete' class='navbar-form navbar-right'> \n"
                 +   "<!-- Button trigger modal --> \n"
-                +   "<button> type='submit' class='btn btn-primary'> \n"
+                +   "<button type='submit' class='btn btn-primary'> \n"
                 +   " Update Scoreboard \n"
                 +   "</button> \n"
                 +   "</form> \n"
