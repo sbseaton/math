@@ -524,10 +524,12 @@ public class Compete extends HttpServlet
 
             int numOfQuestionsCompleted = 0 ;
 			
-			out.println("<h2>number of questions completed: " + numOfQuestionsCompleted + "</h2>");
+
 
 			if (numOfQuestionsCompletedRS.next() )
 				numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
+			
+			out.println("<h2>number of questions completed: " + numOfQuestionsCompleted + "</h2>");
 
         	if ( questionNumber == -1 )
             {
