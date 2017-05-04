@@ -552,18 +552,21 @@ public class Compete extends HttpServlet
                 //  find the next question available--------------------------------------------------------------------------
                 int nextQuestionAvailable = questionNumber + 1;
 
-                while ( true ) 
-                {
-                   	String nextQuestionAvailableString = "Select * from math.submission where competitor_ID =" + competitor_ID + " AND question_id =" + nextQuestionAvailable ;
+                
 
-                	ResultSet nextQuestionAvailableRS = statement.executeQuery (nextQuestionAvailableString);
+	                while ( true ) 
+	                {
+	                	if (nextQuestionAvailable > 30)
+                  			nextQuestionAvailable = 1;
 
-                	if (! nextQuestionAvailableRS.next())
-                		break;
+	                   	String nextQuestionAvailableString = "Select * from math.submission where competitor_ID =" + competitor_ID + " AND question_id =" + nextQuestionAvailable ;
+	                	ResultSet nextQuestionAvailableRS = statement.executeQuery (nextQuestionAvailableString);
+	                	if (! nextQuestionAvailableRS.next())
+	                		break;
 
-                	nextQuestionAvailable++;
+	                	nextQuestionAvailable++;
 
-               	}// end while
+	               	}// end while
                 // --------------------------------------------------------------------------------------------------------
 
 
