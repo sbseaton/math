@@ -536,7 +536,6 @@ public class Compete extends HttpServlet
             {   
 
                 String questionQuery = "Select * from math.question where ID =" + questionNumber + " " ;
-
                 ResultSet questionRS = statement.executeQuery ( questionQuery );
 
                 int pointValue = 0; // declare point value for the current question
@@ -552,8 +551,19 @@ public class Compete extends HttpServlet
                 //  find the next question available--------------------------------------------------------------------------
                 int nextQuestionAvailable = questionNumber + 1;
 
-                
 
+                String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
+                ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfCompletedQuestionsQuery) ;
+
+                int numOfQuestionsCompleted ;
+				
+				if (numOfQuestionsCompletedRS.next() )
+					numOfQuestionsCompleted numOfCompletedQuestions.getObject("numOfQuestionsCompleted");
+
+               	if ( all questions answered )
+               		display end screen
+               	else
+               	{
 	                while ( true ) 
 	                {
 	                	if (nextQuestionAvailable > 30)
@@ -567,6 +577,7 @@ public class Compete extends HttpServlet
 	                	nextQuestionAvailable++;
 
 	               	}// end while
+	             }
                 // --------------------------------------------------------------------------------------------------------
 
 
