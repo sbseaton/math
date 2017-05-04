@@ -334,7 +334,7 @@ public class Compete extends HttpServlet
                
                 +   "<nav class='navbar navbar-default'> \n"
                 +   "<div class='container-fluid'> \n"
-             //   + "<div id='navbar' c \n"
+             + "<div id='navbar' c \n"
                 +   " <!-- Begin static navbalass='navbar-collapse collapse' --> \n"
                 +   "<ul class='nav navbar-nav'> \n"
                 +   "<li class='dropdown'> \n"
@@ -393,7 +393,7 @@ public class Compete extends HttpServlet
     
                 String questionTextEasy = (String) questionEasyRS.getObject("QuestionText") ;   
                 int    questionIDEasy   = Integer.parseInt ( "" + questionEasyRS.getObject("id") ) ;
-                out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
+                out.println ( " <li class='" + liClasses + "'><a class='not-active' data-target='/Compete' href='/Compete?Q_ID="+ questionIDEasy +"'> " + questionTextEasy + " </a></li> \n" );
             
  
                 }
@@ -510,7 +510,7 @@ public class Compete extends HttpServlet
                 +   " Update Scoreboard \n"
                 +   "</button> \n"
                 +   "</form> \n"
-               //  +    "</div><!--/.nav-collapse --> \n"
+             +    "</div><!--/.nav-collapse --> \n"
                 +   "</div><!--/.container-fluid --> \n"
                 +   "</nav> \n"
                 +   "<!-- End static navbar --> \n"
