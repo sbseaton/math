@@ -563,7 +563,7 @@ public class Compete extends HttpServlet
                 String numOfQuestionsCompletedQuery = " Select Count(question_id) as numOfQuestionsCompleted FROM math.submission where competitor_id =" + competitor_ID + " ";
                 ResultSet numOfQuestionsCompletedRS = statement.executeQuery(numOfQuestionsCompletedQuery) ;
 
-                int numOfQuestionsCompleted ;
+                int numOfQuestionsCompleted = 0 ;
 				
 				if (numOfQuestionsCompletedRS.next() )
 					numOfQuestionsCompleted = Integer.parseInt ("" + numOfQuestionsCompletedRS.getObject("numOfQuestionsCompleted"));
