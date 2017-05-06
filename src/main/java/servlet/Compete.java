@@ -396,23 +396,21 @@ public class Compete extends HttpServlet
                 //output medium questions to dropdown menu
                 while ( questionMediumRS.next() ) 
                 {
+                	 String questionTextMedium = (String) questionMediumRS.getObject("QuestionText") ;   
+                    int    questionIDMedium   = Integer.parseInt ( "" + questionMediumRS.getObject("id") ) ;
 
                     String liClasses = "";
                     Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionMediumRS.getObject("ID") ) ) ;
 
                     if (isCorrect == null)
-                        liClasses = "";
+                        out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDMedium +"'> " + questionTextMedium + " </a></li> \n" );
+
                     else if (isCorrect) 
-                        liClasses = "bg-success disabled";
+                        out.println ( " <li class='bg-success disabled'><a class='not-active'> " + questionTextMedium + " </a></li> \n" );
                     else
-                        liClasses = "bg-danger disabled";
+                        out.println ( " <li class='bg-danger disabled'><a class='not-active'> " + questionTextMedium + " </a></li> \n" );
                     // end inner if else
                     // end outer if-else
-
-                    String questionTextMedium = (String) questionMediumRS.getObject("QuestionText") ;   
-                    int    questionIDMedium   = Integer.parseInt ( "" + questionMediumRS.getObject("id") ) ;
-                    out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDMedium +"'> " + questionTextMedium + " </a></li> \n" );
-
                 }
                 // --------------------------------------------------------------------------------------------------------------------
 
@@ -438,25 +436,25 @@ public class Compete extends HttpServlet
                 String questionStringHard = "SELECT * FROM Math.Question WHERE PointValue = 4";
                 ResultSet questionHardRS = statement.executeQuery ( questionStringHard ) ;
 
-                //output EASY questions to dropdown menu
+                //output HARD questions to dropdown menu
                 while ( questionHardRS.next() ) 
                 {
+
+                	 String questionTextHard = (String) questionHardRS.getObject("QuestionText") ;   
+                    int    questionIDHard   = Integer.parseInt ( "" + questionHardRS.getObject("id") ) ;
 
                     String liClasses = "";
                     Boolean isCorrect = questionsAnswered.get( Integer.parseInt( "" + questionHardRS.getObject("ID") ) ) ;
 
-                    if (isCorrect == null)
-                        liClasses = "";
+                   if (isCorrect == null)
+                        out.println ( " <li><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
+
                     else if (isCorrect) 
-                        liClasses = "bg-success disabled";
+                        out.println ( " <li class='bg-success disabled'><a class='not-active'> " + questionTextHard + " </a></li> \n" );
                     else
-                        liClasses = "bg-danger disabled";
+                        out.println ( " <li class='bg-danger disabled'><a class='not-active'> " + questionTextHard + " </a></li> \n" );
                     // end inner if else
                     // end outer if-else
-
-                    String questionTextHard = (String) questionHardRS.getObject("QuestionText") ;   
-                    int    questionIDHard   = Integer.parseInt ( "" + questionHardRS.getObject("id") ) ;
-                    out.println ( " <li class='" + liClasses + "'><a data-target='/Compete' href='/Compete?Q_ID="+ questionIDHard +"'> " + questionTextHard + " </a></li> \n" );
 
                 }
                 // --------------------------------------------------------------------------------------------------------------------
