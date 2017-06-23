@@ -39,8 +39,9 @@ public class LogOut extends HttpServlet
              +    "      body { text-align: center; }\n"
              +    "      body > * { text-align: left; }\n"
              +    "      form { display: inline-block; }\n"
+             +    "    </style>\n"
 
-            // ------------------------------------------------------bootstrap styles ------------------------------------------
+              // ------------------------------------------------------bootstrap styles ------------------------------------------
               +   "<!-- Bootstrap -->\n"
                 +   "<!-- Latest compiled and minified CSS -->\n"
                 +   "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' \n"
@@ -57,7 +58,7 @@ public class LogOut extends HttpServlet
 
             //-----------------------------------------------------------------------------------------------------------------
 
-             +    "    </style>\n"
+
              +    "  </head>\n"
              +    "  <body>\n"
              +    "    <hr>\n"
