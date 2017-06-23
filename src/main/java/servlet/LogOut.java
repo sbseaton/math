@@ -45,6 +45,8 @@ public class LogOut extends HttpServlet
              +     " padding: 15px;"
              +     " border-radius: 5px; }"
 
+             +      "h2 { text-align: center; }
+
 
              +    "    </style>\n"
              //---------------  Bootstrap Import ----------------------
@@ -58,12 +60,12 @@ public class LogOut extends HttpServlet
              +    "  <body>\n"
              +    "    <hr>\n"
              +    "    <form method='POST'>\n"
-             //+    "      <table class='table'>\n"
+            
              +    "        <h2 style='font-size:x-large;'>" + username + " has logged out</h2>\n"
              //+    "        <tr style='font-size:x-large;'><td>Logged out at " + (new java.util.Date()) + ".</td></tr>\n"
              //+    "        <tr style='font-size:x-large;'><td>Session " + session.getId() + " has ended.</td></tr>\n"
              +    "        <button type='submit' class='inline_wide btn btn-primary btn-lg' formaction='index.html'>Log In</button>\n"
-             //+    "      </table>\n"
+   
              +    "    </form>\n"
              +    "    <hr>\n"
              +    "  </body>\n"
