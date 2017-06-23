@@ -477,7 +477,7 @@ public class Compete extends HttpServlet
                     +   " Update Scoreboard \n"
                     +   "</button> \n"
                     +   "</form> \n"
-                        //  +    "</div><!--/.nav-collapse --> \n"
+                        //  +    "</div><!--/.nav-collapse --> \n";
                     +   "</div><!--/.container-fluid --> \n"
                     +   "</nav> \n"
                     +   "<!-- End static navbar --> \n"
