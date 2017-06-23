@@ -61,7 +61,7 @@ public class LogOut extends HttpServlet
              +    "    <hr>\n"
              +    "    <form method='POST'>\n"
             
-             +    "        <h2 style='font-size:x-large;'>" + username + " has logged out</h2>\n"
+             +    "        <h2 style='font-size:x-large;'>" + username + " has quit the game</h2>\n"
              //+    "        <tr style='font-size:x-large;'><td>Logged out at " + (new java.util.Date()) + ".</td></tr>\n"
              //+    "        <tr style='font-size:x-large;'><td>Session " + session.getId() + " has ended.</td></tr>\n"
              +    "        <button type='submit' class='inline_wide btn btn-primary btn-lg' formaction='index.html'>Log In</button>\n"
