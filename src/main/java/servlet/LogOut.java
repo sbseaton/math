@@ -39,6 +39,24 @@ public class LogOut extends HttpServlet
              +    "      body { text-align: center; }\n"
              +    "      body > * { text-align: left; }\n"
              +    "      form { display: inline-block; }\n"
+
+            // ------------------------------------------------------bootstrap styles ------------------------------------------
+              +   "<!-- Bootstrap -->\n"
+                +   "<!-- Latest compiled and minified CSS -->\n"
+                +   "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' \n"
+                +   "      integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>\n"
+                +   "<!-- Optional theme --> \n"
+                +   "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' \n"
+                +   "      integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp' crossorigin='anonymous'> \n"
+                +   "<!-- Latest compiled and minified JavaScript --> \n"
+                +   "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' \n"
+                +   "        integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script> \n"
+                +   "<script type='text/javascript' async \n"
+                +   "  src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'> \n"
+                +   "</script> \n"
+
+            //-----------------------------------------------------------------------------------------------------------------
+
              +    "    </style>\n"
              +    "  </head>\n"
              +    "  <body>\n"
@@ -46,9 +64,8 @@ public class LogOut extends HttpServlet
              +    "    <form method='POST'>\n"
              +    "      <table>\n"
              +    "        <tr style='font-size:x-large;'><td>" + username + " has logged out.</td></tr>\n"
-             +    "        <tr style='font-size:x-large;'><td>Logged out at " + (new java.util.Date()) + ".</td></tr>\n"
-             +    "        <tr style='font-size:x-large;'><td>Session " + session.getId() + " has ended.</td></tr>\n"
-             +    "        <tr><td><button type='submit' class='inline_wide' formaction='index.html'>Log In</button></td></tr>\n"
+
+             +    "        <tr><td><button type='submit' class='btn btn-primary' formaction='index.html'>Log In</button></td></tr>\n"
              +    "      </table>\n"
              +    "    </form>\n"
              +    "    <hr>\n"
