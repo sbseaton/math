@@ -33,8 +33,7 @@ public class LogOut extends HttpServlet
              +    "    <title>Log Out</title>\n"
              +    "    <style>\n"
              +    "      table, th, td { margin:10px;\n"
-             +    "                      padding:10px 30px 10px 30px;"
-             +    "                      text-align: center; }\n"
+             +    "                      padding:10px 30px 10px 30px; }\n"
 
              +    "      .inline_wide { display: inline-block; width:100%; }\n"
              +    "      body { text-align: center; }\n"
