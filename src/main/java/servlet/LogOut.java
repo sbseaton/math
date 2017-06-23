@@ -45,7 +45,7 @@ public class LogOut extends HttpServlet
              +     " padding: 15px;"
              +     " border-radius: 5px; }"
 
-             +      "h2 { text-align: center; }"
+             +      "h2 { text-align: center; margin-top: 10px; margin-bottom: 20px;}"
 
 
              +    "    </style>\n"
