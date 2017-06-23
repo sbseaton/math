@@ -40,6 +40,13 @@ public class LogOut extends HttpServlet
              +    "      body { text-align: center; }\n"
              +    "      body > * { text-align: left; }\n"
              +    "      form { display: inline-block; }\n"
+
+             +     " form { width: 350px; "
+             +     " background: #eee; "
+             +     " padding: 15px;"
+             +     " border-radius: 5px; }"
+
+
              +    "    </style>\n"
              //---------------  Bootstrap Import ----------------------
              +    "    <!-- Latest compiled and minified CSS -->"
