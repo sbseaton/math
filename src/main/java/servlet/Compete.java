@@ -470,16 +470,14 @@ public class Compete extends HttpServlet
                     +   "</ul> \n"
                     +   "</li> \n"
                     +   "</ul> \n"
-
-                     +	"<button formaction='/LogOut' type='submit' class='btn btn-primary>Log Out</button> \n" 
                     +   "<form method='POST' action='/Compete' class='navbar-form navbar-right'> \n"
                     +   "<!-- Button trigger modal --> \n"
-                   
+                    +	"<button formaction = '/LogOut' type='submit' class='btn btn-primary'> Log Out </button>"
                     +   "<button type='submit' class='btn btn-primary'> \n"
                     +   " Update Scoreboard \n"
                     +   "</button> \n"
                     +   "</form> \n"
-                        //  +    "</div><!--/.nav-collapse --> \n";
+                        //  +    "</div><!--/.nav-collapse --> \n"
                     +   "</div><!--/.container-fluid --> \n"
                     +   "</nav> \n"
                     +   "<!-- End static navbar --> \n"
