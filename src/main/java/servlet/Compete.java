@@ -135,6 +135,8 @@ public class Compete extends HttpServlet
                 +   "  .theadScoreboard .tbodyScoreboard .trScoreboard { display:table; width:100%; table-layout:fixed; }\n"
                 +   "  .theadScoreboard { width: calc( 100% - 1em ) }\n"
                 +   "  .not-active { pointer-events: none; cursor: default; }\n"
+
+                +   " 	button { margin-right: 5px; }"
                 +   "</style>\n"
 
                 +   "<script>\n"
@@ -472,7 +474,8 @@ public class Compete extends HttpServlet
                     +   "</ul> \n"
                     +   "<form method='POST' action='/Compete' class='navbar-form navbar-right'> \n"
                     +   "<!-- Button trigger modal --> \n"
-                    +	"<button formaction = '/LogOut' type='submit' class='btn btn-primary'> Log Out </button>"
+                    +	"<button formaction = '/LogOut' type='submit' class='btn btn-primary'> Log Out </button>\n"
+                    +	"<input type='hidden' name='username' value='" + username + "'>\n"
                     +   "<button type='submit' class='btn btn-primary'> \n"
                     +   " Update Scoreboard \n"
                     +   "</button> \n"
