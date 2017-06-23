@@ -137,6 +137,11 @@ public class Compete extends HttpServlet
                 +   "  .not-active { pointer-events: none; cursor: default; }\n"
 
                 +   " 	button { margin-right: 5px; }"
+
+                +	"	.userTaken {  width: 350px; \n"
+            	+    			" background: #eee; \n"
+             	+     			" padding: 15px; \n"
+             	+     			" border-radius: 5px; \n }"
                 +   "</style>\n"
 
                 +   "<script>\n"
@@ -232,7 +237,7 @@ public class Compete extends HttpServlet
                 { 
                     userLoggedIn = false;
                     session.invalidate(); 
-                    out.println ( "    <form method='POST'>" ) ;
+                    out.println ( "    <form method='POST' class = 'userTaken' >" ) ;
                     out.print  (  ""
                         +    "      <table>\n"
                         +    "   <tr style='font-size:x-large;'> "
