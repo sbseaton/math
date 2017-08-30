@@ -1,5 +1,5 @@
 -- 
--- Create_Math.SQL  by  JA Solheim  21 FEB 2017
+-- Create_Math.SQL  by  Samuel Seaton  21 FEB 2017
 -- This file contains a PostgreSQL script that,
 -- when executed, creates the Math schema & tables.
 -- 
